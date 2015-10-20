@@ -1,11 +1,19 @@
-package modelo;
+package modelo.entidad;
 
 public class Cliente {
 	
-	
+	private int codigo;
 	private String nombre;
 	private int rut;
 	private String dv;
+	
+	public int getCodigo() {
+		return this.codigo;
+	}
+	
+	public void setCodigo(int codigo){
+		this.codigo = codigo;
+	}
 	
 	public String getNombre(){
 		return nombre;
@@ -30,6 +38,5 @@ public class Cliente {
 	public void setDv(String dv){
 		this.dv = dv;
 	}
-	
-	
 }
+
