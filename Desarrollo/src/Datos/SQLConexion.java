@@ -9,7 +9,7 @@ public class SQLConexion {
 			+ "user=usuario@immobilis;" + "password=Password00;" + "encrypt=true;" + "trustServerCertificate=false;"
 			+ "hostNameInCertificate=*.database.windows.net;" + "loginTimeout=30;";
 	
-	public static void EjecutarSP(String spName) {
+	public void EjecutarSP(String spName) {
 		try {
 			Connection con = DriverManager.getConnection(connectionString);
 			

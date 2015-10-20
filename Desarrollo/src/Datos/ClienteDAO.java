@@ -2,7 +2,7 @@ package Datos;
 
 import modelo.entidad.*;
 
-public class ClienteDAO {
+public class ClienteDAO extends SQLConexion {
 	
 	public ClienteDAO(){
 		
@@ -24,6 +24,7 @@ public class ClienteDAO {
 	}
 	
 	private Boolean Insert(){
+		EjecutarSP("INS_Cliente '<Datos></Datos>'");
 		return false;
 	}
 	
