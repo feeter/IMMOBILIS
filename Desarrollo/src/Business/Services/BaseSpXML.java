@@ -1,9 +1,15 @@
 package Business.Services;
 
+import java.io.StringWriter;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
@@ -41,23 +47,35 @@ public class BaseSpXML {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 		DOMImplementation implementation = builder.getDOMImplementation();
-		Document document = implementation.createDocument(null, root, null);
-        document.setXmlVersion("1.0");
+		Document objXml = implementation.createDocument(null, null, null);
+        Element objElement = objXml.createElement("root");
 		
+        objXml.appendChild(objXml.createElement(root));
+        
 		for(Param item : ListParam) {
-			Element node = document.createElement(item.Nombre);
-			node.setTextContent(item.Valor);
+			objElement = objXml.createElement(item.Nombre);
+			objElement.setTextContent(item.Valor);
 			
-			document.appendChild(node);//se caeeee y no se por que xd
+			objXml.getDocumentElement().appendChild(objElement);
+			//document.appendChild(node);//se caeeee y no se por que xd
+			
+			
 		}
 		
-		String returnValue = "<?xml version=" + '\u0022' + "1.0" + '\u0022' + " encoding=" + '\u0022' + "iso-8859-1" + '\u0022' + "?>";
-		returnValue = returnValue + document.getTextContent();
+		String returnValue = "";//"<?xml version=" + '\u0022' + "1.0" + '\u0022' + " encoding=" + '\u0022' + "iso-8859-1" + '\u0022' + "?>";
+
 		
-		factory = null;
-		builder = null;
-		implementation = null;
-		document = null;
+		
+		TransformerFactory tFact = TransformerFactory.newInstance();
+        Transformer trans = tFact.newTransformer();
+        
+	    StringWriter writer = new StringWriter();
+        StreamResult result = new StreamResult(writer);
+        DOMSource source = new DOMSource(objXml);
+        trans.transform(source, result);
+        //System.out.println(writer.toString());
+        returnValue = writer.toString();
+		objXml = null;
 		
 		
 		return returnValue;
