@@ -72,7 +72,7 @@ public class BaseSpXML {
 		xml.Add("Campos", "3");
 		
 		String strXMLDatos = xml.GenerarDocXML("Parametros");
-		
+		//Commit desde eclipse 
 		System.out.println(strXMLDatos);
 	}
 }
