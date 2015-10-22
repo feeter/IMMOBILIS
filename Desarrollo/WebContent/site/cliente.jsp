@@ -9,7 +9,10 @@
 <body>
 <%@ include file="../../header.jsp" %>
 
- <h1>Listar - Clientes</h1>
+ <h1>Listar - Clientes</h1><br>
+ 
+ 
+ <button type="button" onclick="window.location="cliente.editar.jsp")">Nuevo</button>
  
  <%@ include file="../../footer.jsp" %>
 </body>
