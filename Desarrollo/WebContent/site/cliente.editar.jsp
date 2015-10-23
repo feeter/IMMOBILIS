@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@ include file="../../header.jsp" %>
 <form name="frmCliente" action="cliente.editar.jsp" method="post">
 
 	Nombre <input type="text" name="tbNombre"><br>
@@ -24,23 +24,31 @@
 	Calle <input type="text" name="tbCalle"><br>
 	Numero de casa <input type="text" name="tbNumCasa"><br>
 	
-	<button type="button" onclick="alert('Agregando usuario')">Agregar</button>
-
+	
+	<input type="submit" value="Enviar">
+	
 </form>
 
 
 <% 
-
-	String Rut = request.getParameter("tbRut");
-
-	Cliente cliente = new Cliente();
-
-	cliente.setRut(Integer.parseInt(Rut));
-	cliente.setNombre(request.getParameter("tbNombre"));
+if (request.getParameter("tbRut")!= null){
 	
+	Cliente cte = new Cliente();
+	
+	String rut = request.getParameter("tbRut");
+	int cuerpoRut = Integer.parseInt( rut.substring(0, 8));
+	String dv = rut.substring(9, 10);
+	
+	cte.setNombre(request.getParameter("tbNombre"));
+	cte.setRut(cuerpoRut);
+	cte.setDv(dv);
+
+	cte.toString();
+}
+                                          
 
 
-	Autentificacion.CrearCliente(cliente);
+
 %>
 
 </body>

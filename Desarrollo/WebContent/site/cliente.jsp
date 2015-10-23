@@ -11,8 +11,10 @@
 
  <h1>Listar - Clientes</h1><br>
  
+ <button type="button" onclick="window.location.href='cliente.editar.jsp'">Nuevo</button>
+ <button type="button" onclick="window.location='cliente.editar.jsp')">Editar</button>
+ <button type="button" onclick="window.location='cliente.editar.jsp')">Limpiar</button><br>
  
- <button type="button" onclick="window.location="cliente.editar.jsp")">Nuevo</button>
  
  <%@ include file="../../footer.jsp" %>
 </body>
