@@ -12,7 +12,7 @@ public class LogEvent {
 
 	public void Registrar(String modulo, String mensaje){
 		try{
-			String path = "D:/IMMOBILIS/Negocio";
+			String path = "C:/IMMOBILIS/Negocio";
 			String fullPath;
 			
 			
