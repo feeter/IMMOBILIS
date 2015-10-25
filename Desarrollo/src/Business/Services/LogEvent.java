@@ -15,7 +15,7 @@ public class LogEvent {
 			String path = "C:/IMMOBILIS/Negocio";
 			String fullPath;
 			
-			
+			sadasdadasdasdasdasd
 	        Calendar calendar = Calendar.getInstance();
 	        int month = calendar.get(Calendar.MONTH);
 	        String nombre = String.format("Log%s_%s%s%s.txt", modulo
