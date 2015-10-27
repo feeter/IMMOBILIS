@@ -18,10 +18,24 @@
  
 <div class="btn-group" role="group" aria-label="...">
  <button type="button" class="btn btn-default" onclick="window.location.href='cliente.editar.jsp'">Nuevo</button>
- <button type="button" class="btn btn-default" onclick="window.location='cliente.editar.jsp')">Editar</button>
- <button type="button" class="btn btn-default" onclick="window.location='cliente.editar.jsp')">Limpiar</button>
+ <button type="button" class="btn btn-default" onclick="#">Buscar</button>
+ <button type="button" class="btn btn-default" onclick="#">Editar</button>
+ <button type="button" class="btn btn-default" onclick="#">Limpiar</button>
 </div>
- 
+
+<br> 
+<table class="table">
+	<tr>
+		<th>Nombre</th>
+		<th>Apellido Paterno</th>
+		<th>Rut</th>
+	</tr>
+	<tr>
+		<td>Super</td>
+		<td>Administrador</td>
+		<td>11.111.111-1</td>
+	</tr>
+</table>
  
  <%@ include file="../../footer.jsp" %>
 </body>

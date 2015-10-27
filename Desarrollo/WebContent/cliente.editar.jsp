@@ -62,7 +62,7 @@
 		</center>
 	</form>
 
-	<%@ include file="../../footer.jsp"%>
+	
 
 
 	<%
@@ -70,13 +70,11 @@
 			
 			session.setAttribute("UserName", request.getParameter("tbNombre"));
 	%>
-	<script>
-		alert("<%="Cliente creado: " + session.getAttribute("UserName")%>");
-	</script>
+	<div class="alert alert-success" role="alert"><%="Cliente creado: " + session.getAttribute("UserName")%></div>
 	<%
 		}
 	%>
 
-
+<%@ include file="../../footer.jsp"%>
 </body>
 </html>
