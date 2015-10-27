@@ -1,11 +1,17 @@
+<%@page import="modelo.entidad.Cliente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="Negocio.*" %>
-<%@ page import="modelo.entidad.*" %>
+<%-- <%@ page import="modelo.entidad.Cliente" %> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Crear Cliente</title>
+
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <%@ include file="../../header.jsp" %>
@@ -26,20 +32,21 @@
 	Calle <input type="text" name="tbCalle" /><br>
 	<!-- Numero de casa <input type="text" name="tbNumCasa" /><br> -->
 	
-	
 	<input type="submit" value="Guardar" name="btnGuardar" />
 </center>
 </form>
 
 <%@ include file="../../footer.jsp" %>
 
+
 <% 
+
  if (request.getParameter("btnGuardar") != null){ 
-	
+	 
+	 Cliente cte = new Cliente();
+	 
+	 
 	 try{
-		 
-			Cliente cte = new Cliente();
-			
 			cte.setCodigo(Integer.parseInt(request.getParameter("tbCodigo")));
 			
 /* 			String rut = request.getParameter("tbRut");
@@ -55,26 +62,20 @@
 			cte.setAppMater(request.getParameter("tbAppPater"));
 			cte.setPassword(request.getParameter("tbPassword"));
 			cte.setTelCel(Integer.getInteger(request.getParameter("tbTelCel")));
-			
-			
-			
 			cte.setCalle(request.getParameter("tbCalle"));
-			
-			
-			
 			/* cte.setNumCasa(Integer.getInteger(request.getParameter("tbNumCasa"))); */
 			
 			System.out.println("Antes de entrar al metodo CrearCliente");
 			
 			Autentificacion.CrearCliente(cte);
+			
+			
 	 }catch(Exception ex){
-		 
+		 %>
+         <script>alert("<%=ex.getMessage() %>");</script> 
+         <% 
 	 }	
 }
-                                        
-
-
-
 %>
 
 </body>

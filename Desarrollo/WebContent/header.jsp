@@ -5,7 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 </head>
-<body>Esto es el header csm
+<body>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="../Index.jsp">Home</a></li>
+  <li role="presentation"><a href="site/cliente.jsp">Clientes</a></li>
+  <li role="presentation"><a href="#">Corretaje</a></li>
+</ul>
+
 </body>
 </html>

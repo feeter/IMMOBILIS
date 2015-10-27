@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Esto es el pie de la pagina
+IMMOBILIS 2015
 </body>
 </html>

@@ -12,6 +12,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>IMMOBILIS - Inicio</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -19,8 +24,7 @@
 <h1>Aplicacion web</h1>
 
 <form method="post">
-	<button type="button" onclick=" location.href='site/cliente.jsp'">Modulo cliente</button>
-	<button type="button" onclick=" location.href='site/...jsp'">Modulo corretaje</button>
+<!-- 	<input type="submit" name="btnEnviar"> -->
 </form>
 
 
