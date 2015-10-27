@@ -5,33 +5,39 @@ import java.sql.*;
 
 public class SQLConexion {
 
-	private static String connectionString = "jdbc:sqlserver://immobilis.database.windows.net:1433;" + "database=IMMOBILIS;"
-			+ "user=usuario@immobilis;" + "password=Password00;" + "encrypt=true;" + "trustServerCertificate=false;"
+	private static String connectionString = "jdbc:sqlserver://immobilis.database.windows.net;" + "database=IMMOBILIS_25102015;"
+			+ "user=usuario;" + "password=Password00;" + "encrypt=true;" + "trustServerCertificate=false;"
 			+ "hostNameInCertificate=*.database.windows.net;" + "loginTimeout=30;";
 	
-	public void EjecutarSP(String spName) {
+	public void EjecutarSP(String spName, String parametroSP) {
 		try {
-			Connection con = DriverManager.getConnection(connectionString);
+			System.out.println("entre al metodo EjecutarSP");
+			
+			/*Connection con = DriverManager.getConnection(connectionString);*/
+			Connection con = GetConexion();
+			
+			System.out.println("se referencio a la conexion de la base de datos");
 			
 			
+			/*CallableStatement cstmt = con.prepareCall("{ call " + spName + "(?) }");*/
+			CallableStatement cstmt = con.prepareCall(spName);
 			
-			//CallableStatement cstmt = con.prepareCall("{call dbo.GetImmediateManager(?, ?)}");
-			CallableStatement cstmt = con.prepareCall("{call " + spName + "}");
+			System.out.println("se referencio al spName");
 			
 			
-			cstmt.setInt(1, 5);
-			cstmt.registerOutParameter(2, java.sql.Types.INTEGER);
+			cstmt.setString("@StrXMLDatos", parametroSP);
+			/*cstmt.registerOutParameter(1, String);*/
 			cstmt.execute();
-			
+			System.out.println("Cliente actualizado");
 			//ResultSet rs = cstmt.executeQuery();
 			
-			System.out.println("MANAGER ID: " + cstmt.getInt(2));
+			/*System.out.println("MANAGER ID: " + cstmt.getInt(2));*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static void ProbarConexion() {
+	public static Connection GetConexion() {
 
 		// Declare the JDBC objects.
 		Connection connection = null;
@@ -42,7 +48,11 @@ public class SQLConexion {
 
 		try {
 			connection = DriverManager.getConnection(connectionString);
-			System.out.println("Conectado");
+			
+			
+			System.out.println("Conectado :" + String.valueOf( connection.isClosed()));
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("NO Conectado");
@@ -74,10 +84,12 @@ public class SQLConexion {
 				} catch (Exception e) {
 				}
 		}
+		
+		return connection;
 	}
 
 	public static void main(String[] args) {
-		ProbarConexion();
+		GetConexion();
 	}
 
 }

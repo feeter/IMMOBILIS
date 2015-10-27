@@ -19,8 +19,8 @@
 <h1>Aplicacion web</h1>
 
 <form method="post">
-	<button type="button" onclick=" location.href='Modulos/Cliente/listar.jsp'">Modulo cliente</button>
-	<button type="button" onclick=" location.href='Modulos/Corretaje/listar.jsp'">Modulo corretaje</button>
+	<button type="button" onclick=" location.href='site/cliente.jsp'">Modulo cliente</button>
+	<button type="button" onclick=" location.href='site/...jsp'">Modulo corretaje</button>
 </form>
 
 

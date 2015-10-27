@@ -13,7 +13,12 @@ public class Autentificacion {
 	
 	public static int CrearCliente(Cliente cliente){
 		try{
-			ClienteDAO client = new ClienteDAO();
+			cliente.setRol(2);
+			
+			System.out.println("Dentro del metodo CrearCliente");
+			
+			
+			ClienteDAO client = new ClienteDAO();		
 			client.accion(cliente);
 			
 		}catch(Exception ex){
