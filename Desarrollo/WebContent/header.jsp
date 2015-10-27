@@ -15,7 +15,8 @@
 <body>
 
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="Index.jsp">Home</a></li>
+ <!-- class="active" -->
+  <li role="presentation"><a href="Index.jsp">Home</a></li>
   <li role="presentation"><a href="cliente.jsp">Clientes</a></li>
   <li role="presentation"><a href="#">Corretaje</a></li>
   <li role="presentation"><a href="login.jsp">Ingresar</a></li>
