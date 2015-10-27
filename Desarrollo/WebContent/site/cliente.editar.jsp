@@ -1,7 +1,6 @@
-<%@page import="modelo.entidad.Cliente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="Negocio.*" %>
-<%-- <%@ page import="modelo.entidad.Cliente" %> --%>
+<%@ page import="Negocio.*"%>
+<%@ page import="modelo.entidad.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,69 +13,70 @@
 
 </head>
 <body>
-<%@ include file="../../header.jsp" %>
+	<%@ include file="../../header.jsp"%>
 
-<form name="frmCliente" action="cliente.editar.jsp" method="post">
-<center>
-	Codigo <input type="text" name="tbCodigo" /><br>
-	Nombre <input type="text" name="tbNombre" /><br>
-	Apellido Materno <input type="text" name="tbAppMater" /><br>
-	Apellido Paterno <input type="text" name="tbAppPater" /><br>
-	<!-- Comuna <input type="text" name="tbComuna" /><br> -->
-	<!-- Empresa <input type="text" name="tbEmpresa" /><br> -->
-	Rut <input type="text" name="tbRut" /><br>
-	Correo <input type="text" name="tbCorreo" /><br>
-	Password <input type="text" name="tbPassword" /><br>
-	<!-- Vigencia <input type="text" name="tbVigencia" /><br> -->
-	Telefono Celular <input type="text" name="tbTelCel" /><br>
-	Calle <input type="text" name="tbCalle" /><br>
-	<!-- Numero de casa <input type="text" name="tbNumCasa" /><br> -->
-	
-	<input type="submit" value="Guardar" name="btnGuardar" />
-</center>
-</form>
+	<form name="frmCliente" action="cliente.editar.jsp" method="post">
+		<center>
+		<table>
+		<tr>
+		<td>Codigo</td>
+		<td><input type="text" name="tbCodigo" /></td>
+		</tr>
+		<tr>
+		<td>Nombre</td>
+		<td><input type="text" name="tbNombre" /></td>
+		</tr>
+		<tr>
+		<td>Apellido Materno</td>
+		<td><input type="text" name="tbAppMater" /></td>
+		</tr>
+		<tr>
+		<td>Apellido Paterno</td>
+		<td><input type="text" name="tbAppPater" /></td>
+		</tr>
+		<tr>
+		<td>Rut</td>
+		<td><input type="text" name="tbRut" /></td>
+		</tr>
+		<tr>
+		<td>Correo</td>
+		<td><input type="text" name="tbCorreo" /></td>
+		</tr>
+		<tr>
+		<td>Password</td>
+		<td><input type="text" name="tbPassword" /></td>
+		</tr>
+		<tr>
+		<td>Telefono Celular</td>
+		<td><input type="text" name="tbTelCel" /></td>
+		</tr>
+		<tr>
+		<td>Calle</td>
+		<td><input type="text" name="tbCalle" /></td>
+		</tr>
+		<tr>
+		<td></td>
+		<td><input type="submit" value="Guardar" name="btnGuardar" /></td>
+		</tr>
+		</table>
+		</center>
+	</form>
 
-<%@ include file="../../footer.jsp" %>
+	<%@ include file="../../footer.jsp"%>
 
 
-<% 
+	<%
+		if (request.getParameter("btnGuardar") != null) {
+			
+			session.setAttribute("UserName", request.getParameter("tbNombre"));
+	%>
+	<script>
+		alert("<%="Cliente creado: " + session.getAttribute("UserName")%>");
+	</script>
+	<%
+		}
+	%>
 
- if (request.getParameter("btnGuardar") != null){ 
-	 
-	 Cliente cte = new Cliente();
-	 
-	 
-	 try{
-			cte.setCodigo(Integer.parseInt(request.getParameter("tbCodigo")));
-			
-/* 			String rut = request.getParameter("tbRut");
-			int cuerpoRut = Integer.parseInt( rut.substring(0, 8));
-			String dv = rut.substring(9, 10); */
-			
-			cte.setNombre(request.getParameter("tbNombre"));
-/* 			cte.setRut(cuerpoRut);
-			cte.setDv(dv); */
-			
-			
-			cte.setAppPater(request.getParameter("tbAppMater"));
-			cte.setAppMater(request.getParameter("tbAppPater"));
-			cte.setPassword(request.getParameter("tbPassword"));
-			cte.setTelCel(Integer.getInteger(request.getParameter("tbTelCel")));
-			cte.setCalle(request.getParameter("tbCalle"));
-			/* cte.setNumCasa(Integer.getInteger(request.getParameter("tbNumCasa"))); */
-			
-			System.out.println("Antes de entrar al metodo CrearCliente");
-			
-			Autentificacion.CrearCliente(cte);
-			
-			
-	 }catch(Exception ex){
-		 %>
-         <script>alert("<%=ex.getMessage() %>");</script> 
-         <% 
-	 }	
-}
-%>
 
 </body>
 </html>

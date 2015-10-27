@@ -9,6 +9,11 @@ public class Cliente {
 	
 	private int numCasa;
 	
+	public Cliente(){
+		
+	}
+	
+	
 	/**
 	 * @return the numCasa
 	 */
