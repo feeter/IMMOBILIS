@@ -5,9 +5,14 @@ import java.sql.*;
 
 public class SQLConexion {
 
-	private static String connectionString = "jdbc:sqlserver://immobilis.database.windows.net;" + "database=IMMOBILIS_25102015;"
-			+ "user=usuario;" + "password=Password00;" + "encrypt=true;" + "trustServerCertificate=false;"
-			+ "hostNameInCertificate=*.database.windows.net;" + "loginTimeout=30;";
+	private static String connectionString = "jdbc:sqlserver://immobilis.database.windows.net;" 
+			+ "database=IMMOBILIS_25102015;"
+			+ "user=usuario;" 
+			+ "password=Password00;" 
+			+ "encrypt=true;" 
+			+ "trustServerCertificate=false;"
+			+ "hostNameInCertificate=*.database.windows.net;" 
+			+ "loginTimeout=30;";
 	
 	public void EjecutarSP(String spName, String parametroSP) {
 		try {
