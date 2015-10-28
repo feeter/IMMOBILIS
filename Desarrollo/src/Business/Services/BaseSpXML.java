@@ -50,6 +50,7 @@ public class BaseSpXML {
 	
 	public String GenerarDocXML(String root) throws Exception {
 		
+		String returnValue = "";
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 		DOMImplementation implementation = builder.getDOMImplementation();
@@ -63,42 +64,21 @@ public class BaseSpXML {
 			objElement.setTextContent(item.Valor);
 			
 			objXml.getDocumentElement().appendChild(objElement);
-			
-			
-			
 		}
-		
-		String returnValue = "";//"<?xml version=" + '\u0022' + "1.0" + '\u0022' + " encoding=" + '\u0022' + "iso-8859-1" + '\u0022' + "?>";
-
-		
-		
-		TransformerFactory tFact = TransformerFactory.newInstance();
-        Transformer trans = tFact.newTransformer();
         
 	    StringWriter writer = new StringWriter();
-        StreamResult result = new StreamResult(writer);
         
         OutputFormat format = new OutputFormat(objXml);
-        //format.setIndenting(true);
         format.setOmitXMLDeclaration(true);
         
-        
-        //XMLSerializer serializer = new XMLSerializer(System.out, format);
         XMLSerializer serializer = new XMLSerializer(System.out, format);
         
         serializer.setOutputCharStream(writer);
-        
         serializer.serialize( objXml);
         
-        
-       
-//        DOMSource source = new DOMSource(objXml);
-//        trans.transform(source, result);
-        System.out.println(writer.toString());
+        //System.out.println(writer.toString());
         returnValue = writer.toString();
-//		objXml = null;
-//		
-//		
+	
 		return returnValue;
 	}
 	

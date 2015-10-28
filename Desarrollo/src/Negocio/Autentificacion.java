@@ -8,24 +8,23 @@ import modelo.entidad.Cliente;
 
 public class Autentificacion {
 	
-	static LogEvent _log = new LogEvent();
-	static String _modulo = "Autentificacion";
+	LogEvent _log = new LogEvent();
+	String _modulo = "Autentificacion";
+	ClienteDAO client = new ClienteDAO();
 	
-	public static int CrearCliente(Cliente cliente){
+	public int CrearCliente(Cliente cliente){
+		int ret = 0;
+		
 		try{
 			cliente.setRol(2);
 			
-			System.out.println("Dentro del metodo CrearCliente");
-			
-			
-			ClienteDAO client = new ClienteDAO();		
-			client.accion(cliente);
+			ret = client.accion(cliente);
 			
 		}catch(Exception ex){
 			_log.Registrar(_modulo, ex.getMessage());
 		}
 		
-		return 0;
+		return ret;
 	}
 	
 	public ArrayList<Cliente> Listar(){

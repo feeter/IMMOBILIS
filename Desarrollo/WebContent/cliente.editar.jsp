@@ -23,23 +23,23 @@
 			<table>
 				<tr>
 					<td>Codigo</td>
-					<td><input type="text" name="tbCodigo" class="form-control" /></td>
+					<td><input type="text" name="tbCodigo" class="form-control" required /></td>
 				</tr>
 				<tr>
 					<td>Nombre</td>
 					<td><input type="text" name="tbNombre" class="form-control" /></td>
 				</tr>
 				<tr>
-					<td>Apellido Materno</td>
-					<td><input type="text" name="tbAppMater" class="form-control" /></td>
-				</tr>
-				<tr>
 					<td>Apellido Paterno</td>
 					<td><input type="text" name="tbAppPater" class="form-control" /></td>
 				</tr>
 				<tr>
+					<td>Apellido Materno</td>
+					<td><input type="text" name="tbAppMater" class="form-control" /></td>
+				</tr>
+				<tr>
 					<td>Rut</td>
-					<td><input type="text" name="tbRut" class="form-control" /></td>
+					<td><input type="text" name="tbRut" class="form-control" required/></td>
 				</tr>
 				<tr>
 					<td>Correo</td>
@@ -51,11 +51,15 @@
 				</tr>
 				<tr>
 					<td>Telefono Celular</td>
-					<td><input type="text" name="tbTelCel" class="form-control" /></td>
+					<td><input type="tel" name="tbTelCel" class="form-control" /></td>
 				</tr>
 				<tr>
 					<td>Calle</td>
 					<td><input type="text" name="tbCalle" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Vigente</td>
+					<td><input type="checkbox" name="tbVigente" /></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -72,10 +76,29 @@
 		if (request.getParameter("btnGuardar") != null) {
 			Cliente cte = new Cliente();
 			
-			cte.setCodigo(5);
-			cte.setNombre(request.getParameter("tbNombre"));
+			int cod = Integer.parseInt(request.getParameter("tbCodigo"));
 			
-			Autentificacion.CrearCliente(cte); 
+			String rut = request.getParameter("tbRut").replace("-", "").replace(".", "");
+			int cuerpoRut = Integer.parseInt(rut.substring(0, 8));
+			String dv = rut.substring(8, 9);
+			
+			int telCel = Integer.parseInt(request.getParameter("tbTelCel"));
+			
+			cte.setCodigo(cod);
+			cte.setNombre(request.getParameter("tbNombre"));
+			cte.setAppPater(request.getParameter("tbAppPater"));
+			cte.setAppMater(request.getParameter("tbAppMater"));
+			cte.setRut(cuerpoRut);
+			cte.setDv(dv);
+			cte.setCorreo(request.getParameter("tbCorreo"));
+			cte.setPassword(request.getParameter("tbPassword"));
+			cte.setTelCel(telCel);
+			cte.setCalle(request.getParameter("tbCalle"));
+			cte.setVigente(request.getParameter("tbVigente") != null);
+			
+			
+			Autentificacion aut = new Autentificacion();
+			aut.CrearCliente(cte); 
 			
 			
 			session.setAttribute("UserName", request.getParameter("tbNombre"));

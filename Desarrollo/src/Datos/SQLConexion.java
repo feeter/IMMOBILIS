@@ -15,13 +15,12 @@ public class SQLConexion {
 			+ "hostNameInCertificate=*.database.windows.net;" 
 			+ "loginTimeout=30;";
 	
-	//Provar con esta conexion
 	private static String connectionUrl = "jdbc:sqlserver://immobilis.database.windows.net;" 
-			 +      "databaseName=IMMOBILIS_25102015;" //¿databaseName or only database?
+			 +      "databaseName=IMMOBILIS_25102015;" 
 			 + 		"user=usuario@immobilis;password=Password00";
 	
 	private static String connectionLocal = "jdbc:sqlserver://192.168.10.103;" 
-			 +      "databaseName=PSB_PMASI_COST_JUDI;" //¿databaseName or only database?
+			 +      "databaseName=PSB_PMASI_COST_JUDI;"
 			 + 		"user=Contingencia;password=Contingencia";
 	
 	public ResultSet EjecutarSP(String spName, String parametroSP) {
@@ -30,31 +29,13 @@ public class SQLConexion {
 		try {
 			
 			Connection con = GetConexion();
-			
-			System.out.println("se referencio a la conexion de la base de datos");
-			
-			
 			CallableStatement cstmt = con.prepareCall("{call " + spName + "(?)}");
-			
-			System.out.println("se referencio al spName");
-			
-			
 			cstmt.setString("StrXMLDatos", parametroSP);
+			rs = cstmt.executeQuery();
 			
-
-			//cstmt.execute();
-			System.out.println("Cliente actualizado");
-			 rs = cstmt.executeQuery();
-			
-			
-//			while (rs.next()) {
-//	               System.out.println(rs.getString("ID_ROL") + " "
-//	                         + rs.getString("NOMBRE_ROL"));
-//	          }
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-
 		}
 		
 		return rs;
@@ -72,9 +53,8 @@ public class SQLConexion {
 		try {
 			connection = DriverManager.getConnection(connectionLocal);
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("NO Conectado");
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
 		}
 		
 		 if(connection != null)
