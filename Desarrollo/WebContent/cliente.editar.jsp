@@ -98,13 +98,20 @@
 			
 			
 			Autentificacion aut = new Autentificacion();
-			aut.CrearCliente(cte); 
+			if (aut.CrearCliente(cte) > 0)
+			{
+				%>
+				<div class="alert alert-success" role="alert"><%="Cliente creado satisfactoriamente: " + request.getParameter("tbNombre")%></div>
+				<%
+			}else{
+				%>
+				<div class="alert alert-danger" role="alert"><%="Error al crear cliente: " + request.getParameter("tbNombre")%></div>
+				<%
+			}
 			
 			
-			session.setAttribute("UserName", request.getParameter("tbNombre"));
-	%>
-	<div class="alert alert-success" role="alert"><%="Cliente creado: " + session.getAttribute("UserName")%></div>
-	<%
+			//session.setAttribute("UserName", request.getParameter("tbNombre"));
+
 		}
 	%>
 
