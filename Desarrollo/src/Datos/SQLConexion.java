@@ -2,6 +2,7 @@ package Datos;
 
 import java.sql.*;
 //import com.microsoft.sqlserver.jdbc.*;
+//import com.microsoft.sqlserver.jdbc.*;  
 
 public class SQLConexion {
 
@@ -14,32 +15,49 @@ public class SQLConexion {
 			+ "hostNameInCertificate=*.database.windows.net;" 
 			+ "loginTimeout=30;";
 	
-	public void EjecutarSP(String spName, String parametroSP) {
+	//Provar con esta conexion
+	private static String connectionUrl = "jdbc:sqlserver://immobilis.database.windows.net;" 
+			 +      "databaseName=IMMOBILIS_25102015;" //¿databaseName or only database?
+			 + 		"user=usuario@immobilis;password=Password00";
+	
+	private static String connectionLocal = "jdbc:sqlserver://192.168.10.103;" 
+			 +      "databaseName=PSB_PMASI_COST_JUDI;" //¿databaseName or only database?
+			 + 		"user=Contingencia;password=Contingencia";
+	
+	public ResultSet EjecutarSP(String spName, String parametroSP) {
+		ResultSet rs = null;
+		
 		try {
-			System.out.println("entre al metodo EjecutarSP");
 			
-			/*Connection con = DriverManager.getConnection(connectionString);*/
 			Connection con = GetConexion();
 			
 			System.out.println("se referencio a la conexion de la base de datos");
 			
 			
-			/*CallableStatement cstmt = con.prepareCall("{ call " + spName + "(?) }");*/
-			CallableStatement cstmt = con.prepareCall(spName);
+			CallableStatement cstmt = con.prepareCall("{call " + spName + "(?)}");
 			
 			System.out.println("se referencio al spName");
 			
 			
-			cstmt.setString("@StrXMLDatos", parametroSP);
-			/*cstmt.registerOutParameter(1, String);*/
-			cstmt.execute();
-			System.out.println("Cliente actualizado");
-			//ResultSet rs = cstmt.executeQuery();
+			cstmt.setString("StrXMLDatos", parametroSP);
 			
-			/*System.out.println("MANAGER ID: " + cstmt.getInt(2));*/
+
+			//cstmt.execute();
+			System.out.println("Cliente actualizado");
+			 rs = cstmt.executeQuery();
+			
+			
+//			while (rs.next()) {
+//	               System.out.println(rs.getString("ID_ROL") + " "
+//	                         + rs.getString("NOMBRE_ROL"));
+//	          }
+
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+
 		}
+		
+		return rs;
 	}
 	
 	public static Connection GetConexion() {
@@ -52,44 +70,60 @@ public class SQLConexion {
 		PreparedStatement prepsUpdateAge = null;
 
 		try {
-			connection = DriverManager.getConnection(connectionString);
-			
-			
-			System.out.println("Conectado :" + String.valueOf( connection.isClosed()));
-			
+			connection = DriverManager.getConnection(connectionLocal);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("NO Conectado");
-		} finally {
-			// Close the connections after the data has been handled.
-			if (prepsInsertPerson != null)
-				try {
-					prepsInsertPerson.close();
-				} catch (Exception e) {
-				}
-			if (prepsUpdateAge != null)
-				try {
-					prepsUpdateAge.close();
-				} catch (Exception e) {
-				}
-			if (resultSet != null)
-				try {
-					resultSet.close();
-				} catch (Exception e) {
-				}
-			if (statement != null)
-				try {
-					statement.close();
-				} catch (Exception e) {
-				}
-			if (connection != null)
-				try {
-					connection.close();
-				} catch (Exception e) {
-				}
 		}
+		
+		 if(connection != null)
+         {
+			 System.out.println("Conexion establecida correctamente");
+	     }
 		
 		return connection;
 	}
+	
+	 public static void main(String[] args) {  
+		 Connection conn = null;
+		 try{
+			 conn = DriverManager.getConnection(connectionLocal);
+		 } catch(SQLException ex) {
+			 System.out.println(ex.getMessage());
+     	 }
+		 catch(Exception ex){
+			 System.out.println(ex.getMessage());
+		 }
+		 
+		 if(conn != null)
+         {
+			 System.out.println("Conexion establecida correctamente");
+	     }
+
+		 
+		 ///ejecutar sp
+		 //SEL_PMA_COST_Consulta_ROL
+		 SQLConexion sqlcon = new SQLConexion();
+		 
+		 Business.Services.BaseSpXML xml = new Business.Services.BaseSpXML();
+		 xml.Clear();
+		 xml.Add("sesID", "00327DAD-126E-4B71-9717-764DCD347F84");
+		 
+		
+		 
+		 try{
+			 String strXMLDatos = xml.GenerarDocXML("parametros");
+			 sqlcon.EjecutarSP("SEL_PMA_COST_Consulta_ROL", strXMLDatos);
+			 
+			 System.out.println("SP ejecutado con exito");
+			 
+		 }catch(Exception ex){
+			 System.out.println(ex.getMessage());
+		 }
+	 	 
+		 
+		
+	 }
+	 
 }

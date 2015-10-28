@@ -14,54 +14,54 @@
 
 </head>
 <body>
-	<%@ include file="../../header.jsp"%>
+<jsp:include page="header.jsp" />
 
 <h1>Ingresar nuevo cliente</h1>
 
 	<form name="frmCliente" action="cliente.editar.jsp" method="post">
 		<center>
-		<table>
-		<tr>
-		<td>Codigo</td>
-		<td><input type="text" name="tbCodigo" class="form-control" /></td>
-		</tr>
-		<tr>
-		<td>Nombre</td>
-		<td><input type="text" name="tbNombre" class="form-control" /></td>
-		</tr>
-		<tr>
-		<td>Apellido Materno</td>
-		<td><input type="text" name="tbAppMater" class="form-control" /></td>
-		</tr>
-		<tr>
-		<td>Apellido Paterno</td>
-		<td><input type="text" name="tbAppPater" class="form-control" /></td>
-		</tr>
-		<tr>
-		<td>Rut</td>
-		<td><input type="text" name="tbRut" class="form-control" /></td>
-		</tr>
-		<tr>
-		<td>Correo</td>
-		<td><input type="text" name="tbCorreo" class="form-control" /></td>
-		</tr>
-		<tr>
-		<td>Password</td>
-		<td><input type="text" name="tbPassword" class="form-control" /></td>
-		</tr>
-		<tr>
-		<td>Telefono Celular</td>
-		<td><input type="text" name="tbTelCel" class="form-control" /></td>
-		</tr>
-		<tr>
-		<td>Calle</td>
-		<td><input type="text" name="tbCalle" class="form-control" /></td>
-		</tr>
-		<tr>
-		<td></td>
-		<td><input type="submit" class="btn btn-default" value="Guardar" name="btnGuardar" /></td>
-		</tr>
-		</table>
+			<table>
+				<tr>
+					<td>Codigo</td>
+					<td><input type="text" name="tbCodigo" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Nombre</td>
+					<td><input type="text" name="tbNombre" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Apellido Materno</td>
+					<td><input type="text" name="tbAppMater" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Apellido Paterno</td>
+					<td><input type="text" name="tbAppPater" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Rut</td>
+					<td><input type="text" name="tbRut" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Correo</td>
+					<td><input type="text" name="tbCorreo" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="text" name="tbPassword" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Telefono Celular</td>
+					<td><input type="text" name="tbTelCel" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Calle</td>
+					<td><input type="text" name="tbCalle" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" class="btn btn-default" value="Guardar" name="btnGuardar" /></td>
+				</tr>
+			</table>
 		</center>
 	</form>
 
@@ -75,7 +75,7 @@
 			cte.setCodigo(5);
 			cte.setNombre(request.getParameter("tbNombre"));
 			
-			Autentificacion.CrearCliente(cte);
+			Autentificacion.CrearCliente(cte); 
 			
 			
 			session.setAttribute("UserName", request.getParameter("tbNombre"));

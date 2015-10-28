@@ -20,6 +20,7 @@
   <li role="presentation"><a href="cliente.jsp">Clientes</a></li>
   <li role="presentation"><a href="#">Corretaje</a></li>
   <li role="presentation"><a href="login.jsp">Ingresar</a></li>
+  <li role="presentation"><a href="#">Publica tu propiedad</a></li>
 </ul>
 
 </body>

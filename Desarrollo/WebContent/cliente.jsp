@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<%@ include file="../../header.jsp" %>
+<jsp:include page="header.jsp" />
 
  <h1>Listar - Clientes</h1><br>
  
@@ -38,7 +38,7 @@
 
 
 <br> 
-<table class="table">
+<table class="table table-striped">
 	<tr>
 		<th>Nombre</th>
 		<th>Apellido Paterno</th>

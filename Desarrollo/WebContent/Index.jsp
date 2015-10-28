@@ -20,14 +20,49 @@
 
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<jsp:include page="header.jsp" />
 
-<h1>IMMOBILIS</h1>
+<h1>Tu hogar está aquí</h1>
+<h2>Casas, departamentos en arriendo y venta</h2>
 
-<form method="post">
-<!-- 	<input type="submit" name="btnEnviar"> -->
+
+<form class="form-inline">
+
+ <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Comprar
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Arrendar</a></li>
+      
+    </ul>
+  </div>
+  
+   <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Casa
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Departamento</a></li>
+      <li><a href="#">Estacionamieno</a></li>
+      <li><a href="#">Bodega</a></li>
+      <li><a href="#">Oficinas</a></li>      
+    </ul>
+  </div>
+
+
+
+  <div class="form-group">
+    <!-- <label class="sr-only" for="lblBusqueda"></label> -->
+    <input type="text" class="form-control" id="tbNombre" placeholder="Ingresa una comuna o region">
+  </div>
+
+<div class="btn-group" role="group" aria-label="...">
+ <button type="button" class="btn btn-default" onclick="#">Buscar</button>
+</div>
 </form>
-
 
 <%@ include file="footer.jsp" %>
 

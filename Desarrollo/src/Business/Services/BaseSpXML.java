@@ -11,6 +11,12 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Element;
+
+import com.sun.org.apache.xml.internal.serialize.OutputFormat;
+import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
+import com.sun.xml.internal.bind.v2.runtime.output.XmlOutput;
+
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
@@ -57,7 +63,7 @@ public class BaseSpXML {
 			objElement.setTextContent(item.Valor);
 			
 			objXml.getDocumentElement().appendChild(objElement);
-			//document.appendChild(node);//se caeeee y no se por que xd
+			
 			
 			
 		}
@@ -71,13 +77,28 @@ public class BaseSpXML {
         
 	    StringWriter writer = new StringWriter();
         StreamResult result = new StreamResult(writer);
-        DOMSource source = new DOMSource(objXml);
-        trans.transform(source, result);
-        //System.out.println(writer.toString());
+        
+        OutputFormat format = new OutputFormat(objXml);
+        //format.setIndenting(true);
+        format.setOmitXMLDeclaration(true);
+        
+        
+        //XMLSerializer serializer = new XMLSerializer(System.out, format);
+        XMLSerializer serializer = new XMLSerializer(System.out, format);
+        
+        serializer.setOutputCharStream(writer);
+        
+        serializer.serialize( objXml);
+        
+        
+       
+//        DOMSource source = new DOMSource(objXml);
+//        trans.transform(source, result);
+        System.out.println(writer.toString());
         returnValue = writer.toString();
-		objXml = null;
-		
-		
+//		objXml = null;
+//		
+//		
 		return returnValue;
 	}
 	
