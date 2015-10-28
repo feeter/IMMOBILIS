@@ -70,6 +70,13 @@
 
 	<%
 		if (request.getParameter("btnGuardar") != null) {
+			Cliente cte = new Cliente();
+			
+			cte.setCodigo(5);
+			cte.setNombre(request.getParameter("tbNombre"));
+			
+			Autentificacion.CrearCliente(cte);
+			
 			
 			session.setAttribute("UserName", request.getParameter("tbNombre"));
 	%>

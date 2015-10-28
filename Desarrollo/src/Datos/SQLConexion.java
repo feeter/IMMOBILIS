@@ -7,10 +7,10 @@ public class SQLConexion {
 
 	private static String connectionString = "jdbc:sqlserver://immobilis.database.windows.net;" 
 			+ "database=IMMOBILIS_25102015;"
-			+ "user=usuario;" 
+			+ "user=usuario@immobilis;" 
 			+ "password=Password00;" 
 			+ "encrypt=true;" 
-			+ "trustServerCertificate=false;"
+			+ "trustServerCertifica3te=false;"
 			+ "hostNameInCertificate=*.database.windows.net;" 
 			+ "loginTimeout=30;";
 	
@@ -92,9 +92,4 @@ public class SQLConexion {
 		
 		return connection;
 	}
-
-	public static void main(String[] args) {
-		GetConexion();
-	}
-
 }
