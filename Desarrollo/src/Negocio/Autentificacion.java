@@ -28,12 +28,12 @@ public class Autentificacion {
 		return ret;
 	}
 	
-	public List<Cliente> Listar(int rut, String nombre){
+	public List<Cliente> Listar(String rut, String nombre){
 		
 		List<Cliente> list = null;
 		try{
 			
-			list = clientDAO.Listar(String.valueOf(rut), nombre);
+			list = clientDAO.Listar(rut, nombre);
 			
 		}catch(Exception ex){
 			this._log.Registrar(this._modulo, ex.getMessage());

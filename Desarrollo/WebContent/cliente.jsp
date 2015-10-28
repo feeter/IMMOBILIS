@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="Negocio.*"%>
+<%@ page import="modelo.entidad.*" %>
+<%@ page import="import java.util.List" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,8 +50,24 @@
 	<%
 	
 		if (request.getParameter("btnBuscar") != null){
+			String rut = request.getParameter("tbRut");
+			String nombre = request.getParameter("tbNombre");
 			
+			Autentificacion aut = new Autentificacion();
 			
+			List<Cliente> list = aut.Listar(rut, nombre);
+			
+			for (Cliente cte: list){
+				%>
+				
+				<td><%=cte.getNombre() %></td>
+				<td><%=cte.getAppPater() %></td>
+				<td><%=cte.getRut() + "-" + cte.getDv() %></td>
+				<td><%=cte.getTelCel() %></td>
+				<td><input type="checkbox" name="tbVigente" checked="<%=cte.getVigente() %>" disabled/></td>
+				
+				<%
+			}
 			
 		}else if(request.getParameter("btnNuevo") != null){
 			
@@ -62,11 +81,7 @@
 		}
 
 	%>
-		<td>Super</td>
-		<td>Administrador</td>
-		<td>11.111.111-1</td>
-		<td>62823331</td>
-		<td><input type="checkbox" name="tbVigente" checked disabled/></td>
+
 	</tr>
 </table>
  
