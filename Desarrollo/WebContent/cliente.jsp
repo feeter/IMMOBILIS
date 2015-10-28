@@ -17,25 +17,22 @@
 
  <h1>Listar - Clientes</h1><br>
  
-<form class="form-inline">
+<form class="form-inline" method="post" action="cliente.jsp" name="frmListar">
   <div class="form-group">
-    <label class="sr-only" for="exampleInputEmail3">Rut</label>
     <input type="text" class="form-control" id="tbRut" placeholder="11.111.111-1">
   </div>
   <div class="form-group">
-    <label class="sr-only" for="exampleInputPassword3">Nombre</label>
     <input type="text" class="form-control" id="tbNombre" placeholder="Nombre">
   </div>
 
+
 <div class="btn-group" role="group" aria-label="...">
- <button type="button" class="btn btn-default" onclick="#">Buscar</button>
- <button type="button" class="btn btn-default" onclick="window.location.href='cliente.editar.jsp'">Nuevo</button> 
- <button type="button" class="btn btn-default" onclick="#">Editar</button>
- <button type="button" class="btn btn-default" onclick="#">Limpiar</button>
+ <button type="submit" class="btn btn-default" name="btnBuscar" >Buscar</button>
+ <button type="submit" class="btn btn-default" name="btnNuevo" >Nuevo</button> 
+ <button type="submit" class="btn btn-default" name="btnEditar" >Editar</button>
+ <button type="submit" class="btn btn-default" name="btnLimpiar" onclick="this.frmListar.reset();">Limpiar</button>
 </div>
 </form>
- 
-
 
 <br> 
 <table class="table table-striped">
@@ -43,11 +40,33 @@
 		<th>Nombre</th>
 		<th>Apellido Paterno</th>
 		<th>Rut</th>
+		<th>Telefono Celular</th>
+		<th>Vigencia</th>
 	</tr>
 	<tr>
+	<%
+	
+		if (request.getParameter("btnBuscar") != null){
+			
+			
+			
+		}else if(request.getParameter("btnNuevo") != null){
+			
+			session.setAttribute("ClientEdit", 0);
+			response.sendRedirect("cliente.editar.jsp");
+			
+		}else if(request.getParameter("btnEditar") != null){
+			
+			session.setAttribute("ClientEdit", 5);
+			response.sendRedirect("cliente.editar.jsp");
+		}
+
+	%>
 		<td>Super</td>
 		<td>Administrador</td>
 		<td>11.111.111-1</td>
+		<td>62823331</td>
+		<td><input type="checkbox" name="tbVigente" checked disabled/></td>
 	</tr>
 </table>
  

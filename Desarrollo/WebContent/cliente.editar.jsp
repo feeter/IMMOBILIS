@@ -23,7 +23,7 @@
 			<table>
 				<tr>
 					<td>Codigo</td>
-					<td><input type="text" name="tbCodigo" class="form-control" required /></td>
+					<td><input type="text" name="tbCodigo" class="form-control" value="<%=session.getAttribute("ClientEdit")%>"  /></td>
 				</tr>
 				<tr>
 					<td>Nombre</td>

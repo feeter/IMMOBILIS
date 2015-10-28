@@ -1,6 +1,7 @@
 package Negocio;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 import Business.Services.LogEvent;
 import Datos.ClienteDAO;
@@ -9,8 +10,8 @@ import modelo.entidad.Cliente;
 public class Autentificacion {
 	
 	LogEvent _log = new LogEvent();
-	String _modulo = "Autentificacion";
-	ClienteDAO client = new ClienteDAO();
+	String _modulo = "Negocio.Autentificacion";
+	ClienteDAO clientDAO = new ClienteDAO();
 	
 	public int CrearCliente(Cliente cliente){
 		int ret = 0;
@@ -18,7 +19,7 @@ public class Autentificacion {
 		try{
 			cliente.setRol(2);
 			
-			ret = client.accion(cliente);
+			ret = clientDAO.accion(cliente);
 			
 		}catch(Exception ex){
 			_log.Registrar(_modulo, ex.getMessage());
@@ -27,15 +28,18 @@ public class Autentificacion {
 		return ret;
 	}
 	
-	public ArrayList<Cliente> Listar(){
-		try{
+	public List<Cliente> Listar(int rut, String nombre){
 		
+		List<Cliente> list = null;
+		try{
+			
+			list = clientDAO.Listar(String.valueOf(rut), nombre);
 			
 		}catch(Exception ex){
 			this._log.Registrar(this._modulo, ex.getMessage());
 		}
 		
-		return new ArrayList<Cliente>();
+		return list;
 	}
 	
 	public Cliente LoginUser(String rut, String passwd){

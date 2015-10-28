@@ -1,6 +1,7 @@
 package Datos;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 import Business.Services.BaseSpXML;
 import modelo.entidad.*;
@@ -8,13 +9,46 @@ import modelo.entidad.*;
 public class ClienteDAO extends SQLConexion {
 	
 	BaseSpXML xml = new BaseSpXML();
+
 	
-	public ClienteDAO(){
+	public List<Cliente> Listar(String rut, String nombre){
+	List<Cliente> list = null;
 		
-	}
-	
-	public void ListarAll(){
+		xml.Clear();
+		xml.Add("Nombre", nombre);
+		xml.Add("Rut", rut);
+
+		try{
+			String strXMLDatos = xml.GenerarDocXML("parametros");
+			
+			ResultSet rs = EjecutarSP("SEL_WEB_Cliente", strXMLDatos);
+			
+			while (rs.next()) {
+				
+				Cliente client = new Cliente();
+				
+				client.setNombre(rs.getString("USUA_Nombre"));
+				client.setAppPater(rs.getString("USUA_AppPater"));
+				//client.setAppMater(rs.getString("tbAppMater"));
+				client.setRut(rs.getInt("USUA_Rut"));
+				client.setDv(rs.getString("USUA_Dv"));
+				//client.setCorreo(rs.getString("tbCorreo"));
+				//client.setPassword(rs.getString("tbPassword"));
+				client.setTelCel(rs.getInt("USUA_TelCel"));
+				//client.setCalle(rs.getString("tbCalle"));
+				client.setVigente(rs.getBoolean("USUA_Vigente"));
+				
+				
+				list.add(client);
+			
+			}
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
 		
+		
+		
+		return list;
 	}
 
 	public int accion(Cliente cliente) throws Exception{
