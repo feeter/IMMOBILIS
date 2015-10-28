@@ -46,7 +46,7 @@
 		<th>Telefono Celular</th>
 		<th>Vigencia</th>
 	</tr>
-	<tr>
+	
 	<%
 	
 		if (request.getParameter("btnBuscar") != null){
@@ -59,13 +59,13 @@
 			
 			for (Cliente cte: list){
 				%>
-				
-				<td><%=cte.getNombre() %></td>
-				<td><%=cte.getAppPater() %></td>
-				<td><%=cte.getRut() + "-" + cte.getDv() %></td>
-				<td><%=cte.getTelCel() %></td>
-				<td><input type="checkbox" name="tbVigente" checked="<%=cte.getVigente() %>" disabled/></td>
-				
+				<tr>
+					<td><%=cte.getNombre() %></td>
+					<td><%=cte.getAppPater() %></td>
+					<td><%=cte.getRut() + "-" + cte.getDv() %></td>
+					<td><%=cte.getTelCel() %></td>
+					<td><input type="checkbox" name="tbVigente" checked="<%=cte.getVigente() %>" disabled/></td>
+				</tr>
 				<%
 			}
 			
@@ -82,7 +82,7 @@
 
 	%>
 
-	</tr>
+	
 </table>
  
  <%@ include file="../../footer.jsp" %>
