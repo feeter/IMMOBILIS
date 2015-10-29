@@ -6,16 +6,9 @@ import com.microsoft.sqlserver.jdbc.*;
 
 public class SQLConexion {
 
-    private static Connection conn = null;
-    private static Statement stm = null;
-    private static String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc";
-    private static String username = "";
-    private static String password = "";
-    private static String DBName = "jdbc:sqlserver://127.0.0.1:1433/IMMOBILIS_25102015";
-    private static PreparedStatement ps = null;
 		     
     private static String cadena = "jdbc:sqlserver://immobilis.database.windows.net:1433;database=IMMOBILIS_25102015;user=usuario@immobilis;password=Password00;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-    private static String connectionUrl = "jdbc:sqlserver://localhost;database=IMMOBILIS_25102015;integratedSecurity=false;";
+    private static String connectionUrl = "jdbc:sqlserver://localhost;database=IMMOBILIS_25102015;user=prueba;password=prueba;";
     private static String virtual = "jdbc:sqlserver://192.168.106.131;database=IMMOBILIS_25102015;integratedSecurity=false;";
 	 		
 	public ResultSet EjecutarSP(String spName, String parametroSP) {
