@@ -5,18 +5,12 @@ import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Element;
-
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
-import com.sun.xml.internal.bind.v2.runtime.output.XmlOutput;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
+
+
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
