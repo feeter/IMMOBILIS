@@ -42,6 +42,7 @@ public class ClienteDAO extends SQLConexion {
 				list.add(client);
 			
 			}
+			
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}

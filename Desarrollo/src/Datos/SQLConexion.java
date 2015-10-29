@@ -2,7 +2,7 @@ package Datos;
 
 import java.sql.*;
 import com.microsoft.sqlserver.jdbc.*;
-//import com.microsoft.sqlserver.jdbc.*; 
+ 
 
 public class SQLConexion {
 
@@ -33,17 +33,13 @@ public class SQLConexion {
 
 		// Declare the JDBC objects.
 		Connection connection = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		PreparedStatement prepsInsertPerson = null;
-		PreparedStatement prepsUpdateAge = null;
 
 		try {
-			//Class.forName(JDBC_DRIVER);
+			
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            //conn = DriverManager.getConnection(DBName, username, password);
+            
 			connection = DriverManager.getConnection(connectionUrl);
-			//connectionUrl cadena virtual
+			
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
