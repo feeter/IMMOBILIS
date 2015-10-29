@@ -98,14 +98,14 @@
 			
 			
 			Autentificacion aut = new Autentificacion();
-			if (aut.CrearCliente(cte) > 0)
+			if (aut.CrearCliente(cte) > -1)
 			{
 				%>
 				<div class="alert alert-success" role="alert"><%="Cliente creado satisfactoriamente: " + request.getParameter("tbNombre")%></div>
 				<%
 			}else{
 				%>
-				<div class="alert alert-danger" role="alert"><%="Error al crear cliente: " + request.getParameter("tbNombre")%></div>
+				<%-- <div class="alert alert-danger" role="alert"><%="Error al crear cliente: " + request.getParameter("tbNombre")%></div> --%>
 				<%
 			}
 			
