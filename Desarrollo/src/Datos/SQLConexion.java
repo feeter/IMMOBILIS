@@ -1,28 +1,23 @@
 package Datos;
 
 import java.sql.*;
-//import com.microsoft.sqlserver.jdbc.*;
-//import com.microsoft.sqlserver.jdbc.*;  
+import com.microsoft.sqlserver.jdbc.*;
+//import com.microsoft.sqlserver.jdbc.*; 
 
 public class SQLConexion {
 
-	private static String connectionString = "jdbc:sqlserver://immobilis.database.windows.net;" 
-			+ "database=IMMOBILIS_25102015;"
-			+ "user=usuario@immobilis;" 
-			+ "password=Password00;" 
-			+ "encrypt=true;" 
-			+ "trustServerCertifica3te=false;"
-			+ "hostNameInCertificate=*.database.windows.net;" 
-			+ "loginTimeout=30;";
-	
-	private static String connectionUrl = "jdbc:sqlserver://immobilis.database.windows.net;" 
-			 +      "databaseName=IMMOBILIS_25102015;" 
-			 + 		"user=usuario@immobilis;password=Password00";
-	
-	private static String connectionLocal = "jdbc:sqlserver://192.168.10.103;" 
-			 +      "databaseName=PSB_PMASI_COST_JUDI;"
-			 + 		"user=Contingencia;password=Contingencia";
-	
+    private static Connection conn = null;
+    private static Statement stm = null;
+    private static String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc";
+    private static String username = "";
+    private static String password = "";
+    private static String DBName = "jdbc:sqlserver://127.0.0.1:1433/IMMOBILIS_25102015";
+    private static PreparedStatement ps = null;
+		     
+    private static String cadena = "jdbc:sqlserver://immobilis.database.windows.net:1433;database=IMMOBILIS_25102015;user=usuario@immobilis;password=Password00;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+    private static String connectionUrl = "jdbc:sqlserver://localhost;database=IMMOBILIS_25102015;integratedSecurity=false;";
+    private static String virtual = "jdbc:sqlserver://192.168.106.131;database=IMMOBILIS_25102015;integratedSecurity=false;";
+	 		
 	public ResultSet EjecutarSP(String spName, String parametroSP) {
 		ResultSet rs = null;
 		
@@ -51,16 +46,14 @@ public class SQLConexion {
 		PreparedStatement prepsUpdateAge = null;
 
 		try {
-			connection = DriverManager.getConnection(connectionLocal);
-			
+			//Class.forName(JDBC_DRIVER);
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            //conn = DriverManager.getConnection(DBName, username, password);
+			connection = DriverManager.getConnection(connectionUrl);
+			//connectionUrl cadena virtual
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
-		
-		 if(connection != null)
-         {
-			 System.out.println("Conexion establecida correctamente");
-	     }
 		
 		return connection;
 	}
@@ -68,17 +61,17 @@ public class SQLConexion {
 	 public static void main(String[] args) {  
 		 Connection conn = null;
 		 try{
-			 conn = DriverManager.getConnection(connectionLocal);
-		 } catch(SQLException ex) {
-			 System.out.println(ex.getMessage());
-     	 }
-		 catch(Exception ex){
+			conn = GetConexion();
+			 
+			
+		 } catch(Exception ex){
 			 System.out.println(ex.getMessage());
 		 }
 		 
-		 if(conn != null)
-         {
+		 if(conn != null){
 			 System.out.println("Conexion establecida correctamente");
+	     } else {
+	    	 System.out.println("Imposible conectarce a la base de datos.");
 	     }
 
 		 

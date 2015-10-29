@@ -21,7 +21,7 @@ public class ClienteDAO extends SQLConexion {
 		try{
 			String strXMLDatos = xml.GenerarDocXML("parametros");
 			
-			ResultSet rs = EjecutarSP("SEL_WEB_Cliente", strXMLDatos);
+			ResultSet rs = EjecutarSP("WEB_SEL_ListarClientes", strXMLDatos);
 			
 			while (rs.next()) {
 				
