@@ -1,6 +1,7 @@
 package Datos;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import Business.Services.BaseSpXML;
@@ -12,7 +13,7 @@ public class ClienteDAO extends SQLConexion {
 
 	
 	public List<Cliente> Listar(String rut, String nombre){
-	List<Cliente> list = null;
+	List<Cliente> list = new ArrayList<Cliente>();
 		
 		xml.Clear();
 		xml.Add("Nombre", nombre);
@@ -82,8 +83,8 @@ public class ClienteDAO extends SQLConexion {
 		
 		String strXMLDatos = xml.GenerarDocXML("parametros");
 		
-		ResultSet rs = EjecutarSP("INS_WEB_Cliente", strXMLDatos);
-		
+		ResultSet rs = EjecutarSP("WEB_INS_InsertarCliente", strXMLDatos);
+		ret ++;
 		while (rs.next()) {
 			if (rs.getString("Reultado") == "OK"){
 				ret ++;
