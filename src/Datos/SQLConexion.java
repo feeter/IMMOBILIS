@@ -10,7 +10,7 @@ public class SQLConexion {
 
 		     
     
-    private static String connectionUrl = "jdbc:sqlserver://immobilis.database.windows.net:1433;database=IMMOBILIS_25102015;user=usuario;password=Password00;";
+    private static String connectionUrl = "jdbc:sqlserver://immobilis.database.windows.net:1433;database=IMMOBILIS_25102015;user=usuario;password=Password00;trustServerCertificate=true;";
 	//private static String connectionUrl = "jdbc:sqlserver://immobilis.database.windows.net:1433;database=IMMOBILIS_25102015;user=usuario@immobilis;password=Password00;";
     
 	public ResultSet EjecutarSP(String spName, String parametroSP) {
@@ -84,7 +84,7 @@ public class SQLConexion {
 			 String strXMLDatos = xml.GenerarDocXML("parametros");
 			 sqlcon.EjecutarSP("SEL_PMA_COST_Consulta_ROL", strXMLDatos);
 			 
-			 System.out.println("SP ejecutado con exito");
+			 
 			 
 		 }catch(Exception ex){
 			 System.out.println(ex.getMessage());

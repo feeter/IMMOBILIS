@@ -1,6 +1,7 @@
 package Negocio;
 
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.List;
 
 import Business.Services.LogEvent;
@@ -80,13 +81,14 @@ public class Autentificacion {
 	}
 	
 	public List<Cliente> Listar(String rut, String nombre){
-		
 		List<Cliente> list = null;
 		try{
 			
 			list = clientDAO.Listar(rut, nombre);
 			
 		}catch(Exception ex){
+	        Logger.getLogger(getClass().getName()).log(
+	                Level.SEVERE, "Mensaje crítico...", ex);
 			this._log.Registrar(this._modulo, ex.getMessage());
 		}
 		

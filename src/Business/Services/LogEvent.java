@@ -9,7 +9,7 @@ public class LogEvent {
 
 	public void Registrar(String modulo, String mensaje){
 		try{
-			String path = "C:/IMMOBILIS/Negocio";
+			String path = "/site/wwwroot/bin/apache-tomcat-8.0.28/webapps";
 			String fullPath;
 			
 			
