@@ -15,14 +15,13 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
-
-<h1>Ingresar nuevo cliente</h1>
+<% Boolean editClient = session.getAttribute("ClientEdit") == null; %>
+<h1><%=editClient ? "Ingresar nuevo" : "Editar"%> cliente</h1>
 
 <%
 	Autentificacion aut = new Autentificacion();
 
 	Cliente client = new Cliente();
-	//String valorSession = session.getAttribute("ClientEdit").toString();
 	
 	if (session.getAttribute("ClientEdit") != null){		
 		client = aut.FindCliente(session.getAttribute("ClientEdit").toString());
@@ -112,8 +111,10 @@
 			if (aut.CrearCliente(cte) > 0)
 			{
 				%>
-				<div class="alert alert-success" role="alert"><%="Cliente creado satisfactoriamente: " + request.getParameter("tbNombre")%></div>
+				<div class="alert alert-success" role="alert"><%="Cliente " + (editClient ? "creado" : "editado") + " satisfactoriamente: " + request.getParameter("tbNombre")%></div>
 				<%
+				
+				client = new Cliente();
 			}else{
 				%>
 				<div class="alert alert-danger" role="alert"><%="Error al crear cliente: " + request.getParameter("tbNombre")%></div>
