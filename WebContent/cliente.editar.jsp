@@ -23,7 +23,7 @@
 			<table>
 				<tr>
 					<td>Codigo</td>
-					<td><input type="text" name="tbCodigo" class="form-control" value="<%=session.getAttribute("ClientEdit")%>"  /></td>
+					<td><input type="text" name="tbCodigo" class="form-control" value="<%=session.getAttribute("ClientEdit") == null ? "0" : session.getAttribute("ClientEdit") %>"  /></td>
 				</tr>
 				<tr>
 					<td>Nombre</td>
@@ -98,14 +98,14 @@
 			
 			
 			Autentificacion aut = new Autentificacion();
-			if (aut.CrearCliente(cte) > -1)
+			if (aut.CrearCliente(cte) > 0)
 			{
 				%>
 				<div class="alert alert-success" role="alert"><%="Cliente creado satisfactoriamente: " + request.getParameter("tbNombre")%></div>
 				<%
 			}else{
 				%>
-				<%-- <div class="alert alert-danger" role="alert"><%="Error al crear cliente: " + request.getParameter("tbNombre")%></div> --%>
+				<div class="alert alert-danger" role="alert"><%="Error al crear cliente: " + request.getParameter("tbNombre")%></div>
 				<%
 			}
 			

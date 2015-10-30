@@ -22,6 +22,7 @@ public class Autentificacion {
 			ret = clientDAO.accion(cliente);
 			
 		}catch(Exception ex){
+			System.out.println(ex.getMessage());
 			_log.Registrar(_modulo, ex.getMessage());
 		}
 		

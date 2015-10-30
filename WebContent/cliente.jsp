@@ -40,6 +40,7 @@
 <br> 
 <table class="table table-striped">
 	<tr>
+		<th><th>
 		<th>Nombre</th>
 		<th>Apellido Paterno</th>
 		<th>Rut</th>
@@ -60,6 +61,7 @@
 			for (Cliente cte: list){
 				%>
 				<tr>
+					<td><%=cte.getCodigo() %><td>
 					<td><%=cte.getNombre() %></td>
 					<td><%=cte.getAppPater() %></td>
 					<td><%=cte.getRut() + "-" + cte.getDv() %></td>

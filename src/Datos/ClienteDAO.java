@@ -1,6 +1,7 @@
 package Datos;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class ClienteDAO extends SQLConexion {
 				
 				Cliente client = new Cliente();
 				
+				client.setCodigo(rs.getInt("USUA_Codigo"));
 				client.setNombre(rs.getString("USUA_Nombre"));
 				client.setAppPater(rs.getString("USUA_AppPater"));
 				//client.setAppMater(rs.getString("tbAppMater"));
@@ -84,9 +86,9 @@ public class ClienteDAO extends SQLConexion {
 		String strXMLDatos = xml.GenerarDocXML("parametros");
 		
 		ResultSet rs = EjecutarSP("WEB_INS_InsertarCliente", strXMLDatos);
-		ret ++;
+		
 		while (rs.next()) {
-			if (rs.getString("respuesta") == "OK"){
+			if (rs.getString(1).equals("OK")){
 				ret ++;
 			}
 		}
@@ -106,9 +108,10 @@ public class ClienteDAO extends SQLConexion {
 		String strXMLDatos = xml.GenerarDocXML("parametros");
 		
 		ResultSet rs = EjecutarSP("UPD_WEB_Cliente", strXMLDatos);
+			
 
 		while (rs.next()) {
-			if (rs.getString("respuesta") == "OK"){
+			if (rs.getString(1).equals("OK")){
 				ret ++;
 			}
 		}
