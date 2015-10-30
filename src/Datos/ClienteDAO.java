@@ -35,7 +35,7 @@ public class ClienteDAO extends SQLConexion {
 				//client.setAppMater(rs.getString("tbAppMater"));
 				client.setRut(rs.getInt("USUA_Rut"));
 				client.setDv(rs.getString("USUA_Dv"));
-				//client.setCorreo(rs.getString("tbCorreo"));
+				client.setCorreo(rs.getString("USUA_Correo"));
 				//client.setPassword(rs.getString("tbPassword"));
 				client.setTelCel(rs.getInt("USUA_TelCel"));
 				//client.setCalle(rs.getString("tbCalle"));

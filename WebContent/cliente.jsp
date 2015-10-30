@@ -45,7 +45,7 @@
 			<th>Apellido Paterno</th>
 			<th>Rut</th>
 			<th>Telefono Celular</th>
-			<th>Vigencia</th>
+			<th>Correo</th>
 		</tr>
 		
 		<%
@@ -73,14 +73,15 @@
 						<td><%=cte.getAppPater() %></td>
 						<td><%=cte.getRut() + "-" + cte.getDv() %></td>
 						<td><%=cte.getTelCel() %></td>
-						<td><input type="checkbox" name="tbVigente" <%=cte.getVigente() ? "checked" : "" %> disabled/></td>
+						<%-- <td><input type="checkbox" name="tbVigente" <%=cte.getVigente() ? "checked" : "" %> disabled/></td> --%>
+						<td><%=cte.getCorreo() %></td>
 					</tr>
 					<%
 				}
 				
 			}else if(request.getParameter("btnNuevo") != null){
-				
-				session.setAttribute("ClientEdit", 0);
+				session.removeAttribute("ClientEdit");
+				//session.setAttribute("ClientEdit", 0);
 				response.sendRedirect("cliente.editar.jsp");
 				
 			}else if(request.getParameter("btnEditar") != null){

@@ -27,7 +27,7 @@
 	if (session.getAttribute("ClientEdit") != null){		
 		client = aut.FindCliente(session.getAttribute("ClientEdit").toString());
 	}
-	session.removeAttribute("ClientEdit");
+
 %>
 	<form name="frmCliente" action="cliente.editar.jsp" method="post">
 		<center>
@@ -38,11 +38,11 @@
 				</tr>
 				<tr>
 					<td>Nombre</td>
-					<td><input type="text" name="tbNombre" class="form-control" value="<%=client.getNombre() %>" /></td>
+					<td><input type="text" name="tbNombre" class="form-control" required value="<%=client.getNombre() %>" /></td>
 				</tr>
 				<tr>
 					<td>Apellido Paterno</td>
-					<td><input type="text" name="tbAppPater" class="form-control" value="<%=client.getAppPater() %>" /></td>
+					<td><input type="text" name="tbAppPater" class="form-control" required value="<%=client.getAppPater() %>" /></td>
 				</tr>
 				<tr>
 					<td>Apellido Materno</td>
@@ -50,19 +50,19 @@
 				</tr>
 				<tr>
 					<td>Rut</td>
-					<td><input type="text" name="tbRut" class="form-control" required value="<%=client.getRut() %>"/></td>
+					<td><input type="text" name="tbRut" class="form-control" required value="<%=client.getRut() == 0 ? "" : client.getRut() %>"/></td>
 				</tr>
 				<tr>
 					<td>Correo</td>
-					<td><input type="email" name="tbCorreo" class="form-control" value="<%=client.getCorreo() %>" /></td>
+					<td><input type="email" name="tbCorreo" class="form-control" required value="<%=client.getCorreo() %>" /></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type="password" name="tbPassword" class="form-control" value="<%=client.getPassword() %>" /></td>
+					<td><input type="password" name="tbPassword" class="form-control" required value="<%=client.getPassword() %>" /></td>
 				</tr>
 				<tr>
 					<td>Telefono Celular</td>
-					<td><input type="tel" name="tbTelCel" class="form-control" value="<%=client.getTelCel() %>" /></td>
+					<td><input type="tel" name="tbTelCel" class="form-control" required value="<%=client.getTelCel() == 0 ? "" : client.getTelCel() %>" /></td>
 				</tr>
 				<tr>
 					<td>Calle</td>
