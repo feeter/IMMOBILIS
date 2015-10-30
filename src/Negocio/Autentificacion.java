@@ -15,6 +15,11 @@ public class Autentificacion {
 	ClienteDAO clientDAO = new ClienteDAO();
 	PropiedadDAO propDAO = new PropiedadDAO();
 	
+	
+	public Autentificacion(){
+		
+	}
+	
 	public int EliminarCliente(String CodigoCliente){
 		int ret = 0;
 		
