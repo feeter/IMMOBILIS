@@ -6,12 +6,14 @@ import java.util.List;
 import Business.Services.LogEvent;
 import Datos.ClienteDAO;
 import modelo.entidad.Cliente;
-
+import modelo.entidad.*;
+import Datos.*;
 public class Autentificacion {
 	
 	LogEvent _log = new LogEvent();
 	String _modulo = "Negocio.Autentificacion";
 	ClienteDAO clientDAO = new ClienteDAO();
+	PropiedadDAO propDAO = new PropiedadDAO();
 	
 	public int EliminarCliente(String CodigoCliente){
 		int ret = 0;
@@ -42,7 +44,20 @@ public class Autentificacion {
 		return client;
 		
 	}
-	
+	public int CrearPropiedad(Propiedad propiedad){
+		int ret = 0;
+		
+		try{
+			
+			ret = propDAO.accion(propiedad);
+			
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+			_log.Registrar(_modulo, ex.getMessage());
+		}
+		
+		return ret;
+	}
 	
 	public int CrearCliente(Cliente cliente){
 		int ret = 0;

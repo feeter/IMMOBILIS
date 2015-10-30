@@ -1,0 +1,87 @@
+package Datos;
+
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import java.util.List;
+
+import Business.Services.BaseSpXML;
+import modelo.entidad.*;
+
+public class PropiedadDAO extends SQLConexion {
+	BaseSpXML xml = new BaseSpXML();
+	
+	public List<Propiedad> ListarPropiedad(String codigo, String estado){
+		
+	List<Propiedad> list = new ArrayList<Propiedad>();
+		
+		xml.Clear();
+		xml.Add("C", codigo == "" || codigo == null ? "0" : codigo );
+		xml.Add("Nombre", estado);
+
+		try{
+			String strXMLDatos = xml.GenerarDocXML("parametros");
+			
+			ResultSet rs = EjecutarSP("WEB_INS_InsertarPropiedad", strXMLDatos);
+			
+			while (rs.next()) {
+				
+				Propiedad prop = new Propiedad();
+				
+				prop.setCodigo(rs.getInt("PROP_Codigo"));
+				prop.setEstado(rs.getString("PROP_Estado"));
+				prop.setCalle(rs.getString("PROP_Calle"));
+				prop.setNumero(rs.getInt("PROP_Numero"));
+				prop.setPrecioVenta(rs.getInt("PROP_PrecioVenta"));
+				prop.setPrecioArriendo(rs.getInt("PROP_PrecioArrie"));
+
+				list.add(prop);
+			
+			}
+			
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
+		
+		
+		
+		return list;
+	}
+	
+	public int accion(Propiedad propiedad) throws Exception{
+		int ret = 0;
+		
+		if (propiedad.getCodigo() == 0)
+			ret = InsertarPropiedad(propiedad);
+		
+		return ret;
+	}
+	
+	public int InsertarPropiedad(Propiedad prop) throws Exception{
+		int ret = 0;
+		
+		try{
+			xml.Clear();
+			xml.Add("Codigo", String.valueOf(prop.getCodigo()));
+			xml.Add("Estado", String.valueOf(prop.getEstado()));
+			xml.Add("Calle", prop.getCalle());
+			xml.Add("Numero", String.valueOf(prop.getNumero()));
+			xml.Add("PrecioVenta", String.valueOf(prop.getPrecioVenta()));
+			xml.Add("PrecioArriendo", String.valueOf(prop.getPrecioArriendo()));
+
+			String strXMLDatos = xml.GenerarDocXML("parametros");
+			
+			ResultSet rs = EjecutarSP("WEB_INS_InsertarPropiedad", strXMLDatos);
+			while (rs.next()) {
+				if (rs.getString(1).equals("OK")){
+					ret ++;
+				}
+			}
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+		
+		return ret;
+	}
+
+}

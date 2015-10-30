@@ -105,7 +105,6 @@ return true;
 		
 			<%
 		if (request.getParameter("btnGuardar") != null) {
-			
 			try{
 				
 				int cod = Integer.parseInt(request.getParameter("tbCodigo"));

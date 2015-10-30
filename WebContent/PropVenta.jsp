@@ -1,3 +1,4 @@
+<%@page import="Datos.PropiedadDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="Negocio.*"%>
 <%@ page import="modelo.entidad.*" %>
@@ -26,7 +27,7 @@
 <body>
 <jsp:include page="header.jsp" />
 <h1>Ingresar Propiedad de Venta</h1>
-<form name="frmVenta" action="PublicarPropiedad.jsp" method="post">
+<form name="frmVenta" action="PropVenta.jsp" method="post">
 		<center>
 			<table>
 				<tr>
@@ -35,7 +36,7 @@
 				</tr>
 				<tr>
 					<td>Estado</td>
-					<td><input type="text" name="tbEstado" class="form-control" placeholder="Estado de la Propiedad"/></td>
+					<td><input type="text" name="tbEstado" class="form-control" placeholder="Nueva / Usada"/></td>
 				</tr>
 				<tr>
 					<td>Calle</td>
@@ -59,42 +60,41 @@
 		</center>
 	</form>
 		<%
-		
- 		if(request.getParameter("btnPropVenta") != null){
-			
-			session.setAttribute("ClientEdit", 0);
-			response.sendRedirect("PublicarPropiedad.jsp");
- 		}
-		
-		if (request.getParameter("btnAgregarVenta") != null) {
+		if (request.getParameter("btnPropVenta") != null) {
+			try{
 			Propiedad prop = new Propiedad();
-			
+			System.out.println("HolaMundo2");
 			int cod = Integer.parseInt(request.getParameter("tbPropCodigo"));
 			int precioVenta = Integer.parseInt(request.getParameter("tbPrecioVenta"));
 			int num = Integer.parseInt(request.getParameter("tbNumero"));
-			
 			prop.setCodigo(cod);
 			prop.setEstado(request.getParameter("tbEstado"));
 			prop.setCalle(request.getParameter("tbCalle"));
 			prop.setNumero(num);
 			prop.setPrecioVenta(precioVenta);
-
+			
+			}catch(Exception ex){
+				
+			}
 		}
+
+
+
 	%>
-<% 
-
-if (request.getParameter("btnPropVenta") != null) {
-
-int cod = Integer.parseInt(request.getParameter("tbPropCodigo"));
-String estado = request.getParameter("tbEstado");
-String calle = request.getParameter("tbCalle");
-double num = Double.parseDouble(request.getParameter("tbNumero"));
-int precioVenta = Integer.parseInt(request.getParameter("tbPrecioVenta"));
-
-}
-
-
-%>
+	<% 
+	
+	if (request.getParameter("btnPropVenta") != null) {
+	
+	int cod = Integer.parseInt(request.getParameter("tbPropCodigo"));
+	String estado = request.getParameter("tbEstado");
+	String calle = request.getParameter("tbCalle");
+	double num = Double.parseDouble(request.getParameter("tbNumero"));
+	int precioVenta = Integer.parseInt(request.getParameter("tbPrecioVenta"));
+	
+	}
+	
+	
+	%>
 
 
 </body>
