@@ -12,6 +12,31 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
+
+<script>
+function validarNro(e) {
+var key;
+if(window.event) // IE
+	{
+	key = e.keyCode;
+	}
+else if(e.which) // Netscape/Firefox/Opera
+	{
+	key = e.which;
+	}
+
+if (key < 48 || key > 57)
+    {
+    if(key == 46 || key == 8) // Detectar . (punto) y backspace (retroceso)
+        { return true; }
+    else 
+        { return false; }
+    }
+return true;
+}
+</script>
+
+
 </head>
 <body>
 <jsp:include page="header.jsp" />
@@ -28,7 +53,7 @@
 	}
 
 %>
-	<form name="frmCliente" action="cliente.editar.jsp" method="post">
+<form name="frmCliente" action="cliente.editar.jsp" method="post">
 		<center>
 			<table>
 				<tr>
@@ -49,7 +74,7 @@
 				</tr>
 				<tr>
 					<td>Rut</td>
-					<td><input type="text" name="tbRut" class="form-control" required value="<%=client.getRut() == 0 ? "" : client.getRut() %>"/></td>
+					<td><input type="text" name="tbRut" class="form-control" required value="<%=client.getRut() == 0 ? "" : client.getRut() + client.getDv() %>"/></td>
 				</tr>
 				<tr>
 					<td>Correo</td>
@@ -61,7 +86,7 @@
 				</tr>
 				<tr>
 					<td>Telefono Celular</td>
-					<td><input type="tel" name="tbTelCel" class="form-control" required value="<%=client.getTelCel() == 0 ? "" : client.getTelCel() %>" /></td>
+					<td><input type="tel" name="tbTelCel" class="form-control" required value="<%=client.getTelCel() == 0 ? "" : client.getTelCel() %>" onkeypress="javascript:return validarNro(event)" /></td>
 				</tr>
 				<tr>
 					<td>Calle</td>
@@ -77,55 +102,58 @@
 				</tr>
 			</table>
 		</center>
-	</form>
-
-	
-
-
-	<%
+		
+			<%
 		if (request.getParameter("btnGuardar") != null) {
-			Cliente cte = new Cliente();
 			
-			int cod = Integer.parseInt(request.getParameter("tbCodigo"));
-			
-			String rut = request.getParameter("tbRut").replace("-", "").replace(".", "").trim();
-			int cuerpoRut = Integer.parseInt(rut.substring(0, rut.length()-1));
-			String dv = rut.substring(rut.length()-1, rut.length());
-			
-			int telCel = Integer.parseInt(request.getParameter("tbTelCel").trim());
-			
-			cte.setCodigo(cod);
-			cte.setNombre(request.getParameter("tbNombre").trim());
-			cte.setAppPater(request.getParameter("tbAppPater"));
-			cte.setAppMater(request.getParameter("tbAppMater"));
-			cte.setRut(cuerpoRut);
-			cte.setDv(dv);
-			cte.setCorreo(request.getParameter("tbCorreo"));
-			cte.setPassword(request.getParameter("tbPassword"));
-			cte.setTelCel(telCel);
-			cte.setCalle(request.getParameter("tbCalle"));
-			//cte.setVigente(request.getParameter("tbVigente") != null);
-			
-			
-
-			if (aut.CrearCliente(cte) > 0)
-			{
-				%>
-				<div class="alert alert-success" role="alert"><%="Cliente " + (editClient ? "creado" : "editado") + " satisfactoriamente: " + request.getParameter("tbNombre")%></div>
-				<%
+			try{
 				
-				client = new Cliente();
-			}else{
+				int cod = Integer.parseInt(request.getParameter("tbCodigo"));
+				
+				String rut = request.getParameter("tbRut").replace("-", "").replace(".", "").trim();
+				int cuerpoRut = Integer.parseInt(rut.substring(0, rut.length()-1));
+				String dv = rut.substring(rut.length()-1, rut.length());
+				
+				int telCel = Integer.parseInt(request.getParameter("tbTelCel").trim());
+				
+				
+				client.setCodigo(cod);
+				client.setNombre(request.getParameter("tbNombre").trim());
+				client.setAppPater(request.getParameter("tbAppPater").trim());
+				client.setAppMater(request.getParameter("tbAppMater").trim());
+				client.setRut(cuerpoRut);
+				client.setDv(dv);
+				client.setCorreo(request.getParameter("tbCorreo").trim());
+				client.setPassword(request.getParameter("tbPassword").trim());
+				client.setTelCel(telCel);
+				client.setCalle(request.getParameter("tbCalle").trim());
+				
+				
+				
+				if (aut.CrearCliente(client) > 0){
+					%>
+					<div class="alert alert-success" role="alert"><%="Cliente " + (editClient ? "creado" : "editado") + " satisfactoriamente: " + request.getParameter("tbNombre")%></div>
+					<%
+				}
+				
+			}catch(Exception ex){
 				%>
-				<div class="alert alert-danger" role="alert"><%="Error al crear cliente: " + request.getParameter("tbNombre")%></div>
+				<div class="alert alert-danger" role="alert"><%="Error al " + (editClient ? "crear" : "editar") + " cliente: " + request.getParameter("tbNombre")%></div>
 				<%
 			}
-			
+		
+
 			
 			//session.setAttribute("UserName", request.getParameter("tbNombre"));
 
 		}
 	%>
+</form>
+
+	
+
+
+
 
 <%@ include file="../../footer.jsp"%>
 </body>

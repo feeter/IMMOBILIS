@@ -25,8 +25,8 @@
   <li></li>
   
   <blockquote class="blockquote-reverse">
-   	<li> Usuario: <%=session.getAttribute("Nombre") %></li>
-  	<li> Rut: <%=session.getAttribute("Rut") %></li>
+   	<li> Usuario: <%=session.getAttribute("Nombre") == null? "" : session.getAttribute("Nombre") %></li>
+  	<li> Rut: <%=session.getAttribute("Rut") == null ? "" : session.getAttribute("Rut") %></li>
 	</blockquote>
 
 
