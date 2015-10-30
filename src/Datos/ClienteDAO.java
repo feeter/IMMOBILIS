@@ -155,5 +155,24 @@ public class ClienteDAO extends SQLConexion {
 		
 		return client;
 	}
+
+	public int EliminarCliente(String codigoCliente) throws Exception {
+		int ret = 0;
+		
+		xml.Clear();
+		xml.Add("Codigo", codigoCliente);
+		
+		String strXMLDatos = xml.GenerarDocXML("parametros");
+		
+		ResultSet rs = EjecutarSP("WEB_DEL_EliminarCliente", strXMLDatos);
+		
+		while (rs.next()) {
+			if (rs.getString(1).equals("OK")){
+				ret ++;
+			}
+		}
+		
+		return ret;
+	}
 	
 }

@@ -13,6 +13,20 @@ public class Autentificacion {
 	String _modulo = "Negocio.Autentificacion";
 	ClienteDAO clientDAO = new ClienteDAO();
 	
+	public int EliminarCliente(String CodigoCliente){
+		int ret = 0;
+		
+		try{
+			
+			ret = clientDAO.EliminarCliente(CodigoCliente);
+			
+		}catch(Exception ex){
+			
+		}
+		
+		return ret;
+	}
+	
 	public Cliente FindCliente(String CodigoCliente){
 		Cliente client = new Cliente();
 		

@@ -68,10 +68,10 @@
 					<td>Calle</td>
 					<td><input type="text" name="tbCalle" class="form-control" value="<%=client.getCalle() %>" /></td>
 				</tr>
-				<tr>
+				<%-- <tr>
 					<td>Vigente</td>
-					<td><input type="checkbox" name="tbVigente" checked="<%=client.getVigente() %>" /></td>
-				</tr>
+					<td><input type="checkbox" name="tbVigente" <%=client.getVigente() ? "checked" : "" %>  /></td>
+				</tr> --%>
 				<tr>
 					<td></td>
 					<td><input type="submit" class="btn btn-default" value="Guardar" name="btnGuardar" /></td>
@@ -96,7 +96,7 @@
 			int telCel = Integer.parseInt(request.getParameter("tbTelCel"));
 			
 			cte.setCodigo(cod);
-			cte.setNombre(request.getParameter("tbNombre"));
+			cte.setNombre(request.getParameter("tbNombre").trim());
 			cte.setAppPater(request.getParameter("tbAppPater"));
 			cte.setAppMater(request.getParameter("tbAppMater"));
 			cte.setRut(cuerpoRut);
@@ -105,7 +105,7 @@
 			cte.setPassword(request.getParameter("tbPassword"));
 			cte.setTelCel(telCel);
 			cte.setCalle(request.getParameter("tbCalle"));
-			cte.setVigente(request.getParameter("tbVigente") != null);
+			//cte.setVigente(request.getParameter("tbVigente") != null);
 			
 			
 

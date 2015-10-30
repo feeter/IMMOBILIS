@@ -51,12 +51,12 @@
 		<%
 		
 			if (request.getParameter("btnBuscar") != null){
-				String rut = request.getParameter("tbRut");
+				String rut = request.getParameter("tbRut").trim();
 				
 				if (rut != "" && rut != null)
-					rut = rut.substring(0, rut.length() - 2);
+					rut = rut.substring(0, rut.length() - 2).replace(" ", "");
 					
-				String nombre = request.getParameter("tbNombre");
+				String nombre = request.getParameter("tbNombre").trim();
 				
 				Autentificacion aut = new Autentificacion();
 				
@@ -65,12 +65,15 @@
 				for (Cliente cte: list){
 					%>
 					<tr>
-						<td> <button type="submit" class="btn btn-default" name="btnEditar" value="<%=cte.getCodigo() %>">Editar</button><td>
+						<td> 
+							<button type="submit" class="btn btn-default" name="btnEditar" value="<%=cte.getCodigo() %>">Editar</button>
+							<button type="submit" class="btn btn-default" name="btnEliminar" value="<%=cte.getCodigo() %>" onclick="return confirm('Seguro de querer eliminar <%=cte.getNombre() %>?');">Eliminar</button>
+						<td>
 						<td><%=cte.getNombre() %></td>
 						<td><%=cte.getAppPater() %></td>
 						<td><%=cte.getRut() + "-" + cte.getDv() %></td>
 						<td><%=cte.getTelCel() %></td>
-						<td><input type="checkbox" name="tbVigente" checked="<%=cte.getVigente() %>" disabled/></td>
+						<td><input type="checkbox" name="tbVigente" <%=cte.getVigente() ? "checked" : "" %> disabled/></td>
 					</tr>
 					<%
 				}
@@ -86,6 +89,22 @@
 				
 				session.setAttribute("ClientEdit", val);
 				response.sendRedirect("cliente.editar.jsp");
+			}else if(request.getParameter("btnEliminar") != null){
+				
+				String val = request.getParameter("btnEliminar");
+				
+				Autentificacion aut = new Autentificacion();
+				
+				if (aut.EliminarCliente(val) > 0){
+					%>
+					<div class="alert alert-success">
+					  <strong>Success!</strong> Indicates a successful or positive action.
+					</div>
+					<%
+				}
+				
+				
+				
 			}
 	
 		%>
