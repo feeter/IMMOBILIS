@@ -19,9 +19,9 @@
   <li role="presentation"><a href="Index.jsp">Home</a></li>
   <%-- <li role="presentation"><a href="cliente.jsp" <%=session.getAttribute("Nombre") == null ? "disabled" : "" %> >Clientes</a></li> --%>
   <li role="presentation"><a href="cliente.jsp">Clientes</a></li>
-  <li role="presentation"><a href="#">Corretaje</a></li>
+  <li role="presentation"><a href="Corretaje.jsp">Corretaje</a></li>
   <li role="presentation"><a href="login.jsp">Ingresar</a></li>
-  <li role="presentation"><a href="#">Publica tu propiedad</a></li>
+  <li role="presentation"><a href="PublicarPropiedad.jsp">Publica tu propiedad</a></li>
   <li></li>
   <li></li>
   

@@ -10,7 +10,7 @@ public class SQLConexion {
 
 		     
     
-    private static String connectionUrl = "jdbc:sqlserver://localhost;database=IMMOBILIS_25102015;user=prueba;password=prueba;";
+    private static String connectionUrl = "jdbc:sqlserver://localhost;database=IMMOBILIS_25102015;user=sa;password=Password00;";
 	//private static String connectionUrl = "jdbc:sqlserver://immobilis.database.windows.net:1433;database=IMMOBILIS_25102015;user=usuario@immobilis;password=Password00;";
     
 	public ResultSet EjecutarSP(String spName, String parametroSP) {
