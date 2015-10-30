@@ -17,8 +17,8 @@ public class ClienteDAO extends SQLConexion {
 	List<Cliente> list = new ArrayList<Cliente>();
 		
 		xml.Clear();
+		xml.Add("Rut", rut == "" || rut == null ? "0" : rut );
 		xml.Add("Nombre", nombre);
-		xml.Add("Rut", rut);
 
 		try{
 			String strXMLDatos = xml.GenerarDocXML("parametros");
@@ -100,14 +100,24 @@ public class ClienteDAO extends SQLConexion {
 		int ret = 0;
 		
 		xml.Clear();
-		xml.Add("userID", String.valueOf(cte.getCodigo()));
-		xml.Add("rolID", String.valueOf(cte.getRol()));
+		xml.Add("Codigo", String.valueOf(cte.getCodigo()));
+		xml.Add("Rol", String.valueOf(cte.getRol()));
+		xml.Add("Nombre", cte.getNombre());
+		xml.Add("Rut", String.valueOf(cte.getRut()));
+		xml.Add("Dv", cte.getDv());
+		xml.Add("AppPater", cte.getAppPater());
+		xml.Add("AppMater", cte.getAppMater());
+		xml.Add("Calle", cte.getCalle());
+		xml.Add("Correo", cte.getCorreo());
+		xml.Add("Password", cte.getPassword());
+		xml.Add("TelCel", String.valueOf(cte.getTelCel()));
+		xml.Add("Vigente", String.valueOf(cte.getVigente()));
 		
-		System.out.print("Parametros userID" + String.valueOf(cte.getCodigo()) + " rolID" + String.valueOf(cte.getRol()));
+		
 		
 		String strXMLDatos = xml.GenerarDocXML("parametros");
 		
-		ResultSet rs = EjecutarSP("UPD_WEB_Cliente", strXMLDatos);
+		ResultSet rs = EjecutarSP("WEB_UPD_EditarCliente", strXMLDatos);
 			
 
 		while (rs.next()) {
@@ -116,6 +126,34 @@ public class ClienteDAO extends SQLConexion {
 			}
 		}
 		return ret;
+	}
+
+	public Cliente FindClient(String codigoCliente) throws Exception {
+		Cliente client = new Cliente();
+		
+		xml.Clear();
+		xml.Add("Codigo", codigoCliente);
+		
+		String strXMLDatos = xml.GenerarDocXML("parametros");
+		
+		ResultSet rs = EjecutarSP("WEB_SEL_ClienteByCodigo", strXMLDatos);
+		
+		while (rs.next()) {
+			client.setCodigo(rs.getInt("USUA_Codigo"));
+			client.setNombre(rs.getString("USUA_Nombre"));
+			client.setAppPater(rs.getString("USUA_AppPater"));
+			client.setAppMater(rs.getString("USUA_AppMater"));
+			client.setRut(rs.getInt("USUA_Rut"));
+			client.setDv(rs.getString("USUA_Dv"));
+			client.setCorreo(rs.getString("USUA_Correo"));
+			client.setPassword(rs.getString("USUA_Passwd"));
+			client.setTelCel(rs.getInt("USUA_TelCel"));
+			client.setCalle(rs.getString("USUA_Calle"));
+			client.setVigente(rs.getBoolean("USUA_Vigente"));
+		}
+		
+		
+		return client;
 	}
 	
 }

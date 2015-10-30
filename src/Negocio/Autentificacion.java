@@ -13,6 +13,23 @@ public class Autentificacion {
 	String _modulo = "Negocio.Autentificacion";
 	ClienteDAO clientDAO = new ClienteDAO();
 	
+	public Cliente FindCliente(String CodigoCliente){
+		Cliente client = new Cliente();
+		
+		try{
+			
+			client = clientDAO.FindClient(CodigoCliente);
+			
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+			_log.Registrar(_modulo, ex.getMessage());
+		}
+		
+		return client;
+		
+	}
+	
+	
 	public int CrearCliente(Cliente cliente){
 		int ret = 0;
 		

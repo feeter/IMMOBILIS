@@ -10,7 +10,15 @@ public class Cliente {
 	private int numCasa;
 	
 	public Cliente(){
-		
+		nombre = "";
+		rut = 0;
+		appPater = "";
+		appMater = "";
+		correo = "";
+		password = "";
+		telCel = 0;
+		calle = "";
+		vigente = false;
 	}
 	
 	

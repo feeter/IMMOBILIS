@@ -18,48 +18,59 @@
 
 <h1>Ingresar nuevo cliente</h1>
 
+<%
+	Autentificacion aut = new Autentificacion();
+
+	Cliente client = new Cliente();
+	//String valorSession = session.getAttribute("ClientEdit").toString();
+	
+	if (session.getAttribute("ClientEdit") != null){		
+		client = aut.FindCliente(session.getAttribute("ClientEdit").toString());
+	}
+	session.removeAttribute("ClientEdit");
+%>
 	<form name="frmCliente" action="cliente.editar.jsp" method="post">
 		<center>
 			<table>
 				<tr>
 					<td>Codigo</td>
-					<td><input type="text" name="tbCodigo" readonly class="form-control" value="<%=session.getAttribute("ClientEdit") == null ? "0" : session.getAttribute("ClientEdit") %>"  /></td>
+					<td><input type="text" name="tbCodigo" readonly class="form-control" value="<%=client.getCodigo() %>"  /></td>
 				</tr>
 				<tr>
 					<td>Nombre</td>
-					<td><input type="text" name="tbNombre" class="form-control" /></td>
+					<td><input type="text" name="tbNombre" class="form-control" value="<%=client.getNombre() %>" /></td>
 				</tr>
 				<tr>
 					<td>Apellido Paterno</td>
-					<td><input type="text" name="tbAppPater" class="form-control" /></td>
+					<td><input type="text" name="tbAppPater" class="form-control" value="<%=client.getAppPater() %>" /></td>
 				</tr>
 				<tr>
 					<td>Apellido Materno</td>
-					<td><input type="text" name="tbAppMater" class="form-control" /></td>
+					<td><input type="text" name="tbAppMater" class="form-control" value="<%=client.getAppMater() %>" /></td>
 				</tr>
 				<tr>
 					<td>Rut</td>
-					<td><input type="text" name="tbRut" class="form-control" required/></td>
+					<td><input type="text" name="tbRut" class="form-control" required value="<%=client.getRut() %>"/></td>
 				</tr>
 				<tr>
 					<td>Correo</td>
-					<td><input type="text" name="tbCorreo" class="form-control" /></td>
+					<td><input type="email" name="tbCorreo" class="form-control" value="<%=client.getCorreo() %>" /></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type="text" name="tbPassword" class="form-control" /></td>
+					<td><input type="password" name="tbPassword" class="form-control" value="<%=client.getPassword() %>" /></td>
 				</tr>
 				<tr>
 					<td>Telefono Celular</td>
-					<td><input type="tel" name="tbTelCel" class="form-control" /></td>
+					<td><input type="tel" name="tbTelCel" class="form-control" value="<%=client.getTelCel() %>" /></td>
 				</tr>
 				<tr>
 					<td>Calle</td>
-					<td><input type="text" name="tbCalle" class="form-control" /></td>
+					<td><input type="text" name="tbCalle" class="form-control" value="<%=client.getCalle() %>" /></td>
 				</tr>
 				<tr>
 					<td>Vigente</td>
-					<td><input type="checkbox" name="tbVigente" /></td>
+					<td><input type="checkbox" name="tbVigente" checked="<%=client.getVigente() %>" /></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -79,9 +90,7 @@
 			int cod = Integer.parseInt(request.getParameter("tbCodigo"));
 			
 			String rut = request.getParameter("tbRut").replace("-", "").replace(".", "");
-			//int cuerpoRut = Integer.parseInt(rut.substring(0, 8));
 			int cuerpoRut = Integer.parseInt(rut.substring(0, rut.length()-1));
-			//String dv = rut.substring(8, 9);
 			String dv = rut.substring(rut.length()-1, rut.length());
 			
 			int telCel = Integer.parseInt(request.getParameter("tbTelCel"));
@@ -99,7 +108,7 @@
 			cte.setVigente(request.getParameter("tbVigente") != null);
 			
 			
-			Autentificacion aut = new Autentificacion();
+
 			if (aut.CrearCliente(cte) > 0)
 			{
 				%>
