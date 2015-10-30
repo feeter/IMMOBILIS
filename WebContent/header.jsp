@@ -21,6 +21,16 @@
   <li role="presentation"><a href="#">Corretaje</a></li>
   <li role="presentation"><a href="login.jsp">Ingresar</a></li>
   <li role="presentation"><a href="#">Publica tu propiedad</a></li>
+  <li></li>
+  <li></li>
+  
+  <blockquote class="blockquote-reverse">
+   	<li> Usuario: <%=session.getAttribute("Nombre") %></li>
+  	<li> Rut: <%=session.getAttribute("Rut") %></li>
+	</blockquote>
+
+
+
 </ul>
 
 </body>

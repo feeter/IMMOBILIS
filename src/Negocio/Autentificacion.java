@@ -73,15 +73,17 @@ public class Autentificacion {
 		return list;
 	}
 	
-	public Cliente LoginUser(String rut, String passwd){
-		
+	public Cliente LoginCliente(String rut, String dv, String passwd){
+		Cliente cte = new Cliente();
 		try{
+			
+			cte = clientDAO.LoginCliente(rut, dv, passwd);
 			
 		}catch(Exception ex){
 			this._log.Registrar(this._modulo, ex.getMessage());
 		}
 		
-		return new Cliente();
+		return cte;
 	} 
 	
 }

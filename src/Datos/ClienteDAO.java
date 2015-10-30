@@ -174,5 +174,28 @@ public class ClienteDAO extends SQLConexion {
 		
 		return ret;
 	}
+
+	public Cliente LoginCliente(String rut, String dv, String passwd) throws Exception {
+		Cliente cte = new Cliente();
+
+		xml.Clear();
+		xml.Add("Rut", rut);
+		xml.Add("Dv", dv);
+		xml.Add("Password", passwd);
+		
+		String strXMLDatos = xml.GenerarDocXML("parametros");
+		
+		ResultSet rs = EjecutarSP("WEB_SEL_LoginCliente", strXMLDatos);
+		
+		while (rs.next()) {
+			cte.setCodigo(rs.getInt("USUA_Codigo"));
+			cte.setNombre(rs.getString("USUA_Nombre"));
+			cte.setAppPater(rs.getString("USUA_AppPater"));
+			cte.setRut(rs.getInt("USUA_Rut"));
+			cte.setDv(rs.getString("USUA_Dv"));
+		}
+		
+		return cte;
+	}
 	
 }

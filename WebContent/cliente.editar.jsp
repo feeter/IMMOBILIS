@@ -89,11 +89,11 @@
 			
 			int cod = Integer.parseInt(request.getParameter("tbCodigo"));
 			
-			String rut = request.getParameter("tbRut").replace("-", "").replace(".", "");
+			String rut = request.getParameter("tbRut").replace("-", "").replace(".", "").trim();
 			int cuerpoRut = Integer.parseInt(rut.substring(0, rut.length()-1));
 			String dv = rut.substring(rut.length()-1, rut.length());
 			
-			int telCel = Integer.parseInt(request.getParameter("tbTelCel"));
+			int telCel = Integer.parseInt(request.getParameter("tbTelCel").trim());
 			
 			cte.setCodigo(cod);
 			cte.setNombre(request.getParameter("tbNombre").trim());
