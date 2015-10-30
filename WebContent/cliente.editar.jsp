@@ -23,7 +23,7 @@
 			<table>
 				<tr>
 					<td>Codigo</td>
-					<td><input type="text" name="tbCodigo" class="form-control" value="<%=session.getAttribute("ClientEdit") == null ? "0" : session.getAttribute("ClientEdit") %>"  /></td>
+					<td><input type="text" name="tbCodigo" readonly class="form-control" value="<%=session.getAttribute("ClientEdit") == null ? "0" : session.getAttribute("ClientEdit") %>"  /></td>
 				</tr>
 				<tr>
 					<td>Nombre</td>
@@ -79,8 +79,10 @@
 			int cod = Integer.parseInt(request.getParameter("tbCodigo"));
 			
 			String rut = request.getParameter("tbRut").replace("-", "").replace(".", "");
-			int cuerpoRut = Integer.parseInt(rut.substring(0, 8));
-			String dv = rut.substring(8, 9);
+			//int cuerpoRut = Integer.parseInt(rut.substring(0, 8));
+			int cuerpoRut = Integer.parseInt(rut.substring(0, rut.length()-1));
+			//String dv = rut.substring(8, 9);
+			String dv = rut.substring(rut.length()-1, rut.length());
 			
 			int telCel = Integer.parseInt(request.getParameter("tbTelCel"));
 			

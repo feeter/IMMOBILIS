@@ -17,7 +17,6 @@ public class Autentificacion {
 		int ret = 0;
 		
 		try{
-			cliente.setRol(2);
 			
 			ret = clientDAO.accion(cliente);
 			
