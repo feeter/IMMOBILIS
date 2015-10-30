@@ -86,7 +86,7 @@ public class ClienteDAO extends SQLConexion {
 		ResultSet rs = EjecutarSP("WEB_INS_InsertarCliente", strXMLDatos);
 		ret ++;
 		while (rs.next()) {
-			if (rs.getString("Reultado") == "OK"){
+			if (rs.getString("respuesta") == "OK"){
 				ret ++;
 			}
 		}
@@ -108,7 +108,7 @@ public class ClienteDAO extends SQLConexion {
 		ResultSet rs = EjecutarSP("UPD_WEB_Cliente", strXMLDatos);
 
 		while (rs.next()) {
-			if (rs.getString("Reultado") == "OK"){
+			if (rs.getString("respuesta") == "OK"){
 				ret ++;
 			}
 		}
