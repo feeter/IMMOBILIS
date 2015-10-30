@@ -17,6 +17,7 @@
 <ul class="nav nav-tabs">
  <!-- class="active" -->
   <li role="presentation"><a href="Index.jsp">Home</a></li>
+  <%-- <li role="presentation"><a href="cliente.jsp" <%=session.getAttribute("Nombre") == null ? "disabled" : "" %> >Clientes</a></li> --%>
   <li role="presentation"><a href="cliente.jsp">Clientes</a></li>
   <li role="presentation"><a href="#">Corretaje</a></li>
   <li role="presentation"><a href="login.jsp">Ingresar</a></li>
