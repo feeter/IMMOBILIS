@@ -83,5 +83,47 @@ public class PropiedadDAO extends SQLConexion {
 		
 		return ret;
 	}
+	
+	public void Insertarprop(String calle, int numero, double precioVenta, double precioArriendo, String estado)throws Exception{
+
+	    
+        //Obtener valores desde input
+        //idUbicacion = java.lang.Integer.parseInt(txtIdUbicacion.getText());
+
+        //Connection miConexion= SQLConexion.GetConexion();
+
+        //Statement st;
+        //se utiliza para las consultas o procedimientos que no retornan datos.
+        //PreparedStatement ps = null;
+        //stmiConexion.createStatement();
+
+        try{
+
+            String sql = "exec PropiedadCrear  @Calle='"+calle+"', @Numero="+numero+", @PrecioVenta="+precioVenta+", @PrecioArrie="+precioArriendo+", @Estado="+estado+";";
+            //ps=miConexion.prepareCall(sql);
+            //ps.execute();
+            System.out.println("La propiedad se ha registrado exitosamente");
+
+
+
+            //limpiarCampos();
+
+
+
+        }catch (Exception ex) {
+            //  System.out.println(ex.getMessage());
+
+           System.out.println(ex.getMessage());
+        }
+
+        finally {
+/*            if (ps != null) try { ps.close(); } catch(Exception e) {}
+            if (st != null) try { st.close(); } catch(Exception e) {}
+            if (miConexion != null) try { miConexion.close(); } catch(Exception e) {}*/
+        }
+    
+
+
+}
 
 }
