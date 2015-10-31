@@ -34,8 +34,15 @@
 		Autentificacion aut = new Autentificacion();
 		
 		String rut = request.getParameter("tbRut").replace("-", "").replace(".", "").trim();
-		int cuerpoRut = Integer.parseInt(rut.substring(0, rut.length()-1));
-		String dv = rut.substring(rut.length()-1, rut.length());
+		int cuerpoRut = 0;
+		String dv = "";
+		if(rut != null && rut != ""){
+			cuerpoRut = Integer.parseInt(rut.substring(0, rut.length()-1));
+			dv = rut.substring(rut.length()-1, rut.length());
+		}
+			
+		
+		
 		
 		String passwd = request.getParameter("tbPassword").trim();
 		
