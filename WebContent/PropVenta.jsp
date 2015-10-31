@@ -27,6 +27,7 @@
 <body>
 <jsp:include page="header.jsp" />
 <h1>Ingresar Propiedad de Venta</h1>
+
 <form name="frmVenta" action="PropVenta.jsp" method="post">
 		<center>
 			<table>
@@ -60,41 +61,55 @@
 		</center>
 	</form>
 		<%
-		if (request.getParameter("btnPropVenta") != null) {
-			try{
+		//try{
 			Propiedad prop = new Propiedad();
-			System.out.println("HolaMundo2");
-			int cod = Integer.parseInt(request.getParameter("tbPropCodigo"));
-			int precioVenta = Integer.parseInt(request.getParameter("tbPrecioVenta"));
-			int num = Integer.parseInt(request.getParameter("tbNumero"));
-			prop.setCodigo(cod);
-			prop.setEstado(request.getParameter("tbEstado"));
-			prop.setCalle(request.getParameter("tbCalle"));
-			prop.setNumero(num);
-			prop.setPrecioVenta(precioVenta);
 			
-			}catch(Exception ex){
-				
+			String calle, estado;
+			//int numero = Integer.parseInt(request.getParameter("tbNumero"));
+			int numero = 5906;
+			int precioVenta = 5000;
+			//int precioVenta = Integer.parseInt(request.getParameter("tbPrecioVenta"));
+			int precioArriendo = 0;
+
+			
+			calle = request.getParameter("tbCalle");
+			estado = request.getParameter("tbEstado");
+			prop.setNumero(numero);
+			prop.setPrecioVenta(precioVenta);
+			//prop.setPrecioArriendo(precioArriendo);
+			prop.setCalle(request.getParameter("tbCalle"));
+			
+			if (request.getParameter("btnPropVenta") != null) {
+				PropiedadDAO propDao = new PropiedadDAO();
+				propDao.Insertarprop(calle, numero, precioVenta, precioArriendo, estado);
+				System.out.println("Weeeeena! Insertarse una propiedad!");
 			}
-		}
+			
+		//}
+		//catch(Exception ex){
+		//	System.out.println("Cagaste, no se puede insertar");
+		//}
+		//String calle, estado;
+		//int numero;
+		//double precioVenta, precioArriendo;
+		
+
+		//calle= request.getParameter("tbCalle");
+		//numero = Integer.parseInt(request.getParameter("tbNumero"));
+		//precioVenta = Double.parseDouble(request.getParameter("tbPrecioVenta"));
+		//precioArriendo = Double.parseDouble(request.getParameter("tbPrecioArrie"));
+		//estado = request.getParameter("tbEstado");
+
+		//if (request.getParameter("btnPropVenta") != null) {
+			//PropiedadDAO propDao = new PropiedadDAO();
+			//propDao.Insertarprop(calle, numero, precioVenta, precioArriendo, estado);}
+			
+					
 
 
 
 	%>
-	<% 
-	
-	if (request.getParameter("btnPropVenta") != null) {
-	
-	int cod = Integer.parseInt(request.getParameter("tbPropCodigo"));
-	String estado = request.getParameter("tbEstado");
-	String calle = request.getParameter("tbCalle");
-	double num = Double.parseDouble(request.getParameter("tbNumero"));
-	int precioVenta = Integer.parseInt(request.getParameter("tbPrecioVenta"));
-	
-	}
-	
-	
-	%>
+
 
 
 </body>
