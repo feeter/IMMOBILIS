@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<jsp:include page="header.jsp" />
+
 
 <h1>Ingresar</h1>
 
