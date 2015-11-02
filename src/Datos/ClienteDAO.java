@@ -13,44 +13,37 @@ public class ClienteDAO extends SQLConexion {
 	BaseSpXML xml = new BaseSpXML();
 
 	
-	public List<Cliente> Listar(String rut, String nombre){
+	public List<Cliente> Listar(String rut, String nombre) throws Exception{
 	List<Cliente> list = new ArrayList<Cliente>();
 		
 		xml.Clear();
 		xml.Add("Rut", rut == "" || rut == null ? "0" : rut );
 		xml.Add("Nombre", nombre);
-
-		try{
-			String strXMLDatos = xml.GenerarDocXML("parametros");
+		
+		String strXMLDatos = xml.GenerarDocXML("parametros");
+		
+		ResultSet rs = EjecutarSP("WEB_SEL_ListarClientes", strXMLDatos);
+		
+		while (rs.next()) {
 			
-			ResultSet rs = EjecutarSP("WEB_SEL_ListarClientes", strXMLDatos);
+			Cliente client = new Cliente();
 			
-			while (rs.next()) {
-				
-				Cliente client = new Cliente();
-				
-				client.setCodigo(rs.getInt("USUA_Codigo"));
-				client.setNombre(rs.getString("USUA_Nombre"));
-				client.setAppPater(rs.getString("USUA_AppPater"));
-				//client.setAppMater(rs.getString("tbAppMater"));
-				client.setRut(rs.getInt("USUA_Rut"));
-				client.setDv(rs.getString("USUA_Dv"));
-				client.setCorreo(rs.getString("USUA_Correo"));
-				//client.setPassword(rs.getString("tbPassword"));
-				client.setTelCel(rs.getInt("USUA_TelCel"));
-				//client.setCalle(rs.getString("tbCalle"));
-				client.setVigente(rs.getBoolean("USUA_Vigente"));
-				
-				
-				list.add(client);
+			client.setCodigo(rs.getInt("USUA_Codigo"));
+			client.setNombre(rs.getString("USUA_Nombre"));
+			client.setAppPater(rs.getString("USUA_AppPater"));
+			//client.setAppMater(rs.getString("tbAppMater"));
+			client.setRut(rs.getInt("USUA_Rut"));
+			client.setDv(rs.getString("USUA_Dv"));
+			client.setCorreo(rs.getString("USUA_Correo"));
+			//client.setPassword(rs.getString("tbPassword"));
+			client.setTelCel(rs.getInt("USUA_TelCel"));
+			//client.setCalle(rs.getString("tbCalle"));
+			client.setVigente(rs.getBoolean("USUA_Vigente"));
 			
-			}
 			
-		}catch(Exception ex){
-			System.out.println(ex.getMessage());
+			list.add(client);
+		
 		}
-		
-		
 		
 		return list;
 	}
