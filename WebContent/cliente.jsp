@@ -81,7 +81,7 @@
 				
 			}else if(request.getParameter("btnNuevo") != null){
 				session.removeAttribute("ClientEdit");
-				//session.setAttribute("ClientEdit", 0);
+				
 				response.sendRedirect("cliente.editar.jsp");
 				
 			}else if(request.getParameter("btnEditar") != null){
@@ -99,9 +99,17 @@
 				if (aut.EliminarCliente(val) > 0){
 					%>
 					<div class="alert alert-success">
-					  <strong>Success!</strong> Indicates a successful or positive action.
+					  Cliente eliminado <strong>satisfactoriamente</strong>.
 					</div>
 					<%
+				} else {
+					
+					%>
+					<div class="alert alert-danger" role="alert">
+						Cliente no fue  <strong>eliminado</strong>
+					</div>
+					<%
+					
 				}
 				
 				
