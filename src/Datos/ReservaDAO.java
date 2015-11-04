@@ -1,9 +1,34 @@
 package Datos;
 
-public class ReservaDAO {
-	public int RealizarReserva(){
+import java.sql.ResultSet;
+
+import Business.Services.BaseSpXML;
+
+public class ReservaDAO extends SQLConexion {
+	
+	BaseSpXML xml = new BaseSpXML();
+	
+	public int RealizarReserva(String usu, String prop, String coment, String tipoReserv) throws Exception{
 		
-		//exec [WEB_INS_RealizarReserva] '<parametros><Usuario>1</Usuario><Propiedad>1</Propiedad><Comentario>Comprar propiedad</Comentario><TipoReserva>C</TipoReserva></parametros>'
-		return 0;
+		int ret = 0;
+		
+		xml.Clear();
+		xml.Add("Usuario", usu);
+		xml.Add("Propiedad", prop);
+		xml.Add("Comentario", coment);
+		xml.Add("TipoReserva", tipoReserv);
+
+		
+		String strXMLDatos = xml.GenerarDocXML("parametros");
+		
+		ResultSet rs = EjecutarSP("WEB_INS_RealizarReserva", strXMLDatos);
+		
+		while (rs.next()) {
+			if (rs.getString(1).equals("OK")){
+				ret ++;
+			}
+		}
+		
+		return ret;
 	}
 }
