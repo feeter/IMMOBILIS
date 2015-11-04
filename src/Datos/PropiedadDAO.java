@@ -11,6 +11,38 @@ import modelo.entidad.*;
 public class PropiedadDAO extends SQLConexion {
 	BaseSpXML xml = new BaseSpXML();
 	
+	
+	public List<Propiedad> ListarPropToInicio(){
+
+		List<Propiedad> list = new ArrayList<Propiedad>();
+		try{
+			
+			
+			ResultSet rs = EjecutarSP("WEB_SEL_PropiedadesToInicio", "");
+			
+			while (rs.next()) {
+				
+				Propiedad prop = new Propiedad();
+				
+				prop.setComuna(rs.getString("COMU_Nombre"));
+				prop.setPrecioVenta(rs.getInt("PROP_PrecioVenta"));
+				prop.setPrecioArriendo(rs.getInt("PROP_PrecioArrie"));
+				prop.setTipo(rs.getString("PROP_Tipo"));
+
+				list.add(prop);
+			
+			}
+			
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
+		
+		
+		
+		return list;
+	}
+	
+	
 	public List<Propiedad> ListarPropiedad(String codigo, String estado){
 		
 	List<Propiedad> list = new ArrayList<Propiedad>();

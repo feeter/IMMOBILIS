@@ -10,6 +10,37 @@ public class Propiedad {
 	private int precioVenta;
 	private int precioArriendo;
 	
+	private String comuna;
+	private String tipo;
+	
+	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	/**
+	 * @return the comuna
+	 */
+	public String getComuna() {
+		return comuna;
+	}
+
+	/**
+	 * @param comuna the comuna to set
+	 */
+	public void setComuna(String comuna) {
+		this.comuna = comuna;
+	}
+
 	public Propiedad() {
 		
 	}

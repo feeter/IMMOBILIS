@@ -1,3 +1,6 @@
+<%@ page import="Negocio.*"%>
+<%@ page import="modelo.entidad.*" %>
+<%@ page import="java.util.List" %>
 <%--
 	Document	: index
 	Create on	: 17/10/2015
@@ -36,7 +39,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
-
+<center>
 <h1>Tu hogar está aquí</h1>
 <h2>Casas, departamentos en arriendo y venta</h2>
 
@@ -45,41 +48,33 @@
 
 <form class="form-inline">
 
- <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Comprar
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Arrendar</a></li>
-      
-    </ul>
-  </div>
-  
-   <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Casa
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Departamento</a></li>
-      <li><a href="#">Estacionamieno</a></li>
-      <li><a href="#">Bodega</a></li>
-      <li><a href="#">Oficinas</a></li>      
-    </ul>
-  </div>
 
+ <select class="form-control">
+ 	<option>-- Seleccione --</option>
+   <option>Comprar</option>
+   <option>Arrendar</option>
+ </select>
+
+<select class="form-control">
+	<option>-- Seleccione --</option>
+    <option>Casa</option>
+    <option>Departamento</option>
+    <option>Estacionamiento</option>
+    <option>Bodega</option>
+    <option>Oficinas</option>
+  </select>
 
 
   <div class="form-group">
     <!-- <label class="sr-only" for="lblBusqueda"></label> -->
-    <input type="text" class="form-control" id="tbNombre" placeholder="Ingresa una comuna o region">
+    <input type="text" class="form-control" id="tbNombre" placeholder="Ingresa una comuna o region" style="width: 300px">
   </div>
 
 <div class="btn-group" role="group" aria-label="...">
- <button type="button" class="btn btn-default" onclick="#">Buscar</button>
+ <button type="button" name="btnBuscar" class="btn btn-default" onclick="#">Buscar</button>
 </div>
 </form>
+</center>
 
 <div class="container">
   <br>
@@ -95,19 +90,31 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="img/img_chania.jpg" alt="Chania" width="460" height="245">
+        <img src="img/img_1.jpg" alt="Chania" width="460" height="245">
+        <div class="carousel-caption">
+        	<h3>Independencia</h3>
+         </div>
       </div>
 
       <div class="item">
-        <img src="img/img_chania2.jpg" alt="Chania" width="460" height="345">
+        <img src="img/img_2.jpg" alt="Chania" width="460" height="345">
+        <div class="carousel-caption">
+        <h3>San Joaquin</h3>
+        </div>
       </div>
     
       <div class="item">
-        <img src="img/img_flower.jpg" alt="Flower" width="460" height="345">
+        <img src="img/img_3.jpg" alt="Flower" width="460" height="345">
+        <div class="carousel-caption">
+        <h3>Santiago Centro</h3>
+        </div>
       </div>
 
       <div class="item">
-        <img src="img/img_flower2.jpg" alt="Flower" width="460" height="345">
+        <img src="img/img_4.jpg" alt="Flower" width="460" height="345">
+        <div class="carousel-caption">
+        <h3>Recoleta</h3>
+        </div>
       </div>
     </div>
 
@@ -122,6 +129,45 @@
     </a>
   </div>
 </div>
+
+<br>
+
+<h2>Propiedades disponibles para reservar</h2>
+
+<table class="table table-striped">
+	<tr>
+		<th><th>
+		<th>Comuna</th>
+		<th>Precio Venta</th>
+		<th>Precio Arriendo</th>
+		<th>Tipo</th>
+	</tr>
+	
+	<%
+	//if (request.getParameter("btnBuscar") != null){
+		Busqueda busq = new Busqueda();
+		
+		List<Propiedad> listProp = busq.ListarProp();
+		
+		for (Propiedad prop: listProp){
+			%>
+			<tr>
+				<td> 
+					<button type="submit" class="btn btn-default" name="btnReservar" value="<%=prop.getCodigo() %>">Reservar</button>
+				<td>
+				<td><%=prop.getComuna() %></td>
+				<td><%=prop.getPrecioVenta() %></td>
+				<td><%=prop.getPrecioArriendo() %></td>
+				<td><%=prop.getTipo() %></td>
+			</tr>
+			<%
+		}
+		
+	//}
+	%>
+	
+	
+</table>
 
 <%@ include file="footer.jsp" %>
 
