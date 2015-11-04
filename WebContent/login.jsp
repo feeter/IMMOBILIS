@@ -11,10 +11,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="js/rut.js"></script>
+
 </head>
 <body>
+    <script type="text/javascript">
+        $(document).ready(function () {
 
+            $('input[name=tbRut]').blur(function () {
+                if (this.value.length > 0)
+                    this.value = formatearRut(this.value);
+            });
 
+            $('input[name=tbRut]').focus(function () {
+                if (this.value.length > 0) {
+                    this.value = desformatearRut(this.value);
+                    this.select();
+                }
+            });
+        });
+     </script>
+     
 <h1>Ingresar</h1>
 
 	<form action="login.jsp" method="post" name="frmLogin">
