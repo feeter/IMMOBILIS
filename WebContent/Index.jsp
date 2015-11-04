@@ -156,8 +156,8 @@
 					<button type="submit" class="btn btn-default" name="btnReservar" value="<%=prop.getCodigo() %>">Reservar</button>
 				<td>
 				<td><%=prop.getComuna() %></td>
-				<td><%=prop.getPrecioVenta() %></td>
-				<td><%=prop.getPrecioArriendo() %></td>
+				<td><%="UF " + prop.getPrecioVenta() %></td>
+				<td><%="$" + prop.getPrecioArriendo() %></td>
 				<td><%=prop.getTipo() %></td>
 			</tr>
 			<%
