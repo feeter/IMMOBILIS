@@ -1,19 +1,22 @@
 package Negocio;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import Business.Services.LogEvent;
 import Datos.PropiedadDAO;
+import Datos.PagoDAO;
 
 import modelo.entidad.*;
 
 public class Busqueda {
 	
 	PropiedadDAO propDAO = new PropiedadDAO();
+	PagoDAO pagDAO = new PagoDAO();
+	
 	String _modulo = "Negocio.Busqueda";
+	
+	
 	LogEvent _log = new LogEvent();
 
 	public List<Propiedad> ListarProp(){
@@ -33,5 +36,21 @@ public class Busqueda {
 		
 		
 	}
+	
+	public List<Pago> ListarPagoByUser(String userID){
+		List<Pago> list = null;
+		try{
+			
+
+			list = pagDAO.ListarPagosByUser(userID);
+			
+			
+		}catch(Exception ex){
+			this._log.Registrar(this._modulo, ex.getMessage());
+		}
+		
+		return list;
+	}
+	
 	
 }

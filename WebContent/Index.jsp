@@ -72,7 +72,7 @@
   </div>
 
 <div class="btn-group" role="group" aria-label="...">
- <button type="button" name="btnBuscar" class="btn btn-default" onclick="#">Buscar</button>
+ <button type="button" name="btnBuscar" class="btn btn-default" >Buscar</button>
 </div>
 
 </center>

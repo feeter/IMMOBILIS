@@ -2,6 +2,7 @@
 <%@ page import="Negocio.*"%>
 <%@ page import="modelo.entidad.*" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="Datos.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -40,8 +41,19 @@
 		</tr>
 		
 		<%
-		//String sql = "exec PropiedadListar";
-		//rs= con.createStatement().executeQuery(sql);
+		Busqueda busq = new Busqueda();
+		
+		
+		if (session.getAttribute("USUACodigo") != null){
+			List<Pago> listPag = new ArrayList<Pago>();
+			
+			String userID = session.getAttribute("USUACodigo").toString();
+			
+			listPag = busq.ListarPagoByUser(userID);
+			
+			//recorrer la variable listPag como lo hago en cliente y crear la tabla
+		}
+
 		
 		%>
 		
