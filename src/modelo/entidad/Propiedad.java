@@ -57,13 +57,13 @@ public class Propiedad {
 	}
 	public void setEstado(String estado) {
 		
-		if (estado == "D")
+		if (estado.equals("D"))
 			this.estado = "Disponible";
-		else if (estado == "V")
+		else if (estado.equals("V"))
 			this.estado = "Vendida";
-		else if (estado == "A")
+		else if (estado.equals("A"))
 			this.estado = "Arrendada";
-		else if (estado == "R")
+		else if (estado.equals("R"))
 			this.estado = "Reservada";
 		else
 			this.estado = "Estado desconocido";

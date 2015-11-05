@@ -142,6 +142,7 @@
 		<th>Precio Venta</th>
 		<th>Precio Arriendo</th>
 		<th>Tipo</th>
+		<th>Estado</th>
 	</tr>
 	
 	<%
@@ -162,6 +163,7 @@
 				<td><%="UF " + prop.getPrecioVenta() %></td>
 				<td><%="$" + prop.getPrecioArriendo() %></td>
 				<td><%=prop.getTipo() %></td>
+				<td><%=prop.getEstado() %></td>
 			</tr>
 			<%
 		}
