@@ -29,6 +29,7 @@ public class PropiedadDAO extends SQLConexion {
 				prop.setPrecioVenta(rs.getInt("PROP_PrecioVenta"));
 				prop.setPrecioArriendo(rs.getInt("PROP_PrecioArrie"));
 				prop.setTipo(rs.getString("PROP_Tipo"));
+				prop.setEstado(rs.getString("PROP_Estado"));
 
 				list.add(prop);
 			
