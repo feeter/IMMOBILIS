@@ -56,7 +56,18 @@ public class Propiedad {
 		return estado;
 	}
 	public void setEstado(String estado) {
-		this.estado = estado;
+		
+		if (estado == "D")
+			this.estado = "Disponible";
+		else if (estado == "V")
+			this.estado = "Vendida";
+		else if (estado == "A")
+			this.estado = "Arrendada";
+		else if (estado == "R")
+			this.estado = "Reservada";
+		else
+			this.estado = "Estado desconocido";
+
 	}
 	public String getCalle() {
 		return calle;
