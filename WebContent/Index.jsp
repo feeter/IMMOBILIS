@@ -154,7 +154,9 @@
 			%>
 			<tr>
 				<td> 
-					<button type="submit" class="btn btn-default" name="btnReservar" value="<%=prop.getCodigo() %>">Reservar</button>
+					<%-- <button type="submit" class="btn btn-default" name="btnReservar" data-toggle="modal" data-target="#myModal" value="<%=prop.getCodigo() %>">Reservar</button> --%>
+					 <button type="button" class="btn btn-default" name="btnReservar" data-toggle="modal" data-target="#myModal" >Reservar</button>
+					 <input type="hidden" name="hiddenPropCodigo" value="<%=prop.getCodigo() %>"> 
 				<td>
 				<td><%=prop.getComuna() %></td>
 				<td><%="UF " + prop.getPrecioVenta() %></td>
@@ -163,26 +165,72 @@
 			</tr>
 			<%
 		}
+		//session.setAttribute("PROP_Codigo", request.getParameter("btnReserva"));
 		
-		
-		if (request.getParameter("btnReservar") != null){
+			%>
+			<!-- Trigger the modal with a button -->
+			<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
 			
-			Transaccion tran = new Transaccion();
+			<!-- Modal -->
+			<div id="myModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
 			
-			if (session.getAttribute("USUACodigo") != null){
-				String usuaCod = session.getAttribute("USUACodigo").toString();
-				String propCod = request.getParameter("btnReservar");
-				String coment = "Sin comentario";
-				String tipoReserv = "C";
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Reservar propiedad</h4>
+			      </div>
+			      <div class="modal-body">
+			      Comentario: <input type="text" class="form-control" name="tbComentario" placeholder="Ingrese comentario..."> <br>
+			      Reserva: <select name="tbTipoReser">
+			      <option value="C">Compra</option>
+			      <option value="A">Arriendo</option>
+			      			</select>
+			      
+			        <!-- <p>Some text in the modal.</p> -->
+			      </div>
+			      <div class="modal-footer">
+			        <button type="submit" class="btn btn-default" name="btnFinalizarReserva" value="<%=request.getParameter("tbCodigoProp") %>">Reservar</button>
+			        <!-- <button type="submit" name="btnRealizarReserva" class="btn btn-default" data-dismiss="modal">Realizar reserva</button> -->
+			      </div>
+			    </div>
+			
+			  </div>
+			</div>
+			<%
+			
+			
+			//if (request.getParameter("btnReservar") != null){
+			if (request.getParameter("btnFinalizarReserva") != null){
 				
-				tran.RealizarReserva(usuaCod , propCod, coment, tipoReserv);
+				if (session.getAttribute("USUACodigo") != null){
+					Transaccion tran = new Transaccion();
+					
+					String usuaCod = session.getAttribute("USUACodigo").toString();
+					String propCod = request.getParameter("hiddenPropCodigo");
+					String coment = request.getParameter("tbComentario");
+					String tipoReserv = request.getParameter("tbTipoReser");
+					
+					if (tran.RealizarReserva(usuaCod , propCod, coment, tipoReserv) > 0){
+						%>
+							<script>alert('Reserva realizada con exito!!')</script>
+						<%
+					}
+					
+				} else {
+					%>
+						<script>alert('Debe ser usuario')</script>
+					<%
+				}
 				
-			} else {
-				%>
-					<script>alert('Debe ser usuario')</script>
-				<%
 			}
-		}
+			
+			
+			
+			
+
+		//}
 	%>
 	
 	
