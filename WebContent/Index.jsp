@@ -39,6 +39,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
+<form class="form-inline" method="post" action="Index.jsp">
 <center>
 <h1>Tu hogar está aquí</h1>
 <h2>Casas, departamentos en arriendo y venta</h2>
@@ -46,7 +47,7 @@
 
 
 
-<form class="form-inline">
+
 
 
  <select class="form-control">
@@ -73,7 +74,7 @@
 <div class="btn-group" role="group" aria-label="...">
  <button type="button" name="btnBuscar" class="btn btn-default" onclick="#">Buscar</button>
 </div>
-</form>
+
 </center>
 
 <div class="container">
@@ -144,7 +145,7 @@
 	</tr>
 	
 	<%
-	//if (request.getParameter("btnBuscar") != null){
+	
 		Busqueda busq = new Busqueda();
 		
 		List<Propiedad> listProp = busq.ListarProp();
@@ -163,12 +164,30 @@
 			<%
 		}
 		
-	//}
+		
+		if (request.getParameter("btnReservar") != null){
+			
+			Transaccion tran = new Transaccion();
+			
+			if (session.getAttribute("USUACodigo") != null){
+				String usuaCod = session.getAttribute("USUACodigo").toString();
+				String propCod = request.getParameter("btnReservar");
+				String coment = "Sin comentario";
+				String tipoReserv = "C";
+				
+				tran.RealizarReserva(usuaCod , propCod, coment, tipoReserv);
+				
+			} else {
+				%>
+					<script>alert('Debe ser usuario')</script>
+				<%
+			}
+		}
 	%>
 	
 	
 </table>
-
+</form>
 <%@ include file="footer.jsp" %>
 
 </body>

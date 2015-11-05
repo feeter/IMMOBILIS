@@ -66,6 +66,7 @@
 		Cliente cte = aut.LoginCliente(String.valueOf(cuerpoRut), dv, passwd);
 		
 		if(cte.getCodigo() != 0){
+			session.setAttribute("USUACodigo", cte.getCodigo());
 			session.setAttribute("Nombre", cte.getNombre() + " " + cte.getAppPater());
 			session.setAttribute("Rut", String.valueOf(cte.getRut()) + "-" + cte.getDv());
 			
