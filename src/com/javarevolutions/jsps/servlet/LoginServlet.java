@@ -14,7 +14,7 @@ import modelo.entidad.Cliente;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/Login.jr")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,17 +41,41 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String accion = request.getParameter("accion");
-		//System.out.println("accion: " + accion);
+		System.out.println("accion: " + accion);
 		
-		if (accion.equals("salir")){
-			Salir(request, response);
-		} else if (accion.equals("logearce")){
+		if (accion.equals("logearce")){
 			Logearce(request, response);	
+		} else if (accion.equals("Ingresar")){
+			Ingresar(request, response);	
+		} else if (accion.equals("salir")){
+			Salir(request, response);
+		} else if (accion.equals("publicar")){
+			PublicarProp(request, response);
+		} 
+		
+		
+		
+		
+	}
+	
+	private void Ingresar(HttpServletRequest request, HttpServletResponse response){
+		try {
+			response.sendRedirect("login.jsp");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+	}
+	
+	private void PublicarProp(HttpServletRequest request, HttpServletResponse response){
 		
 		
-		
-		
+		try {
+			response.sendRedirect("PublicarPropiedad.jsp");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private void Salir(HttpServletRequest request, HttpServletResponse response){

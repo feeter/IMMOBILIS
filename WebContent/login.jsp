@@ -34,7 +34,7 @@
      
 <h1>Ingresar</h1>
 
-	<form action="Login.jr" method="post" name="frmLogin">
+	<form action="LoginServlet" method="post" name="frmLogin">
 	  <input type="hidden" name="accion" value="logearce">
 	  
 	  

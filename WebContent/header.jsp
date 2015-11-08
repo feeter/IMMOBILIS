@@ -15,21 +15,6 @@
 </head>
 <body>
 
-<script type="text/javascript">
-
-
-function Salir(){
-	
-	var frm = document.getElementById("frmMenu");
-	frm.action = "Login.jr";
-	
-	var accion = document.getElementById("accion");
-	accion.value = "salir";
-	
-	frm.submit();
-}
-</script>
-
 <form action="" method="post" name="frmMenu" id="frmMenu">
 
 <input type="hidden" name="accion" id="accion">
@@ -40,8 +25,8 @@ function Salir(){
   <%-- <li role="presentation"><a href="cliente.jsp" <%=session.getAttribute("Nombre") == null ? "disabled" : "" %> >Clientes</a></li> --%>
   <li role="presentation"><a href="cliente.jsp">Clientes</a></li>
   <li role="presentation"><a href="Corretaje.jsp">Corretaje</a></li>
-  <li role="presentation"><a href="PublicarPropiedad.jsp">Publica tu propiedad</a></li>
-  <li role="presentation"><a href="javascript:void(0);" onclick="Salir();"  >Salir</a></li>
+  <li role="presentation"><a href="javascript:void(0);" onclick="PublicarProp();">Publica tu propiedad</a></li>
+  <li role="presentation"><a href="javascript:void(0);" onclick="Salir();" id="LinkLogearce" ><%=session.getAttribute("USUA") != null? "Salir": "Ingresar" %></a></li>
   <li></li>
   <li></li>
   
@@ -59,6 +44,38 @@ function Salir(){
 </ul>
 
 </form>
+
+<script type="text/javascript">
+
+function Salir(){
+	
+	var frm = document.getElementById("frmMenu");
+	frm.action = "LoginServlet";
+	
+	var link = document.getElementById("LinkLogearce");
+	var accion = document.getElementById("accion");
+	
+	if (link.innerHTML == "Ingresar"){
+		accion.value = "Ingresar";
+	} else {
+		accion.value = "salir";
+	}
+	
+	
+	frm.submit();
+}
+
+function PublicarProp(){
+	var frm = document.getElementById("frmMenu");
+	frm.action = "LoginServlet";
+	
+	var accion = document.getElementById("accion");
+	accion.value = "publicar";
+	
+	frm.submit();
+}
+
+</script>
 
 </body>
 </html>
