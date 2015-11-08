@@ -35,7 +35,6 @@
   }
   </style>
 
-
 </head>
 <body>
 <jsp:include page="header.jsp" />
@@ -43,12 +42,6 @@
 <center>
 <h1>Tu hogar está aquí</h1>
 <h2>Casas, departamentos en arriendo y venta</h2>
-
-
-
-
-
-
 
  <select class="form-control">
  	<option>-- Seleccione --</option>
@@ -155,7 +148,6 @@
 			%>
 			<tr>
 				<td> 
-					<%-- <button type="submit" class="btn btn-default" name="btnReservar" data-toggle="modal" data-target="#myModal" value="<%=prop.getCodigo() %>">Reservar</button> --%>
 					 <button type="button" value="<%=prop.getCodigo() %>" class="btn btn-default" name="btnReservar" 
 					 id="reserva" data-toggle="modal" data-target="#myModal" 
 					 <%=prop.getEstado() != "Disponible" ? "style=visibility:hidden;" : ""  %> 
@@ -169,12 +161,8 @@
 			</tr>
 			<%
 		}
-		//session.setAttribute("PROP_Codigo", request.getParameter("btnReserva"));
 		
 			%>
-			<!-- Trigger the modal with a button -->
-			<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
-			
 			<!-- Modal -->
 			<div id="myModal" class="modal fade" role="dialog">
 			  <div class="modal-dialog">
@@ -188,23 +176,19 @@
 			      <div class="modal-body">
 			      Comentario: <input type="text" class="form-control" name="tbComentario" placeholder="Ingrese comentario..."> <br>
 			      Reserva: <select name="tbTipoReser">
-			      <option value="C">Compra</option>
-			      <option value="A">Arriendo</option>
-			      			</select>
-			      
-			        <!-- <p>Some text in the modal.</p> -->
+						      <option value="C">Compra</option>
+						      <option value="A">Arriendo</option>
+							</select>
+			     
 			      </div>
 			      <div class="modal-footer">
 			        <button type="submit" class="btn btn-default" name="btnFinalizarReserva" value="<%=request.getParameter("tbCodigoProp") %>">Reservar</button>
-			        <!-- <button type="submit" name="btnRealizarReserva" class="btn btn-default" data-dismiss="modal">Realizar reserva</button> -->
 			      </div>
 			    </div>
 			
 			  </div>
 			</div>
 			<%
-			
-			
 			
 			if (request.getParameter("btnFinalizarReserva") != null){
 				
@@ -233,26 +217,11 @@
 				}
 				
 			}
-			
-			
-			
-			
-
-		//}
 	%>
 	
 	
 </table>
 </form>
 <%@ include file="footer.jsp" %>
-
-<script type="text/javascript">
-
-function GuardarValorProp(){
-	document.frmIndex.hdnValueProp.value = this.value;
-}
-
-</script>
-
 </body>
 </html>
