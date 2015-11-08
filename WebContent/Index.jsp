@@ -39,7 +39,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
-<form class="form-inline" method="post" action="Index.jsp">
+<form class="form-inline" method="post" action="Index.jsp" name="frmIndex">
 <center>
 <h1>Tu hogar está aquí</h1>
 <h2>Casas, departamentos en arriendo y venta</h2>
@@ -156,8 +156,10 @@
 			<tr>
 				<td> 
 					<%-- <button type="submit" class="btn btn-default" name="btnReservar" data-toggle="modal" data-target="#myModal" value="<%=prop.getCodigo() %>">Reservar</button> --%>
-					 <button type="button" class="btn btn-default" name="btnReservar" data-toggle="modal" data-target="#myModal" >Reservar</button>
-					 <input type="hidden" name="hiddenPropCodigo" value="<%=prop.getCodigo() %>"> 
+					 <button type="button" value="<%=prop.getCodigo() %>" class="btn btn-default" name="btnReservar" 
+					 id="reserva" data-toggle="modal" data-target="#myModal" 
+					 <%=prop.getEstado() != "Disponible" ? "style=visibility:hidden;" : ""  %> 
+					 onclick="document.frmIndex.btnFinalizarReserva.value = this.value" >Reservar</button>
 				<td>
 				<td><%=prop.getComuna() %></td>
 				<td><%="UF " + prop.getPrecioVenta() %></td>
@@ -203,14 +205,18 @@
 			<%
 			
 			
-			//if (request.getParameter("btnReservar") != null){
+			
 			if (request.getParameter("btnFinalizarReserva") != null){
 				
 				if (session.getAttribute("USUA") != null){
 					Transaccion tran = new Transaccion();
 					
 					String usuaCod = String.valueOf(((Cliente)session.getAttribute("USUA")).getCodigo());
-					String propCod = request.getParameter("hiddenPropCodigo");
+
+
+					String propCod = request.getParameter("btnFinalizarReserva");
+
+					
 					String coment = request.getParameter("tbComentario");
 					String tipoReserv = request.getParameter("tbTipoReser");
 					
@@ -239,6 +245,14 @@
 </table>
 </form>
 <%@ include file="footer.jsp" %>
+
+<script type="text/javascript">
+
+function GuardarValorProp(){
+	document.frmIndex.hdnValueProp.value = this.value;
+}
+
+</script>
 
 </body>
 </html>

@@ -20,7 +20,7 @@ public class ReservaDAO extends SQLConexion {
 
 		
 		String strXMLDatos = xml.GenerarDocXML("parametros");
-		
+		System.out.println(strXMLDatos);
 		ResultSet rs = EjecutarSP("WEB_INS_RealizarReserva", strXMLDatos);
 		
 		while (rs.next()) {
