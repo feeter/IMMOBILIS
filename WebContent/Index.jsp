@@ -206,10 +206,10 @@
 			//if (request.getParameter("btnReservar") != null){
 			if (request.getParameter("btnFinalizarReserva") != null){
 				
-				if (session.getAttribute("USUACodigo") != null){
+				if (session.getAttribute("USUA") != null){
 					Transaccion tran = new Transaccion();
 					
-					String usuaCod = session.getAttribute("USUACodigo").toString();
+					String usuaCod = String.valueOf(((Cliente)session.getAttribute("USUA")).getCodigo());
 					String propCod = request.getParameter("hiddenPropCodigo");
 					String coment = request.getParameter("tbComentario");
 					String tipoReserv = request.getParameter("tbTipoReser");
