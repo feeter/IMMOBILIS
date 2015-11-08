@@ -2,6 +2,24 @@ package modelo.entidad;
 
 public class Cliente {
 	
+	public Cliente(int codigo, String nombre, int rut, String dv, int numCasa, String appPater, String appMater,
+			String correo, String password, Boolean vigente, Integer telCel, String calle, Integer rol) {
+		super();
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.rut = rut;
+		this.dv = dv;
+		this.numCasa = numCasa;
+		this.appPater = appPater;
+		this.appMater = appMater;
+		this.correo = correo;
+		this.password = password;
+		this.vigente = vigente;
+		this.telCel = telCel;
+		this.calle = calle;
+		this.rol = rol;
+	}
+
 	private int codigo;
 	private String nombre;
 	private int rut;

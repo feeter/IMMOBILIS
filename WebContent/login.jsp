@@ -34,7 +34,9 @@
      
 <h1>Ingresar</h1>
 
-	<form action="login.jsp" method="post" name="frmLogin">
+	<form action="Login.jr" method="post" name="frmLogin">
+	  <input type="hidden" name="accion" value="logearce">
+	  
 	  
 	  <div class="form-group">
 	    <input type="text" class="form-control" name="tbRut" placeholder="11111111-1">
@@ -44,39 +46,6 @@
 	  </div>
 	  <button type="submit" class="btn btn-default" name="btnIngresar">Ingresar</button>
 	</form>
-	
-	<%
-	if (request.getParameter("btnIngresar") != null){
-		
-		Autentificacion aut = new Autentificacion();
-		
-		String rut = request.getParameter("tbRut").replace("-", "").replace(".", "").trim();
-		int cuerpoRut = 0;
-		String dv = "";
-		if(rut != null && rut != ""){
-			cuerpoRut = Integer.parseInt(rut.substring(0, rut.length()-1));
-			dv = rut.substring(rut.length()-1, rut.length());
-		}
-			
-		
-		
-		
-		String passwd = request.getParameter("tbPassword").trim();
-		
-		Cliente cte = aut.LoginCliente(String.valueOf(cuerpoRut), dv, passwd);
-		
-		if(cte.getCodigo() != 0){
-			session.setAttribute("USUACodigo", cte.getCodigo());
-			session.setAttribute("Nombre", cte.getNombre() + " " + cte.getAppPater());
-			session.setAttribute("Rut", String.valueOf(cte.getRut()) + "-" + cte.getDv());
-			
-			response.sendRedirect("Index.jsp");
-		}
-		
-	}
-	
-
-	%>
 	
 	<%@ include file="footer.jsp" %>
 </body>
