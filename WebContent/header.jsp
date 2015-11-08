@@ -38,8 +38,8 @@
   	}
   	%>
   	
-   		<li> User: <%=cte.getNombre()  %></li>
-  		<li> Rut: <%=cte.getRut()  %></li>
+   		<li> User: <%=cte.getNombre() + " " + cte.getAppPater() %></li>
+  		<li> Rut: <%=cte.getRut() == 0 ? "" : cte.getRut() + "-" + cte.getDv()  %></li>
 	</blockquote>
 </ul>
 
