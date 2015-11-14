@@ -37,12 +37,12 @@ public class Busqueda {
 		
 	}
 	
-	public List<Pago> ListarPagoByUser(String userID){
+	public List<Pago> ListarPagosByUser(String pagoCodigo, String pagoFecha, String pagoMonto, String pagoTipo, String pagoEstado){
 		List<Pago> list = null;
 		try{
 			
 
-			list = pagDAO.ListarPagosByUser(userID);
+			list = pagDAO.ListarPagosByUser(pagoCodigo, pagoFecha, pagoMonto , pagoTipo, pagoEstado  );
 			
 			
 		}catch(Exception ex){
