@@ -10,5 +10,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/IMMOBILIS/JAR/sqljdbc42.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/IMMOBILIS/JAR/itextpdf-5.5.7.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

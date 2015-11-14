@@ -49,7 +49,7 @@
 			
 			String userID = session.getAttribute("USUACodigo").toString();
 			
-			listPag = busq.ListarPagoByUser(userID);
+			listPag = busq.ListarPagosByUser(userID);
 			
 			//recorrer la variable listPag como lo hago en cliente y crear la tabla
 		}
