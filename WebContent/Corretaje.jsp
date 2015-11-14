@@ -29,17 +29,16 @@
  <button type="submit" class="btn btn-warning" name="btnListarPropiedades">Listar Inmuebles</button>
  
  <br>
- 	<table class="table table-striped">
- 	 <br>
+ <table class="table table-striped">
 		<tr>
 			<th><th>
-			<th>Codigo</th>
-			<th>Direccion</th>
-			<th>Numero</th>
-			<th>Precio Venta</th>
-			<th>Precio Arriendo</th>
+			<th>Codigo de Pago</th>
+			<th>ashdjkashd</th>
+			<th>23kshdjsadk</th>
+			<th>Estado de Pago</th>
+			<th>Pago de estado</th>
 		</tr>
-		
+
 		<%
 		Busqueda busq = new Busqueda();
 		
@@ -49,16 +48,38 @@
 			
 			String userID = session.getAttribute("USUACodigo").toString();
 			
-			listPag = busq.ListarPagosByUser(userID);
-			
-			//recorrer la variable listPag como lo hago en cliente y crear la tabla
+			listPag = busq.ListarPagosByUser(userID, "","","","");
 		}
+			
+			Autentificacion aut = new Autentificacion();
+			
+			if (request.getParameter("btnHistorialPago") != null){
+				
+				List<Pago> list = new ArrayList<Pago>();
+				
+				for (Pago pag: list){
+					%>
+					<tr>
+						<% System.out.println(pag.getPagoCodigo()); %>
+						<td><%=pag.getPagoCodigo() %></td>
+						<td><%=pag.getPagoFecha() %></td>
+						<td><%=pag.getPagoMonto() %></td>
+						<td><%=pag.getPagoTipo() %></td>
+						<td><%=pag.getPagoEstado() %></td>
+					</tr>
+					<%
+				}
+			}
+			
+					%>
+
+					
 
 		
-		%>
+
 		
+<%--.branch 'master' of https://github.com/feeter/IMMOBILIS.git--%>
 			
-		
 	</table>
   </form>
    <%@ include file="../../footer.jsp" %>
