@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 		String accion = request.getParameter("accion");
 		System.out.println("accion: " + accion);
 		
-		if (accion.equals("logearse")){
+		if (accion.equals("logearce")){
 			Logearce(request, response);	
 		} else if (accion.equals("Ingresar")){
 			Ingresar(request, response);	

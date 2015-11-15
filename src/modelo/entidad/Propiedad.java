@@ -56,19 +56,27 @@ public class Propiedad {
 		return estado;
 	}
 	public void setEstado(String estado) {
-		
-		if (estado.equals("D"))
-			this.estado = "Disponible";
-		else if (estado.equals("V"))
-			this.estado = "Vendida";
-		else if (estado.equals("A"))
-			this.estado = "Arrendada";
-		else if (estado.equals("R"))
-			this.estado = "Reservada";
-		else
-			this.estado = "Estado desconocido";
-
+		this.estado = EstadoPropiedad.valueOf(estado).getEstado();
 	}
+
+	
+	public enum EstadoPropiedad{
+		D ("Disponible"),
+		V ("Vendida"),
+		A ("Arrendada"),
+		R ("Reservada");
+		
+		private final String estado;
+		
+		private EstadoPropiedad(String estado){
+			this.estado = estado;
+		}
+		
+		public String getEstado() {
+			return estado;
+		}
+	}
+	
 	public String getCalle() {
 		return calle;
 	}
