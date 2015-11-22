@@ -1,15 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<%-- <%@ page import="com.itextpdf.text.log.SysoCounter"%> ME DA ERROR ESTA LIBRERIA --%>
 <%@ page import="Negocio.*"%>
 <%@ page import="modelo.entidad.*" %>
 <%@ page import="java.util.List" %>
-<%--
-	Document	: index
-	Create on	: 17/10/2015
-	Author		: Jose Campos
-	Comment		: Pagina de inicio a mostrar, que permitira el registro y logeo de los usuarios  
- --%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,6 +35,8 @@
 <body>
 <jsp:include page="header.jsp" />
 <form class="form-inline" method="post" action="Index.jsp" name="frmIndex">
+<input type="hidden" name="IdProp" id="IdProp">
+
 <center>
 <h1>Tu hogar está aquí</h1>
 <h2>Casas, departamentos en arriendo y venta</h2>
@@ -150,8 +148,10 @@
 				<td> 
 					 <button type="button" value="<%=prop.getCodigo() %>" class="btn btn-default" name="btnReservar" 
 					 id="reserva" data-toggle="modal" data-target="#myModal" 
-					 <%=prop.getEstado() != "Disponible" ? "style=visibility:hidden;" : ""  %> 
-					 onclick="document.frmIndex.btnFinalizarReserva.value = this.value" >Reservar</button>
+					 <%=prop.getEstado() == Propiedad.EstadoPropiedad.D.getEstado()
+					 || prop.getEstado() == Propiedad.EstadoPropiedad.DA.getEstado()
+					 || prop.getEstado() == Propiedad.EstadoPropiedad.DV.getEstado() ? "" : "style=visibility:hidden;"   %> 
+					 onclick="document.frmIndex.btnFinalizarReserva.value = this.value;" >Reservar</button>
 				<td>
 				<td><%=prop.getComuna() %></td>
 				<td><%="UF " + prop.getPrecioVenta() %></td>
@@ -176,13 +176,44 @@
 			      <div class="modal-body">
 			      Comentario: <input type="text" class="form-control" name="tbComentario" placeholder="Ingrese comentario..."> <br>
 			      Reserva: <select name="tbTipoReser">
-						      <option value="C">Compra</option>
-						      <option value="A">Arriendo</option>
+			      					<option value="C">Compra</option>
+							      		<option value="A">Arriendo</option>
+			   <%--  	<%
+						
+					String accion = request.getParameter("IdProp");
+					System.out.println("Hidden: " + accion);
+					
+					
+			      			if (request.getParameter("IdProp") != null){
+				      			Busqueda bus = new Negocio.Busqueda();
+				      			Propiedad prop = new modelo.entidad.Propiedad();
+				      			
+				      			prop = bus.getPropiedad(request.getParameter("btnFinalizarReserva"));
+				      			
+				      			if (prop.getEstado() == Propiedad.EstadoPropiedad.D.getEstado()){
+				      				%>
+				      					<option value="C">Compra</option>
+							      		<option value="A">Arriendo</option>
+ 				      				<%
+				      			} else if (prop.getEstado() == Propiedad.EstadoPropiedad.DA.getEstado()){
+				      				%>
+				      					<option value="A">Arriendo</option>
+				      				<%
+				      			} else {
+				      				%>
+				      					<option value="C">Compra</option>
+				      				<%
+				      			}
+			      			}
+			      			%>
+			      			 --%>
+			      				
+
 							</select>
 			     
 			      </div>
 			      <div class="modal-footer">
-			        <button type="submit" class="btn btn-default" name="btnFinalizarReserva" value="<%=request.getParameter("tbCodigoProp") %>">Reservar</button>
+			        <button type="submit" class="btn btn-default" name="btnFinalizarReserva" >Reservar</button>
 			      </div>
 			    </div>
 			
@@ -223,5 +254,34 @@
 </table>
 </form>
 <%@ include file="footer.jsp" %>
+
+<%-- <script type="text/javascript">
+function ModalReserva(){
+	
+	var hidden = document.getElementById("IdProp");
+	hidden.value = document.getElementByName("btnFinalizarReserva");
+	
+	<%
+	
+	    Busqueda bus = new Negocio.Busqueda();
+		Propiedad prop = new modelo.entidad.Propiedad();
+		
+		prop = bus.getPropiedad(request.getParameter("IdProp"));
+	
+	%>
+	
+	
+	
+	  <% String str="Hello World"; %>
+	   var s="<%=prop.getEstado()%>"; 
+	   alert(s); 
+/* document.frmIndex.btnFinalizarReserva.value = this.value; IdProp.value = this.value */
+}
+
+</script> --%>
+
+
+
+
 </body>
 </html>

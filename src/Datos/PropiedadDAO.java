@@ -11,6 +11,33 @@ import modelo.entidad.*;
 public class PropiedadDAO extends SQLConexion {
 	BaseSpXML xml = new BaseSpXML();
 	
+	public Propiedad getPropiedad(String codigo){
+		Propiedad prop = new Propiedad();
+		
+		xml.Clear();
+		xml.Add("Cod", codigo);
+
+
+		try{
+			String strXMLDatos = xml.GenerarDocXML("parametros");
+			
+			System.out.println("xml getPropiedad: " + strXMLDatos);
+			
+			ResultSet rs = EjecutarSP("WEB_SEL_getPropiedad", strXMLDatos);
+			
+			while (rs.next()) {
+				prop.setEstado(rs.getString("PROP_Estado"));
+			}
+			
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
+		
+		
+		
+		return prop;
+	}
+	
 	
 	public List<Propiedad> ListarPropToInicio(){
 

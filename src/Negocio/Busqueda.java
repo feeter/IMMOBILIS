@@ -19,6 +19,21 @@ public class Busqueda {
 	
 	LogEvent _log = new LogEvent();
 
+	public Propiedad getPropiedad(String codigo){
+		Propiedad prop = null;
+		try{
+			
+
+			prop = propDAO.getPropiedad(codigo);
+			
+			
+		}catch(Exception ex){
+			this._log.Registrar(this._modulo, ex.getMessage());
+		}
+		
+		return prop;
+	}
+	
 	public List<Propiedad> ListarProp(){
 		
 		List<Propiedad> list = null;
