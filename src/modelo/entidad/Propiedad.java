@@ -62,6 +62,8 @@ public class Propiedad {
 	
 	public enum EstadoPropiedad{
 		D ("Disponible"),
+		DA ("Disponible a Arriendo"),
+		DV ("Disponible a Venta"),
 		V ("Vendida"),
 		A ("Arrendada"),
 		R ("Reservada");

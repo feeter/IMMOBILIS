@@ -20,6 +20,8 @@ public class PropiedadDAO extends SQLConexion {
 			
 			ResultSet rs = EjecutarSP("WEB_SEL_PropiedadesToInicio", "");
 			
+
+			
 			while (rs.next()) {
 				
 				Propiedad prop = new Propiedad();
