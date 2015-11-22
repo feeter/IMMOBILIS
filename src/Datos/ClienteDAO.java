@@ -22,6 +22,8 @@ public class ClienteDAO extends SQLConexion {
 		
 		String strXMLDatos = xml.GenerarDocXML("parametros");
 		
+		System.out.println(strXMLDatos);
+		
 		ResultSet rs = EjecutarSP("WEB_SEL_ListarClientes", strXMLDatos);
 		
 		while (rs.next()) {
@@ -39,11 +41,13 @@ public class ClienteDAO extends SQLConexion {
 			client.setTelCel(rs.getInt("USUA_TelCel"));
 			//client.setCalle(rs.getString("tbCalle"));
 			client.setVigente(rs.getBoolean("USUA_Vigente"));
+			client.setRol(rs.getInt("Rol_Codigo"));
 			
 			
 			list.add(client);
 		
 		}
+		
 		
 		return list;
 	}
@@ -178,6 +182,8 @@ public class ClienteDAO extends SQLConexion {
 		
 		String strXMLDatos = xml.GenerarDocXML("parametros");
 		
+		System.out.println(strXMLDatos);
+		
 		ResultSet rs = EjecutarSP("WEB_SEL_LoginCliente", strXMLDatos);
 		
 		while (rs.next()) {
@@ -186,6 +192,7 @@ public class ClienteDAO extends SQLConexion {
 			cte.setAppPater(rs.getString("USUA_AppPater"));
 			cte.setRut(rs.getInt("USUA_Rut"));
 			cte.setDv(rs.getString("USUA_Dv"));
+			cte.setRol(rs.getInt("Rol_Codigo"));
 		}
 		
 		return cte;

@@ -1,7 +1,7 @@
 package modelo.entidad;
 
 public class Cliente {
-	
+
 	public Cliente(int codigo, String nombre, int rut, String dv, int numCasa, String appPater, String appMater,
 			String correo, String password, Boolean vigente, Integer telCel, String calle, Integer rol) {
 		super();
@@ -24,10 +24,10 @@ public class Cliente {
 	private String nombre;
 	private int rut;
 	private String dv;
-	
+
 	private int numCasa;
-	
-	public Cliente(){
+
+	public Cliente() {
 		nombre = "";
 		rut = 0;
 		appPater = "";
@@ -37,9 +37,9 @@ public class Cliente {
 		telCel = 0;
 		calle = "";
 		vigente = false;
+		rol = 0;
 	}
-	
-	
+
 	/**
 	 * @return the numCasa
 	 */
@@ -48,7 +48,8 @@ public class Cliente {
 	}
 
 	/**
-	 * @param numCasa the numCasa to set
+	 * @param numCasa
+	 *            the numCasa to set
 	 */
 	public void setNumCasa(int numCasa) {
 		this.numCasa = numCasa;
@@ -62,7 +63,8 @@ public class Cliente {
 	}
 
 	/**
-	 * @param appPater the appPater to set
+	 * @param appPater
+	 *            the appPater to set
 	 */
 	public void setAppPater(String appPater) {
 		this.appPater = appPater;
@@ -76,7 +78,8 @@ public class Cliente {
 	}
 
 	/**
-	 * @param appMater the appMater to set
+	 * @param appMater
+	 *            the appMater to set
 	 */
 	public void setAppMater(String appMater) {
 		this.appMater = appMater;
@@ -90,7 +93,8 @@ public class Cliente {
 	}
 
 	/**
-	 * @param correo the correo to set
+	 * @param correo
+	 *            the correo to set
 	 */
 	public void setCorreo(String correo) {
 		this.correo = correo;
@@ -104,7 +108,8 @@ public class Cliente {
 	}
 
 	/**
-	 * @param password the password to set
+	 * @param password
+	 *            the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -118,7 +123,8 @@ public class Cliente {
 	}
 
 	/**
-	 * @param vigente the vigente to set
+	 * @param vigente
+	 *            the vigente to set
 	 */
 	public void setVigente(Boolean vigente) {
 		this.vigente = vigente;
@@ -132,7 +138,8 @@ public class Cliente {
 	}
 
 	/**
-	 * @param telCel the telCel to set
+	 * @param telCel
+	 *            the telCel to set
 	 */
 	public void setTelCel(Integer telCel) {
 		this.telCel = telCel;
@@ -146,7 +153,8 @@ public class Cliente {
 	}
 
 	/**
-	 * @param calle the calle to set
+	 * @param calle
+	 *            the calle to set
 	 */
 	public void setCalle(String calle) {
 		this.calle = calle;
@@ -159,8 +167,27 @@ public class Cliente {
 		return rol;
 	}
 
+	public enum RolNombres {
+		Administrador(1), Ejecutivo(2), Cobrador(3), Cliente(4);
+
+		private int legIndex;
+
+		private RolNombres(int legIndex) { 
+		   this.legIndex = legIndex; 
+		   }
+
+		public static RolNombres getRolNombres(int legIndex) {
+			for (RolNombres l : RolNombres.values()) {
+				if (l.legIndex == legIndex)
+					return l;
+			}
+			throw new IllegalArgumentException("Leg not found. Amputated?");
+		}
+	}
+
 	/**
-	 * @param rol the rol to set
+	 * @param rol
+	 *            the rol to set
 	 */
 	public void setRol(Integer rol) {
 		this.rol = rol;
@@ -174,37 +201,36 @@ public class Cliente {
 	private Integer telCel;
 	private String calle;
 	private Integer rol;
-	
+
 	public int getCodigo() {
 		return this.codigo;
 	}
-	
-	public void setCodigo(int codigo){
+
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	
-	public String getNombre(){
+
+	public String getNombre() {
 		return nombre;
 	}
-	
-	public void setNombre(String nombre){
+
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public int getRut(){
+
+	public int getRut() {
 		return rut;
 	}
-	
-	public void setRut(int rut){
+
+	public void setRut(int rut) {
 		this.rut = rut;
 	}
-	
-	public String getDv(){
+
+	public String getDv() {
 		return dv;
 	}
-	
-	public void setDv(String dv){
+
+	public void setDv(String dv) {
 		this.dv = dv;
 	}
 }
-

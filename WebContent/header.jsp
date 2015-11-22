@@ -22,8 +22,8 @@
 <ul class="nav nav-tabs">
  <!-- class="active" -->
   <li role="presentation"><a href="Index.jsp">Home</a></li>
-  <%-- <li role="presentation"><a href="cliente.jsp" <%=session.getAttribute("Nombre") == null ? "disabled" : "" %> >Clientes</a></li> --%>
-  <li role="presentation"><a href="cliente.jsp">Clientes</a></li>
+  <li role="presentation"><a href="javascript:void(0);" onclick="RedirigeAdministracion();" <%=session.getAttribute("USUA") == null ? "style=\"display: none;\"" : "" %> ><%=session.getAttribute("USUA") != null ? ((Cliente)session.getAttribute("USUA")).getRol() == 1 ? "Administracion" : "Mis Datos" : "" %></a></li>
+  <!-- <li role="presentation"><a href="cliente.jsp">Clientes</a></li> -->
   <li role="presentation"><a href="Corretaje.jsp">Corretaje</a></li>
   <li role="presentation"><a href="javascript:void(0);" onclick="PublicarProp();">Publica tu propiedad</a></li>
   <li role="presentation"><a href="javascript:void(0);" onclick="Salir();" id="LinkLogearce" ><%=session.getAttribute("USUA") != null? "Salir": "Ingresar" %></a></li>
@@ -67,10 +67,20 @@ function Salir(){
 
 function PublicarProp(){
 	var frm = document.getElementById("frmMenu");
-	frm.action = "LoginServlet";
+	frm.action = "LoginServlet"; //Debe ser un servlet de Propiedad.. llamalo PropiedadServlet 
 	
 	var accion = document.getElementById("accion");
 	accion.value = "publicar";
+	
+	frm.submit();
+}
+
+function RedirigeAdministracion(){
+	var frm = document.getElementById("frmMenu");
+	frm.action = "AdministracionServlet"; 
+	
+	var accion = document.getElementById("accion");
+	accion.value = "redirect"
 	
 	frm.submit();
 }

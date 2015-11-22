@@ -56,7 +56,7 @@ public class Propiedad {
 		return estado;
 	}
 	public void setEstado(String estado) {
-		this.estado = EstadoPropiedad.valueOf(estado).getEstado();
+		this.estado = EstadoPropiedad.valueOf(estado.toUpperCase()).getEstado();
 	}
 
 	

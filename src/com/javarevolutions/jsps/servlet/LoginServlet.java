@@ -84,6 +84,7 @@ public class LoginServlet extends HttpServlet {
 		//System.out.println("nombre: " + ((Ciente)session.getAttribute("USUA")).getNombre());
 		
 		
+		
 		session.invalidate();
 		
 		try {
@@ -110,6 +111,8 @@ public class LoginServlet extends HttpServlet {
 			String passwd = request.getParameter("tbPassword").trim();
 			
 			Cliente cte = aut.LoginCliente(String.valueOf(cuerpoRut), dv, passwd);
+			
+			System.out.println("codigo cte: "+cte.getCodigo());
 			
 			if(cte.getCodigo() != 0){
 				

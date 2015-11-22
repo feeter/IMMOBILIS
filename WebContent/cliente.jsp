@@ -46,6 +46,7 @@
 			<th>Rut</th>
 			<th>Telefono Celular</th>
 			<th>Correo</th>
+			<th>Perfil</th>
 		</tr>
 		
 		<%
@@ -75,6 +76,7 @@
 						<td><%=cte.getTelCel() %></td>
 						<%-- <td><input type="checkbox" name="tbVigente" <%=cte.getVigente() ? "checked" : "" %> disabled/></td> --%>
 						<td><%=cte.getCorreo() %></td>
+						<td><%=Cliente.RolNombres.getRolNombres(cte.getRol()) %></td>
 					</tr>
 					<%
 				}
