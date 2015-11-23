@@ -1,4 +1,6 @@
 <%@ page import="modelo.entidad.*" %>
+<%@ page import="java.util.List" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,7 +28,10 @@
   <!-- <li role="presentation"><a href="cliente.jsp">Clientes</a></li> -->
   <li role="presentation"><a href="Corretaje.jsp">Corretaje</a></li>
   <li role="presentation"><a href="javascript:void(0);" onclick="PublicarProp();">Publica tu propiedad</a></li>
+  <li role="presentation"><a href="" onclick="" <%=session.getAttribute("PAGO") != null? "" : "style=\"display: none;\"" %> ><%=session.getAttribute("PAGO") != null ? String.valueOf(((List<Pago>) session.getAttribute("PAGO")).size()) : "" %> Pagos pendientes</a></li>
+  
   <li role="presentation"><a href="javascript:void(0);" onclick="Salir();" id="LinkLogearce" ><%=session.getAttribute("USUA") != null? "Salir": "Ingresar" %></a></li>
+  
   <li></li>
   <li></li>
   

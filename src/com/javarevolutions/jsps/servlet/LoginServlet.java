@@ -1,6 +1,8 @@
 package com.javarevolutions.jsps.servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Negocio.Autentificacion;
+import Negocio.Transaccion;
 import modelo.entidad.Cliente;
+import modelo.entidad.Pago;
 
 /**
  * Servlet implementation class LoginServlet
@@ -117,6 +121,15 @@ public class LoginServlet extends HttpServlet {
 			if(cte.getCodigo() != 0){
 				
 				HttpSession session = request.getSession(true);
+				
+				Transaccion tran = new Transaccion();
+				List<Pago> lista = tran.GetPagosPendientes(String.valueOf(cte.getCodigo()));
+				
+				if (lista.size() > 0){
+					session.setAttribute("PAGO", lista);
+					
+				}
+				System.out.println("Cantidad de elementos de Lista pago : " + lista.size());
 				session.setAttribute("USUA", cte);
 				
 				
