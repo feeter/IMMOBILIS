@@ -147,7 +147,7 @@
 			<tr>
 				<td> 
 					 <button type="button" value="<%=prop.getCodigo() %>" class="btn btn-default" name="btnReservar" 
-					 id="reserva" data-toggle="modal" data-target="#myModal" 
+					 id="reserva" data-toggle="modal" data-target="#myModal" data-estado="<%=prop.getEstado() %>"
 					 <%=prop.getEstado() == Propiedad.EstadoPropiedad.D.getEstado()
 					 || prop.getEstado() == Propiedad.EstadoPropiedad.DA.getEstado()
 					 || prop.getEstado() == Propiedad.EstadoPropiedad.DV.getEstado() ? "" : "style=visibility:hidden;"   %> 
@@ -175,40 +175,9 @@
 			      </div>
 			      <div class="modal-body">
 			      Comentario: <input type="text" class="form-control" name="tbComentario" placeholder="Ingrese comentario..."> <br>
-			      Reserva: <select name="tbTipoReser">
+			      Reserva: <select name="tbTipoReser" id="cmbTipo">
 			      					<option value="C">Compra</option>
 							      		<option value="A">Arriendo</option>
-			   <%--  	<%
-						
-					String accion = request.getParameter("IdProp");
-					System.out.println("Hidden: " + accion);
-					
-					
-			      			if (request.getParameter("IdProp") != null){
-				      			Busqueda bus = new Negocio.Busqueda();
-				      			Propiedad prop = new modelo.entidad.Propiedad();
-				      			
-				      			prop = bus.getPropiedad(request.getParameter("btnFinalizarReserva"));
-				      			
-				      			if (prop.getEstado() == Propiedad.EstadoPropiedad.D.getEstado()){
-				      				%>
-				      					<option value="C">Compra</option>
-							      		<option value="A">Arriendo</option>
- 				      				<%
-				      			} else if (prop.getEstado() == Propiedad.EstadoPropiedad.DA.getEstado()){
-				      				%>
-				      					<option value="A">Arriendo</option>
-				      				<%
-				      			} else {
-				      				%>
-				      					<option value="C">Compra</option>
-				      				<%
-				      			}
-			      			}
-			      			%>
-			      			 --%>
-			      				
-
 							</select>
 			     
 			      </div>
@@ -255,30 +224,28 @@
 </form>
 <%@ include file="footer.jsp" %>
 
-<%-- <script type="text/javascript">
-function ModalReserva(){
-	
-	var hidden = document.getElementById("IdProp");
-	hidden.value = document.getElementByName("btnFinalizarReserva");
-	
-	<%
-	
-	    Busqueda bus = new Negocio.Busqueda();
-		Propiedad prop = new modelo.entidad.Propiedad();
-		
-		prop = bus.getPropiedad(request.getParameter("IdProp"));
-	
-	%>
-	
-	
-	
-	  <% String str="Hello World"; %>
-	   var s="<%=prop.getEstado()%>"; 
-	   alert(s); 
-/* document.frmIndex.btnFinalizarReserva.value = this.value; IdProp.value = this.value */
-}
+<script type="text/javascript">
 
-</script> --%>
+$(".btn-default").click(function(){
+	  var estado = $(this).data("estado");
+	  
+	  if (estado == "Disponible a Venta"){
+		  estado = "C";
+		  $("#cmbTipo").val(estado);
+		  $("#cmbTipo").prop('disabled', 'disabled');
+	  } else if (estado == "Disponible a Arriendo"){
+		  estado = "A";
+		  $("#cmbTipo").val(estado);
+		  $("#cmbTipo").prop('disabled', 'disabled');
+	  } else {
+		  $("#cmbTipo").prop('disabled', '');
+	  }
+	  
+	  //alert(estado);
+	  
+	});
+
+</script>
 
 
 
