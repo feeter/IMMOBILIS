@@ -55,11 +55,22 @@ public class LoginServlet extends HttpServlet {
 			Salir(request, response);
 		} else if (accion.equals("publicar")){
 			PublicarProp(request, response);
-		} 
+		} else if (accion.equals("deudasClient")){
+			DeudasClient(request, response);
+		}
 		
 		
 		
 		
+	}
+	
+	private void DeudasClient(HttpServletRequest request, HttpServletResponse response){
+		try {
+			response.sendRedirect("deudaClient.jsp");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private void Ingresar(HttpServletRequest request, HttpServletResponse response){

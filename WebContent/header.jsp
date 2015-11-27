@@ -28,7 +28,7 @@
   <!-- <li role="presentation"><a href="cliente.jsp">Clientes</a></li> -->
   <li role="presentation"><a href="Corretaje.jsp">Corretaje</a></li>
   <li role="presentation"><a href="javascript:void(0);" onclick="PublicarProp();">Publica tu propiedad</a></li>
-  <li role="presentation"><a href="" onclick="" <%=session.getAttribute("PAGO") != null? "" : "style=\"display: none;\"" %> ><%=session.getAttribute("PAGO") != null ? String.valueOf(((List<Pago>) session.getAttribute("PAGO")).size()) : "" %> Pagos pendientes</a></li>
+  <li role="presentation"><a href="javascript:void(0);" onclick="DeudasCliente()" <%=session.getAttribute("PAGO") != null? "" : "style=\"display: none;\"" %> ><%=session.getAttribute("PAGO") != null ? String.valueOf(((List<Pago>) session.getAttribute("PAGO")).size()) : "" %> Pagos pendientes</a></li>
   
   <li role="presentation"><a href="javascript:void(0);" onclick="Salir();" id="LinkLogearce" ><%=session.getAttribute("USUA") != null? "Salir": "Ingresar" %></a></li>
   
@@ -88,6 +88,17 @@ function RedirigeAdministracion(){
 	accion.value = "redirect"
 	
 	frm.submit();
+}
+
+function DeudasCliente(){
+	var frm = document.getElementById("frmMenu");
+	frm.action = "LoginServlet";
+		
+	var accion = document.getElementById("accion");
+	accion.value = "deudasClient";
+	
+	frm.submit();
+	
 }
 
 </script>
