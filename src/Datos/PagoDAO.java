@@ -12,6 +12,31 @@ public class PagoDAO extends SQLConexion {
 	
 	BaseSpXML xml = new BaseSpXML();
 	
+	public int PagarDeuda(String PagoCodigo) throws Exception{
+		
+		
+		int ret = 0;
+		
+		xml.Clear();
+		xml.Add("PagCod", PagoCodigo);
+		
+
+		String strXMLDatos = xml.GenerarDocXML("parametros");
+		
+		System.out.println("Xml pago" + strXMLDatos);
+		
+		ResultSet rs = EjecutarSP("WEB_SEL_PagarDeuda", strXMLDatos);
+		
+		while (rs.next()) {
+			if (rs.getString(1).equals("OK")){
+				ret ++;
+			}
+		}
+		System.out.println("retorno pagarDeuda: " + ret);
+
+		return ret;
+	}
+	
 	public List<Pago> ListarPagosPendientes(String CodUser) throws Exception{
 		List<Pago> list = new ArrayList<Pago>();
 		xml.Clear();
@@ -26,12 +51,12 @@ public class PagoDAO extends SQLConexion {
 		while (rs.next()) {
 			Pago pay = new Pago();
 			
-			//pay.setPagoCodigo(rs.getString("PAGO_Codigo"));
+			pay.setPagoCodigo(rs.getInt("PAGO_Codigo"));
 			pay.setPagoFecha(rs.getDate("PAGO_Fecha"));
 			pay.setPagoMonto(rs.getInt("PAGO_Monto"));
 			pay.setPagoTipo(rs.getString("PAGO_Tipo"));
 			pay.setPagoEstado(rs.getString("PAGO_Estado"));
-			//pay.setPROP_Codigo(rs.getInt("PROP_Codigo"));
+			
 			
 			list.add(pay);
 		}

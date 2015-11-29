@@ -15,6 +15,20 @@ public class Transaccion {
 	String _modulo = "Negocio.Transaccion";
 	LogEvent _log = new LogEvent();
 	
+	public int PagarDeuda(String codPago){
+		int ret = 0;
+		
+		try{
+			
+			ret = pagosDAO.PagarDeuda(codPago);
+			
+		}catch (Exception ex){
+			this._log.Registrar(this._modulo, ex.getMessage());
+		}
+		
+		return ret;
+	}
+	
 	public List<Pago> GetPagosPendientes(String CodUser){
 		List<Pago> ret = null;
 		
