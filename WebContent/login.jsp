@@ -34,8 +34,8 @@
      
 <h1>Ingresar</h1>
 
-	<form action="LoginServlet" method="post" name="frmLogin">
-	  <input type="hidden" name="accion" value="logearce">
+	<form action="LoginServlet" method="post" name="frmLogin" id="frmLogin">
+	  <input type="hidden" name="accion" value="logearce" id="accion">
 	  
 	  
 	  <div class="form-group">
@@ -45,8 +45,26 @@
 	    <input type="password" class="form-control" name="tbPassword" placeholder="Password">
 	  </div>
 	  <button type="submit" class="btn btn-default" name="btnIngresar">Ingresar</button>
+	  
+	  
+	  <button type="button" class="btn btn-default" name="btnCrearUser" onclick="CrearUser();">Crear usuario</button>
 	</form>
 	
 	<%@ include file="footer.jsp" %>
+	
+	<script type="text/javascript">
+	
+	function CrearUser(){
+		var frm = document.getElementById("frmLogin");
+		frm.action = "LoginServlet"; 
+		
+		var accion = document.getElementById("accion");
+		accion.value = "CrearUser"
+		
+		frm.submit();
+	}
+	
+	</script>
+	
 </body>
 </html>
