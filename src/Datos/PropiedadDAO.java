@@ -54,6 +54,7 @@ public class PropiedadDAO extends SQLConexion {
 			
 			ResultSet rs = EjecutarSP("WEB_SEL_PropiedadesToInicio", strXMLDatos);
 			
+			
 
 			
 			while (rs.next()) {
@@ -72,6 +73,7 @@ public class PropiedadDAO extends SQLConexion {
 			}
 			
 		}catch(Exception ex){
+			System.out.println("exeption");
 			System.out.println(ex.getMessage());
 		}
 		

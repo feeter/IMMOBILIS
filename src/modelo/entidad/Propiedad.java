@@ -1,5 +1,7 @@
 package modelo.entidad;
 
+import modelo.entidad.Cliente.RolNombres;
+
 public class Propiedad {
 	
 	private int codigo;
@@ -56,16 +58,21 @@ public class Propiedad {
 		return estado;
 	}
 	public void setEstado(String estado) {
+		
+		System.out.println("estado: " + estado);
+		
 		this.estado = EstadoPropiedad.valueOf(estado.toUpperCase()).getEstado();
+		
+		
 	}
-
 	
 	public enum EstadoPropiedad{
+		//AR ("asd"),
+		A ("Arrendada"),
 		D ("Disponible"),
 		DA ("Disponible a Arriendo"),
 		DV ("Disponible a Venta"),
 		V ("Vendida"),
-		A ("Arrendada"),
 		R ("Reservada");
 		
 		private final String estado;

@@ -44,7 +44,8 @@
 <h2>Casas, departamentos en arriendo y venta</h2>
 
  <select class="form-control" name="selectEstado">
-   <option value="D">-- Seleccione estado disponibilidad--</option>
+   <option value="">-- Seleccione estado--</option>
+   <option value="D">Disponibles</option>
    <option value="DV">Comprar</option>
    <option value="DA">Arrendar</option>
  </select>
@@ -159,9 +160,7 @@
 				<td> 
 					 <button type="button" value="<%=prop.getCodigo() %>" class="btn btn-default" name="btnReservar" 
 					 id="reserva" data-toggle="modal" data-target="#myModal" data-estado="<%=prop.getEstado() %>"
-					 <%=prop.getEstado() == Propiedad.EstadoPropiedad.D.getEstado()
-					 || prop.getEstado() == Propiedad.EstadoPropiedad.DA.getEstado()
-					 || prop.getEstado() == Propiedad.EstadoPropiedad.DV.getEstado() ? "" : "style=visibility:hidden;"   %> 
+					 <%=prop.getEstado().contains("D") ? "" : "style=visibility:hidden;"   %> 
 					 onclick="document.frmIndex.btnFinalizarReserva.value = this.value;" >Reservar</button>
 				<td>
 				<td><%=prop.getComuna() %></td>
