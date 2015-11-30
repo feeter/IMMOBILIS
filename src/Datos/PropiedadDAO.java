@@ -39,13 +39,20 @@ public class PropiedadDAO extends SQLConexion {
 	}
 	
 	
-	public List<Propiedad> ListarPropToInicio(){
+	public List<Propiedad> ListarPropToInicio(String estado, String tipo, String comu){
 
 		List<Propiedad> list = new ArrayList<Propiedad>();
 		try{
+			xml.Clear();
+			xml.Add("propEstado", estado);
+			xml.Add("propTipo", tipo);
+			xml.Add("propComuNom", comu);
 			
+			String strXMLDatos = xml.GenerarDocXML("parametros");
 			
-			ResultSet rs = EjecutarSP("WEB_SEL_PropiedadesToInicio", "");
+			System.out.println("ListarPropToInicio: " + strXMLDatos);
+			
+			ResultSet rs = EjecutarSP("WEB_SEL_PropiedadesToInicio", strXMLDatos);
 			
 
 			

@@ -34,36 +34,38 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
-<form class="form-inline" method="post" action="Index.jsp" name="frmIndex">
+<form class="form-inline" method="post" action="Index.jsp" name="frmIndex" id="frmIndex">
+
+<input type="hidden" name="accionIndex" id="accionIndex">
 <input type="hidden" name="IdProp" id="IdProp">
 
 <center>
 <h1>Tu hogar está aquí</h1>
 <h2>Casas, departamentos en arriendo y venta</h2>
 
- <select class="form-control">
- 	<option>-- Seleccione --</option>
-   <option>Comprar</option>
-   <option>Arrendar</option>
+ <select class="form-control" name="selectEstado">
+   <option value="D">-- Seleccione estado disponibilidad--</option>
+   <option value="DV">Comprar</option>
+   <option value="DA">Arrendar</option>
  </select>
 
-<select class="form-control">
-	<option>-- Seleccione --</option>
-    <option>Casa</option>
-    <option>Departamento</option>
-    <option>Estacionamiento</option>
-    <option>Bodega</option>
-    <option>Oficinas</option>
+<select class="form-control" name="selectTipo">
+	<option value="">-- Seleccione tipo--</option>
+    <option value="CASA">Casa</option>
+    <option value="DPTO">Departamento</option>
+    <option value="ESTA">Estacionamiento</option>
+    <option value="BODE">Bodega</option>
+    <option value="OFIC">Oficinas</option>
   </select>
 
 
   <div class="form-group">
     <!-- <label class="sr-only" for="lblBusqueda"></label> -->
-    <input type="text" class="form-control" id="tbNombre" placeholder="Ingresa una comuna o region" style="width: 300px">
+    <input type="text" class="form-control" id="tbComuna" name="tbComuna" placeholder="Ingresa una comuna." style="width: 300px">
   </div>
 
 <div class="btn-group" role="group" aria-label="...">
- <button type="button" name="btnBuscar" class="btn btn-default" >Buscar</button>
+ <button type="button" name="btnBuscar" class="btn btn-default" onclick="buscarProp();" >Buscar</button>
 </div>
 
 </center>
@@ -137,10 +139,19 @@
 	</tr>
 	
 	<%
+
+		String estado = "";
+		String tipo = "";
+		String comu = "";
+		List<Propiedad> listProp = null;
 	
-		Busqueda busq = new Busqueda();
-		
-		List<Propiedad> listProp = busq.ListarProp();
+		if (session.getAttribute("ListProp") != null){
+			listProp = (List<Propiedad>) session.getAttribute("ListProp");
+		} else{
+			Busqueda busq = new Busqueda();
+			
+			listProp = busq.ListarProp(estado, tipo, comu);
+		}
 		
 		for (Propiedad prop: listProp){
 			%>
@@ -226,7 +237,7 @@
 
 <script type="text/javascript">
 
-$(".btn-default").click(function(){
+	$(".btn-default").click(function(){
 	  var estado = $(this).data("estado");
 	  
 	  if (estado == "Disponible a Venta"){
@@ -244,6 +255,18 @@ $(".btn-default").click(function(){
 	  //alert(estado);
 	  
 	});
+	
+	function buscarProp(){
+		var frm = document.getElementById("frmIndex");
+		frm.action = "IndexServlet";
+
+		
+ 		var accion = document.getElementById("accionIndex");
+		accion.value = "buscarProp"; 
+		
+		frm.submit();
+		
+	}
 
 </script>
 

@@ -34,13 +34,13 @@ public class Busqueda {
 		return prop;
 	}
 	
-	public List<Propiedad> ListarProp(){
+	public List<Propiedad> ListarProp(String estado, String tipo, String comu){
 		
 		List<Propiedad> list = null;
 		try{
 			
 
-			list = propDAO.ListarPropToInicio();
+			list = propDAO.ListarPropToInicio(estado, tipo, comu);
 			
 			
 		}catch(Exception ex){
