@@ -27,8 +27,8 @@
   <table>
   <tr>
 	<td><input type="text" name="txtBuscarProp" class="form-control" placeholder="Buscar Inmuebles"></td>
- 	<td><button type="submit" class="btn btn-warning" name="btnBuscarInmuebles">Buscar</button></td>
- 	<td><button type="submit" class="btn btn-warning" name="btnListarPropiedades">Listar Inmuebles</button></td>
+ 	<td><button type="submit" class="btn btn-primary" name="btnBuscarInmuebles">Buscar</button></td>
+ 	<td><button type="submit" class="btn btn-primary" name="btnListarPropiedades">Listar Inmuebles</button></td>
 </tr>
  </table>
  <br>
@@ -61,7 +61,7 @@
 				for (Propiedad prop: listaPropiedad){
 					
 					%>
-					<tr>
+					<tr class="info">
 						<% System.out.println(prop.getCodigo()); %>
 						<td><%= contador %></td>
 						<td><%=prop.getCodigo() %></td>

@@ -35,20 +35,34 @@
   background-size: auto auto;
 
   }
-  h1 {
-  color: #000000;
-  font-family:verdana;
   
+  h1{
+  color: white !important;
+  
+  font-weight:bold !important;
+  font-family:verdana !important;
+  font-size: 45px !important;
+  text-shadow: -1px 0 hsla(0, 0%, 0%, 0.43), 0 1px hsla(0, 0%, 0%, 0.43), 1px 0 hsla(0, 0%, 0%, 0.43), 0 -1px hsla(0, 0%, 0%, 0.43);
   }
   h2 {
-  color: #000000;
-  font-family:verdana;
+  color: white !important;
+  font-family:verdana !important;
+    text-shadow: -1px 0 hsla(0, 0%, 0%, 0.43), 0 1px hsla(0, 0%, 0%, 0.43), 1px 0 hsla(0, 0%, 0%, 0.43), 0 -1px hsla(0, 0%, 0%, 0.43);
+  }
+  .site-search__block{
+  background-color: rgba(0,0,0,0.65);
+  border-radius: 2px;
+  padding: 5px;
+  width: 800px;
+  }
   
+  .footer {
+  color:black !important;
   }
   </style>
 
 </head>
-<body background="img/fondo.jpg" >
+<body  >
 <jsp:include page="header.jsp" />
 <form class="form-inline" method="post" action="Index.jsp" name="frmIndex" id="frmIndex">
 
@@ -56,12 +70,14 @@
 <input type="hidden" name="IdProp" id="IdProp">
 
 <center>
-<h1><b>Tu hogar está aquí</b></h1>
-<h2><b>Casas, departamentos en arriendo y venta</b></h2>
+<h1>Tu hogar está aquí</h1>
+<h2>Casas, departamentos en arriendo y venta</h2>
+
+<div class="site-search__block" >
 
  <select class="form-control" name="selectEstado">
    <option value="">-- Seleccione estado--</option>
-   <option value="D">Disponibles</option>
+   <option value="D">Disponible</option>
    <option value="DV">Comprar</option>
    <option value="DA">Arrendar</option>
  </select>
@@ -78,13 +94,13 @@
 
   <div class="form-group">
     <!-- <label class="sr-only" for="lblBusqueda"></label> -->
-    <input type="text" class="form-control" id="tbComuna" name="tbComuna" placeholder="Ingresa una comuna." style="width: 300px">
+    <input type="text" class="form-control" id="tbComuna" name="tbComuna" placeholder="Ingresa una comuna" style="width: 300px">
   </div>
 
 <div class="btn-group" role="group" aria-label="...">
- <button type="button" name="btnBuscar" class="btn btn-default" onclick="buscarProp();" >Buscar</button>
+ <button type="button" name="btnBuscar" class="btn btn-primary" onclick="buscarProp();" >Buscar</button>
 </div>
-
+</div>
 </center>
 
 <div class="container">

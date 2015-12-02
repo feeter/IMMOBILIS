@@ -12,9 +12,24 @@
 <script src="js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="js/rut.js"></script>
-
+	<style>
+	#divLogin{
+	text-align: center;
+    margin-left: 43%;
+    width: 250px;
+    margin-top: 18%;
+    background: rgba(15, 59, 98, 0.81);
+    padding: 20px;
+    border: 4px solid rgb(255, 255, 255);
+	}
+	#divLogin > h1{
+	color:#fff;
+	margin-bottom: 32px;
+	}
+	
+	</style>
 </head>
-<body>
+<body background="img/fondo.jpg">
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -31,8 +46,8 @@
             });
         });
      </script>
-     
-<h1>Ingresar</h1>
+ <div id="divLogin">    
+	<h1>Ingresar</h1>
 
 	<form action="LoginServlet" method="post" name="frmLogin" id="frmLogin">
 	  <input type="hidden" name="accion" value="logearce" id="accion">
@@ -49,7 +64,7 @@
 	  
 	  <button type="button" class="btn btn-default" name="btnCrearUser" onclick="CrearUser();">Crear usuario</button>
 	</form>
-	
+</div>
 	<%@ include file="footer.jsp" %>
 	
 	<script type="text/javascript">

@@ -35,7 +35,14 @@ if (key < 48 || key > 57)
 return true;
 }
 </script>
-
+<style>
+.table {
+    width: 100% !important;
+    max-width: 50% !important;
+    margin-bottom: 20px !important;
+    margin-left: 10% !important;
+}
+</style>
 
 </head>
 <body>
@@ -55,40 +62,40 @@ return true;
 %>
 <form name="frmCliente" action="cliente.editar.jsp" method="post">
 		<center>
-			<table>
-				<tr>
+			<table class="table table-striped">
+				<tr class="info">
 					<td>Codigo</td>
 					<td><input type="text" name="tbCodigo" readonly class="form-control" value="<%=client.getCodigo() %>"  /></td>
 				</tr>
-				<tr>
+				<tr class="info">
 					<td>Nombre</td>
 					<td><input type="text" name="tbNombre" class="form-control" required value="<%=client.getNombre() %>" /></td>
 				</tr>
-				<tr>
+				<tr class="info">
 					<td>Apellido Paterno</td>
 					<td><input type="text" name="tbAppPater" class="form-control" required value="<%=client.getAppPater() %>" /></td>
 				</tr>
-				<tr>
+				<tr class="info">
 					<td>Apellido Materno</td>
 					<td><input type="text" name="tbAppMater" class="form-control" value="<%=client.getAppMater() %>" /></td>
 				</tr>
-				<tr>
+				<tr class="info">
 					<td>Rut</td>
 					<td><input type="text" name="tbRut" class="form-control" required value="<%=client.getRut() == 0 ? "" : client.getRut() + client.getDv() %>"/></td>
 				</tr>
-				<tr>
+				<tr class="info">
 					<td>Correo</td>
 					<td><input type="email" name="tbCorreo" class="form-control" required value="<%=client.getCorreo() %>" /></td>
 				</tr>
-				<tr>
+				<tr class="info">
 					<td>Password</td>
 					<td><input type="password" name="tbPassword" class="form-control" required value="<%=client.getPassword() %>" /></td>
 				</tr>
-				<tr>
+				<tr class="info">
 					<td>Telefono Celular</td>
 					<td><input type="tel" name="tbTelCel" class="form-control" required value="<%=client.getTelCel() == 0 ? "" : client.getTelCel() %>" onkeypress="javascript:return validarNro(event)" /></td>
 				</tr>
-				<tr>
+				<tr class="info">
 					<td>Calle</td>
 					<td><input type="text" name="tbCalle" class="form-control" value="<%=client.getCalle() %>" /></td>
 				</tr>
@@ -98,7 +105,7 @@ return true;
 				</tr> --%>
 				<tr>
 					<td></td>
-					<td><input type="submit" class="btn btn-default" value="Guardar" name="btnGuardar" /></td>
+					<td><input type="submit" class="btn btn-primary" value="Guardar" name="btnGuardar" /></td>
 				</tr>
 			</table>
 		</center>

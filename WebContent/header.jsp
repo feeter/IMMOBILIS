@@ -21,13 +21,40 @@
   background-size: 930px 90px;
   <%--background-image:url(img/inmobilis.jpg)--%>
   }
+  body {
+  background-repeat: no-repeat;
+  background-size: auto;
+
+  }
   li {
   color: black;
   }
+  
+  .menu {
+  background: #16B;
+  margin-top: 20px;
+  color:#FFF;
+  }
+  .menu a{
+  color:#FFF;
+  }
+  .menu a:hover{
+  color:#16B;
+  }
+
+  .nav {
+  width:100%;
+  float:left;
+  position:relative;
+  }
+  
+
+  .nav-tabs {
+  border-bottom:none;}
   </style>
 
 </head>
-<body >
+<body background="img/fondo.jpg">
 
 <form action="" method="post" name="frmMenu" id="frmMenu">
 
@@ -35,23 +62,17 @@
 
 <ul class="nav nav-tabs">
  <!-- class="active" -->
- <li></li>
- <li></li>
- <li></li>
-  <li role="presentation"><a href="Index.jsp"><b>Home</b></a></li>
-  <li role="presentation"><a href="javascript:void(0);" onclick="RedirigeAdministracion();" <%=session.getAttribute("USUA") == null ? "style=\"display: none;\"" : "" %> ><b><%=session.getAttribute("USUA") != null ? ((Cliente)session.getAttribute("USUA")).getRol() == 1 ? "Administracion" : "Mis Datos" : "" %></b></a></li>
+
+  <li role="presentation" class="menu"><a href="Index.jsp"><b>Home</b></a></li>
+  <li role="presentation" class="menu"><a href="javascript:void(0);" onclick="RedirigeAdministracion();" <%=session.getAttribute("USUA") == null ? "style=\"display: none;\"" : "" %> ><b><%=session.getAttribute("USUA") != null ? ((Cliente)session.getAttribute("USUA")).getRol() == 1 ? "Administracion" : "Mis Datos" : "" %></b></a></li>
   <!-- <li role="presentation"><a href="cliente.jsp"><b>Clientes</b></a></li> -->
-  <li role="presentation"><a href="Corretaje.jsp"><b>Corretaje</b></a></li>
-  <li role="presentation"><a href="javascript:void(0);" onclick="PublicarProp();"><b>Publica tu propiedad</b></a></li>
-  <li role="presentation"><a href="javascript:void(0);" onclick="DeudasCliente()" <%=session.getAttribute("USUA") != null? "" : "style=\"display: none;\"" %> ><%=session.getAttribute("PAGO") != null ? String.valueOf(((List<Pago>) session.getAttribute("PAGO")).size()) : "" %><b> Pagos pendientes</b></a></li>
+  <li role="presentation" class="menu"><a href="Corretaje.jsp"><b>Corretaje</b></a></li>
+  <li role="presentation" class="menu"><a href="javascript:void(0);" onclick="PublicarProp();"><b>Publica tu propiedad</b></a></li>
+  <li role="presentation" class="menu"><a href="javascript:void(0);" onclick="DeudasCliente()" <%=session.getAttribute("USUA") != null? "" : "style=\"display: none;\"" %> ><%=session.getAttribute("PAGO") != null ? String.valueOf(((List<Pago>) session.getAttribute("PAGO")).size()) : "" %><b> Pagos pendientes</b></a></li>
   
-  <li role="presentation"><a href="javascript:void(0);" onclick="Salir();" id="LinkLogearce" ><%=session.getAttribute("USUA") != null? "Salir": "Ingresar" %></a></li>
+  <li role="presentation" class="menu menu-right"><a href="javascript:void(0);" onclick="Salir();" id="LinkLogearce" ><%=session.getAttribute("USUA") != null? "Salir": "Ingresar" %></a></li>
   
-  <li></li>
-  <li></li>
- 
-  
-  	<blockquote class="blockquote-reverse">
+ <blockquote class="blockquote-reverse">
   	<%
   	Cliente cte = new Cliente();
   	if ((Cliente)session.getAttribute("USUA") != null){
@@ -59,9 +80,11 @@
   	}
   	%>
   	
-   		<li> User: <%=cte.getNombre() + " " + cte.getAppPater() %></li>
+   		<li> Usuario: <%=cte.getNombre() + " " + cte.getAppPater() %></li>
   		<li> Rut: <%=cte.getRut() == 0 ? "" : cte.getRut() + "-" + cte.getDv()  %></li>
 	</blockquote>
+  
+  	
 </ul>
 
 </form>

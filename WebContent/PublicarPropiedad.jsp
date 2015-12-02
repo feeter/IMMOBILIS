@@ -27,24 +27,24 @@
   <center>
   <h2><b>Ingresa datos para publicar tu propiedad</b></h2>
     <table class="table table-striped">
-    <tr>
-    	<td>Calle</td>
+    <tr class="info">
+    	<td><b>Calle</b></td>
   		<td><input type="text" name="txtCalle" class="form-control" placeholder="Calle"></td>
 	</tr>
-	    <tr>
-    	<td>Numero</td>
+	    <tr class="info">
+    	<td><b>Número</b></td>
   		<td><input type="text" name="txtNumero" class="form-control" placeholder="Número"></td>
 	</tr>
-	    <tr>
-    	<td>Precio de Venta</td>
+	    <tr class="info">
+    	<td><b>Precio de Venta(UF)</b></td>
   		<td><input type="text" name="txtPrecioVenta" class="form-control" placeholder="Precio de Venta"></td>
 	</tr>
-	    <tr>
-    	<td>Precio de Arriendo</td>
+	    <tr class="info">
+    	<td><b>Precio de Arriendo($)</b></td>
   		<td><input type="text" name="txtPrecioArriendo" class="form-control" placeholder="Precio Arriendo"></td>
 	</tr>
-	    <tr>
-    	<td>Calle</td>
+	    <tr class="info">
+    	<td><b>Calle</b></td>
   		<td><select class="form-control" name="selectTipo">
 			<option value="">-- Seleccione tipo--</option>
 		    <option value="CASA">Casa</option>
@@ -54,16 +54,16 @@
 		    <option value="OFIC">Oficinas</option>
 		  </select></td>
 	</tr>
-	    <tr>
-    	<td>Cantidad Dormitorios</td>
+	    <tr class="info">
+    	<td><b>Cantidad Dormitorios</b></td>
   		<td><input type="text" name="txtCantDormitorios" class="form-control" placeholder="Cantidad de Dormitorios"></td>
-	</tr> <tr>
-    	<td>Cantidad Baños</td>
+	</tr> <tr class="info">
+    	<td><b>Cantidad Baños</b></td>
   		<td><input type="text" name="txtCantBanos" class="form-control" placeholder="Cantidad de Baños"></td>
 	</tr>
 	<tr>
 	<td></td>
-	<td><button type="submit" class="btn btn-warning" name="btnPublicar">Publicar</button></td>
+	<td><button type="submit" class="btn btn-primary" name="btnPublicar">Publicar</button></td>
 	</tr>
 	</table>
 </center>

@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-IMMOBILIS 2015
+<style>
+  .footer{
+    margin-top: 19%;
+    height: 30px;
+    float: left;
+    clear: both;
+    color: #fff;
+    margin-left: 47%;
+  }  
+</style>
+<div class="footer">
+<p>IMMOBILIS 2015</p>
+</div>
+
 </body>
 </html>
