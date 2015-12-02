@@ -24,11 +24,13 @@
  <h1>Corretaje</h1><br>
   
   <form>
- <button type="submit" class="btn btn-warning" name="btnHistorialPago" >Historial de Pagos</button>
- <button type="submit" class="btn btn-warning" name="btnHistorialVenta" >Historial de Ventas</button>
- <button type="submit" class="btn btn-warning" name="btnHistorialArriendo"> Historial de Arriendos</button>
- <button type="submit" class="btn btn-warning" name="btnListarPropiedades">Listar Inmuebles</button>
- 
+  <table>
+  <tr>
+	<td><input type="text" name="txtBuscarProp" class="form-control" placeholder="Buscar Inmuebles"></td>
+ 	<td><button type="submit" class="btn btn-warning" name="btnBuscarInmuebles">Buscar</button></td>
+ 	<td><button type="submit" class="btn btn-warning" name="btnListarPropiedades">Listar Inmuebles</button></td>
+</tr>
+ </table>
  <br>
  <table class="table table-striped">
 		<tr>

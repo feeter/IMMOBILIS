@@ -22,43 +22,51 @@
  <h1>Publicar Propiedad</h1><br>
   
   <form class="form-inline" method="post" action="PublicarPropiedad.jsp" name="frmPP">
-  <div class="form-group">
-    <input type="text" class="form-control" id="tbCodigo" placeholder="Ingrese Codigo de Propiedad">
-  </div>
-  
-  <div class="btn-group" role="group" aria-label="...">
- <button type="submit" class="btn btn-warning" name="btnBuscar" >Buscar</button>
- <button type="submit" class="btn btn-warning" name="btnVenta" >Publicar Venta</button>
- <button type="submit" class="btn btn-warning" name="btnArriendo"> Publicar Arriendo</button> 
- </div>
- <%
- 		if(request.getParameter("btnVenta") != null){
-			
-			session.setAttribute("PropEdit", 0);
-			response.sendRedirect("PropVenta.jsp");
- 		}
- %>
- <%
- 		if(request.getParameter("btnArriendo") != null){
- 			
- 			session.setAttribute("PropiedadEdit", 0);
- 			response.sendRedirect("PropArriendo.jsp");
- 			
- 		}
- %>
   </form>
   <br>
-  <table class="table table-striped">
+  <center>
+  <h2><b>Ingresa datos para publicar tu propiedad</b></h2>
+    <table class="table table-striped">
+    <tr>
+    	<td>Calle</td>
+  		<td><input type="text" name="txtCalle" class="form-control" placeholder="Calle"></td>
+	</tr>
+	    <tr>
+    	<td>Numero</td>
+  		<td><input type="text" name="txtNumero" class="form-control" placeholder="Número"></td>
+	</tr>
+	    <tr>
+    	<td>Precio de Venta</td>
+  		<td><input type="text" name="txtPrecioVenta" class="form-control" placeholder="Precio de Venta"></td>
+	</tr>
+	    <tr>
+    	<td>Precio de Arriendo</td>
+  		<td><input type="text" name="txtPrecioArriendo" class="form-control" placeholder="Precio Arriendo"></td>
+	</tr>
+	    <tr>
+    	<td>Calle</td>
+  		<td><select class="form-control" name="selectTipo">
+			<option value="">-- Seleccione tipo--</option>
+		    <option value="CASA">Casa</option>
+		    <option value="DPTO">Departamento</option>
+		    <option value="ESTA">Estacionamiento</option>
+		    <option value="BODE">Bodega</option>
+		    <option value="OFIC">Oficinas</option>
+		  </select></td>
+	</tr>
+	    <tr>
+    	<td>Cantidad Dormitorios</td>
+  		<td><input type="text" name="txtCantDormitorios" class="form-control" placeholder="Cantidad de Dormitorios"></td>
+	</tr> <tr>
+    	<td>Cantidad Baños</td>
+  		<td><input type="text" name="txtCantBanos" class="form-control" placeholder="Cantidad de Baños"></td>
+	</tr>
 	<tr>
-		<th>Codigo</th>
-		<th>Estado</th>
-		<th>Calle</th>
-		<th>Número</th>
-		<th>Corretaje</th>
-		
+	<td></td>
+	<td><button type="submit" class="btn btn-warning" name="btnPublicar">Publicar</button></td>
 	</tr>
 	</table>
-
+</center>
  <%@ include file="../../footer.jsp" %>
 </body>
 </html>
