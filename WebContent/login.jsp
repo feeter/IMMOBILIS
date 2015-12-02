@@ -39,10 +39,10 @@
 	  
 	  
 	  <div class="form-group">
-	    <input type="text" class="form-control" name="tbRut" placeholder="11111111-1">
+	    <input type="text" class="form-control" name="tbRut" placeholder="11111111-1" value="18.479.088-2">
 	  </div>
 	  <div class="form-group">
-	    <input type="password" class="form-control" name="tbPassword" placeholder="Password">
+	    <input type="password" class="form-control" name="tbPassword" placeholder="Password" value="asdf">
 	  </div>
 	  <button type="submit" class="btn btn-default" name="btnIngresar">Ingresar</button>
 	  

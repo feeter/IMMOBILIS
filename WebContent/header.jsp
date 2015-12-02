@@ -13,9 +13,21 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="css/bootstrap.css"></script>
+
+<style>
+  ul {
+  background-repeat: no-repeat;
+  background-size: 930px 90px;
+  <%--background-image:url(img/inmobilis.jpg)--%>
+  }
+  li {
+  color: black;
+  }
+  </style>
 
 </head>
-<body>
+<body >
 
 <form action="" method="post" name="frmMenu" id="frmMenu">
 
@@ -23,17 +35,21 @@
 
 <ul class="nav nav-tabs">
  <!-- class="active" -->
-  <li role="presentation"><a href="Index.jsp">Home</a></li>
-  <li role="presentation"><a href="javascript:void(0);" onclick="RedirigeAdministracion();" <%=session.getAttribute("USUA") == null ? "style=\"display: none;\"" : "" %> ><%=session.getAttribute("USUA") != null ? ((Cliente)session.getAttribute("USUA")).getRol() == 1 ? "Administracion" : "Mis Datos" : "" %></a></li>
-  <!-- <li role="presentation"><a href="cliente.jsp">Clientes</a></li> -->
-  <li role="presentation"><a href="Corretaje.jsp">Corretaje</a></li>
-  <li role="presentation"><a href="javascript:void(0);" onclick="PublicarProp();">Publica tu propiedad</a></li>
-  <li role="presentation"><a href="javascript:void(0);" onclick="DeudasCliente()" <%=session.getAttribute("USUA") != null? "" : "style=\"display: none;\"" %> ><%=session.getAttribute("PAGO") != null ? String.valueOf(((List<Pago>) session.getAttribute("PAGO")).size()) : "" %> Pagos pendientes</a></li>
+ <li></li>
+ <li></li>
+ <li></li>
+  <li role="presentation"><a href="Index.jsp"><b>Home</b></a></li>
+  <li role="presentation"><a href="javascript:void(0);" onclick="RedirigeAdministracion();" <%=session.getAttribute("USUA") == null ? "style=\"display: none;\"" : "" %> ><b><%=session.getAttribute("USUA") != null ? ((Cliente)session.getAttribute("USUA")).getRol() == 1 ? "Administracion" : "Mis Datos" : "" %></b></a></li>
+  <!-- <li role="presentation"><a href="cliente.jsp"><b>Clientes</b></a></li> -->
+  <li role="presentation"><a href="Corretaje.jsp"><b>Corretaje</b></a></li>
+  <li role="presentation"><a href="javascript:void(0);" onclick="PublicarProp();"><b>Publica tu propiedad</b></a></li>
+  <li role="presentation"><a href="javascript:void(0);" onclick="DeudasCliente()" <%=session.getAttribute("USUA") != null? "" : "style=\"display: none;\"" %> ><%=session.getAttribute("PAGO") != null ? String.valueOf(((List<Pago>) session.getAttribute("PAGO")).size()) : "" %><b> Pagos pendientes</b></a></li>
   
   <li role="presentation"><a href="javascript:void(0);" onclick="Salir();" id="LinkLogearce" ><%=session.getAttribute("USUA") != null? "Salir": "Ingresar" %></a></li>
   
   <li></li>
   <li></li>
+ 
   
   	<blockquote class="blockquote-reverse">
   	<%

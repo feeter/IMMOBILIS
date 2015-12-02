@@ -67,5 +67,22 @@ public class Busqueda {
 		return list;
 	}
 	
+	public List<Propiedad> ListarPropiedadPorUsuario(int idUsuario){
+		
+		List<Propiedad> list = null;
+		try{
+			
+
+			list = propDAO.ListarPropiedadPorUsuario(idUsuario);
+			
+			
+		}catch(Exception ex){
+			this._log.Registrar(this._modulo, ex.getMessage());
+		}
+		
+		return list;
+		
+		
+	}
 	
 }

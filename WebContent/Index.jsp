@@ -16,6 +16,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="css/bootstrap.css"></script>
 
 
 <!-- <meta charset="utf-8"> -->
@@ -29,10 +30,25 @@
       width: 70%;
       margin: auto;
   }
+  body {
+  background-repeat: no-repeat;
+  background-size: auto auto;
+
+  }
+  h1 {
+  color: #000000;
+  font-family:verdana;
+  
+  }
+  h2 {
+  color: #000000;
+  font-family:verdana;
+  
+  }
   </style>
 
 </head>
-<body>
+<body background="img/fondo.jpg" >
 <jsp:include page="header.jsp" />
 <form class="form-inline" method="post" action="Index.jsp" name="frmIndex" id="frmIndex">
 
@@ -40,8 +56,8 @@
 <input type="hidden" name="IdProp" id="IdProp">
 
 <center>
-<h1>Tu hogar está aquí</h1>
-<h2>Casas, departamentos en arriendo y venta</h2>
+<h1><b>Tu hogar está aquí</b></h1>
+<h2><b>Casas, departamentos en arriendo y venta</b></h2>
 
  <select class="form-control" name="selectEstado">
    <option value="">-- Seleccione estado--</option>
@@ -85,14 +101,14 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="img/img_1.jpg" alt="Chania" width="460" height="245">
+        <img src="img/img_5.jpg" alt="Chania" width="460" height="345">
         <div class="carousel-caption">
         	<h3>Independencia</h3>
          </div>
       </div>
 
       <div class="item">
-        <img src="img/img_2.jpg" alt="Chania" width="460" height="345">
+        <img src="img/img_7.jpg" alt="Chania" width="460" height="345">
         <div class="carousel-caption">
         <h3>San Joaquin</h3>
         </div>
@@ -106,7 +122,7 @@
       </div>
 
       <div class="item">
-        <img src="img/img_4.jpg" alt="Flower" width="460" height="345">
+        <img src="img/img_6.jpg" alt="Flower" width="460" height="345">
         <div class="carousel-caption">
         <h3>Recoleta</h3>
         </div>

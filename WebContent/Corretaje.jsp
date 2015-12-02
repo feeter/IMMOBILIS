@@ -1,3 +1,4 @@
+<%@page import="javafx.scene.control.Alert"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="Negocio.*"%>
 <%@ page import="modelo.entidad.*" %>
@@ -31,47 +32,56 @@
  <br>
  <table class="table table-striped">
 		<tr>
-			<th><th>
-			<th>Codigo de Pago</th>
-			<th>ashdjkashd</th>
-			<th>23kshdjsadk</th>
-			<th>Estado de Pago</th>
-			<th>Pago de estado</th>
+			<th>#</th>
+			<th>Codigo de propiedad</th>
+			<th>Calle</th>
+			<th>Numero</th>
+			<th>Precio venta</th>
+			<th>Precio arriendo</th>
+			<th>Tipo</th>
+			<th>Accion</th>
 		</tr>
 
 		<%
 		Busqueda busq = new Busqueda();
-		
-		
-		if (session.getAttribute("USUACodigo") != null){
-			List<Pago> listPag = new ArrayList<Pago>();
+		int userID = 0;
+		List<Propiedad> listaPropiedad = null;
+		Cliente cte = new Cliente();
+	  	if ((Cliente)session.getAttribute("USUA") != null){
+	  		cte = (Cliente)session.getAttribute("USUA");
+	  		System.out.println("id" + cte.getCodigo());
+	  		userID = cte.getCodigo();
+	  		listaPropiedad = busq.ListarPropiedadPorUsuario(userID);
+	  		Autentificacion aut = new Autentificacion();
 			
-			String userID = session.getAttribute("USUACodigo").toString();
-			
-			listPag = busq.ListarPagosByUser(userID, "","","","");
-		}
-			
-			Autentificacion aut = new Autentificacion();
-			
-			if (request.getParameter("btnHistorialPago") != null){
-				
-				List<Pago> list = new ArrayList<Pago>();
-				
-				for (Pago pag: list){
+			if (request.getParameter("btnListarPropiedades") != null){
+				int contador = 1;
+				for (Propiedad prop: listaPropiedad){
+					
 					%>
 					<tr>
-						<% System.out.println(pag.getPagoCodigo()); %>
-						<td><%=pag.getPagoCodigo() %></td>
-						<td><%=pag.getPagoFecha() %></td>
-						<td><%=pag.getPagoMonto() %></td>
-						<td><%=pag.getPagoTipo() %></td>
-						<td><%=pag.getPagoEstado() %></td>
+						<% System.out.println(prop.getCodigo()); %>
+						<td><%= contador %></td>
+						<td><%=prop.getCodigo() %></td>
+						<td><%=prop.getCalle() %></td>
+						<td><%=prop.getNumero() %></td>
+						<td><%=prop.getPrecioVenta() %></td>
+						<td><%=prop.getPrecioArriendo() %></td>
+						<td><%=prop.getTipo() %></td>
+						<td><button>Vender</button><button>Arrendar</button></td>
 					</tr>
 					<%
+					contador++;
 				}
 			}
+		}else{
+			  String redirectURL = "http://localhost:8082/IMMOBILIS/login.jsp";
+			    response.sendRedirect(redirectURL);
+		}
 			
-					%>
+		
+		
+				%>
 
 					
 

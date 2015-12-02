@@ -198,4 +198,42 @@ public class PropiedadDAO extends SQLConexion {
 
 }
 
+	public List<Propiedad> ListarPropiedadPorUsuario(int idUsuario){
+
+		List<Propiedad> list = new ArrayList<Propiedad>();
+		try{
+			xml.Clear();
+			xml.Add("IdUsuario", String.valueOf(idUsuario));
+			
+			String strXMLDatos = xml.GenerarDocXML("parametros");
+			
+			System.out.println("ListarPropiedadPorUsuario: " + strXMLDatos);
+			
+			ResultSet rs = EjecutarSP("WEB_READ_ListarPropCliente", strXMLDatos);
+
+			
+			while (rs.next()) {
+				
+				Propiedad prop = new Propiedad();
+				
+				prop.setCodigo(rs.getInt("PROP_Codigo"));				
+				prop.setCalle(rs.getString("PROP_Calle"));
+				prop.setNumero(rs.getInt("PROP_Numero"));
+				prop.setPrecioVenta(rs.getInt("PROP_PrecioVenta"));
+				prop.setPrecioArriendo(rs.getInt("PROP_PrecioArrie"));
+				prop.setTipo(rs.getString("PROP_Tipo"));
+				prop.setEstado(rs.getString("PROP_Estado"));
+				list.add(prop);
+			
+			}
+			
+		}catch(Exception ex){
+			System.out.println("exeption");
+			System.out.println(ex.getMessage());
+		}
+		
+		
+		
+		return list;
+	}
 }

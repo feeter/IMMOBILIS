@@ -9,8 +9,13 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+
+
 body {
   margin: 0;
+  background: img/inmobilis.jpg;
+  background-size: 80px 60px;
+  background-repeat: no-repeat;
 }
 article,
 aside,
