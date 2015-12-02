@@ -44,7 +44,7 @@
   font-size: 45px !important;
   text-shadow: -1px 0 hsla(0, 0%, 0%, 0.43), 0 1px hsla(0, 0%, 0%, 0.43), 1px 0 hsla(0, 0%, 0%, 0.43), 0 -1px hsla(0, 0%, 0%, 0.43);
   }
-  h2 {
+  #idHH {
   color: white !important;
   font-family:verdana !important;
     text-shadow: -1px 0 hsla(0, 0%, 0%, 0.43), 0 1px hsla(0, 0%, 0%, 0.43), 1px 0 hsla(0, 0%, 0%, 0.43), 0 -1px hsla(0, 0%, 0%, 0.43);
@@ -71,7 +71,7 @@
 
 <center>
 <h1>Tu hogar está aquí</h1>
-<h2>Casas, departamentos en arriendo y venta</h2>
+<h2 id="idHH">Casas, departamentos en arriendo y venta</h2>
 
 <div class="site-search__block" >
 
@@ -117,28 +117,28 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="img/img_5.jpg" alt="Chania" width="460" height="345">
+        <img src="img/img_5.jpg" alt="Chania" width="400" height="345">
         <div class="carousel-caption">
         	<h3>Independencia</h3>
          </div>
       </div>
 
       <div class="item">
-        <img src="img/img_7.jpg" alt="Chania" width="460" height="345">
+        <img src="img/img_7.jpg" alt="Chania" width="400" height="345">
         <div class="carousel-caption">
         <h3>San Joaquin</h3>
         </div>
       </div>
     
       <div class="item">
-        <img src="img/img_3.jpg" alt="Flower" width="460" height="345">
+        <img src="img/img_3.jpg" alt="Flower" width="400" height="345">
         <div class="carousel-caption">
         <h3>Santiago Centro</h3>
         </div>
       </div>
 
       <div class="item">
-        <img src="img/img_6.jpg" alt="Flower" width="460" height="345">
+        <img src="img/img_6.jpg" alt="Flower" width="400" height="345">
         <div class="carousel-caption">
         <h3>Recoleta</h3>
         </div>
@@ -158,6 +158,7 @@
 </div>
 
 <br>
+
 
 <h2>Propiedades disponibles para reservar</h2>
 

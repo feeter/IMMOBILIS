@@ -47,6 +47,13 @@
   float:left;
   position:relative;
   }
+  .datosLogin{
+  color:white !important;
+  font-weight:bold !important;
+  background: rgb(43, 131, 181) !important;
+  width:220px !important;
+  margin-left: 1250px !important;
+  }
   
 
   .nav-tabs {
@@ -77,11 +84,16 @@
   	Cliente cte = new Cliente();
   	if ((Cliente)session.getAttribute("USUA") != null){
   		cte = (Cliente)session.getAttribute("USUA");
+  		%>
+
+  		<li> <p id="user" class="datosLogin">Usuario: <%=cte.getNombre() + " " + cte.getAppPater() %></p></li>
+  		<li> <p class="datosLogin">Rut: <%=cte.getRut() == 0 ? "" : cte.getRut() + "-" + cte.getDv()  %></p></li>
+  		
+  		<%
   	}
   	%>
   	
-   		<li> Usuario: <%=cte.getNombre() + " " + cte.getAppPater() %></li>
-  		<li> Rut: <%=cte.getRut() == 0 ? "" : cte.getRut() + "-" + cte.getDv()  %></li>
+   		
 	</blockquote>
   
   	
