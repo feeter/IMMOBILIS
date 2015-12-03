@@ -1,6 +1,7 @@
 package com.javarevolutions.jsps.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -161,6 +162,20 @@ public class LoginServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			} else {
+				PrintWriter out = null;
+				try {
+					out = response.getWriter();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}  
+				response.setContentType("text/html");  
+				out.println("<script type=\"text/javascript\">");  
+				out.println("alert('Usuario incorrecto.');");  
+				out.println("location.href=\"login.jsp\";");
+				out.println("</script>");
+				
 			}
 			
 		}
