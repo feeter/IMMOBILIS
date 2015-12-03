@@ -65,7 +65,7 @@
 				
 				for (Cliente cte: list){
 					%>
-					<tr>
+					<tr class="info">
 						<td> 
 							<button type="submit" class="btn btn-default" name="btnEditar" value="<%=cte.getCodigo() %>">Editar</button>
 							<button type="submit" class="btn btn-default" name="btnEliminar" value="<%=cte.getCodigo() %>" onclick="return confirm('Seguro de querer eliminar <%=cte.getNombre() %>?');">Eliminar</button>
@@ -113,9 +113,6 @@
 					<%
 					
 				}
-				
-				
-				
 			}
 	
 		%>

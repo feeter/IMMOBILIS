@@ -33,7 +33,7 @@ if (((List<Pago>) session.getAttribute("PAGO")) != null ){
 <%
 for (Pago item: pagoList){
 %>
-<tr>
+<tr class="info">
 <td>
 <button type="submit" value="<%=item.getPagoCodigo() %>" class="btn btn-default" name="btnPagar" 
  id="pagar" data-toggle="modal" data-target="#myModal"
@@ -57,7 +57,7 @@ if (request.getParameter("okPag") != null){
 }
 }else{
 	%>
-	<h3>No existen pagos pendientes.</h3>
+	<h3><b>No existen pagos pendientes.</b></h3>
 	<%
 }
 	
