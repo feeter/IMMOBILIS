@@ -77,7 +77,7 @@
 				}
 			}
 		}else{
-			  String redirectURL = "http://localhost:8082/IMMOBILIS/login.jsp";
+			  String redirectURL = "login.jsp";
 			    response.sendRedirect(redirectURL);
 		}
 			
