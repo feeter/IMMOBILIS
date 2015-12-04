@@ -11,13 +11,18 @@ public class Propiedad {
 	private char corretaje;
 	private int precioVenta;
 	private int precioArriendo;
-	
+	private int cantBanos;
+	private int cantDormitorios;
 	private String comuna;
 	private String tipo;
 	
 	/**
 	 * @return the tipo
 	 */
+	
+	
+	
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -128,6 +133,34 @@ public class Propiedad {
 
 	public void setPrecioArriendo(int precioArriendo) {
 		this.precioArriendo = precioArriendo;
+	}
+
+	/**
+	 * @return the cantBanos
+	 */
+	public int getCantBanos() {
+		return cantBanos;
+	}
+
+	/**
+	 * @param cantBanos the cantBanos to set
+	 */
+	public void setCantBanos(int cantBanos) {
+		this.cantBanos = cantBanos;
+	}
+
+	/**
+	 * @return the cantDormitorios
+	 */
+	public int getCantDormitorios() {
+		return cantDormitorios;
+	}
+
+	/**
+	 * @param cantDormitorios the cantDormitorios to set
+	 */
+	public void setCantDormitorios(int cantDormitorios) {
+		this.cantDormitorios = cantDormitorios;
 	}
 
 	

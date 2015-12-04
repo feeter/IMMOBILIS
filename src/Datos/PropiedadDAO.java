@@ -134,16 +134,18 @@ public class PropiedadDAO extends SQLConexion {
 		
 		try{
 			xml.Clear();
-			xml.Add("Codigo", String.valueOf(prop.getCodigo()));
-			xml.Add("Estado", String.valueOf(prop.getEstado()));
-			xml.Add("Calle", prop.getCalle());
-			xml.Add("Numero", String.valueOf(prop.getNumero()));
-			xml.Add("PrecioVenta", String.valueOf(prop.getPrecioVenta()));
-			xml.Add("PrecioArriendo", String.valueOf(prop.getPrecioArriendo()));
-
+			//xml.Add("Codigo", String.valueOf(prop.getCodigo()));
+			xml.Add("PROP_Calle", prop.getCalle());
+			//xml.Add("Estado", String.valueOf(prop.getEstado()));
+			xml.Add("PROP_Numero", String.valueOf(prop.getNumero()));
+			xml.Add("PROP_PrecioVenta", String.valueOf(prop.getPrecioVenta()));
+			xml.Add("PROP_PrecioArrie", String.valueOf(prop.getPrecioArriendo()));
+			xml.Add("PROP_Tipo", String.valueOf(prop.getTipo()));
+			xml.Add("PROP_CantBanos", String.valueOf(prop.getCantBanos()));
+			xml.Add("PROP_CantDormitorios", String.valueOf(prop.getCantDormitorios()));
 			String strXMLDatos = xml.GenerarDocXML("parametros");
 			
-			ResultSet rs = EjecutarSP("WEB_INS_InsertarPropiedad", strXMLDatos);
+			ResultSet rs = EjecutarSP("INSERTARPROPIEDAD", strXMLDatos);
 			while (rs.next()) {
 				if (rs.getString(1).equals("OK")){
 					ret ++;

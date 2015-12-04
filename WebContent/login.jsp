@@ -50,14 +50,14 @@
 	<h1>Ingresar</h1>
 
 	<form action="LoginServlet" method="post" name="frmLogin" id="frmLogin">
-	  <input type="hidden" name="accion" value="logearce" id="accion">
+	  <input type="hidden" name="accion" value="logearse" id="accion">
 	  
 	  
 	  <div class="form-group">
-	    <input type="text" class="form-control" name="tbRut" placeholder="11111111-1" value="18.479.088-2">
+	    <input type="text" class="form-control" name="tbRut" placeholder="11111111-1" >
 	  </div>
 	  <div class="form-group">
-	    <input type="password" class="form-control" name="tbPassword" placeholder="Password" value="asdf">
+	    <input type="password" class="form-control" name="tbPassword" placeholder="Password" >
 	  </div>
 	  <button type="submit" class="btn btn-default" name="btnIngresar">Ingresar</button>
 	  

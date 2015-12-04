@@ -41,7 +41,6 @@
 			<th>Precio venta</th>
 			<th>Precio arriendo</th>
 			<th>Tipo</th>
-			<th>Accion</th>
 		</tr>
 
 		<%
@@ -70,7 +69,6 @@
 						<td><%=prop.getPrecioVenta() %></td>
 						<td><%=prop.getPrecioArriendo() %></td>
 						<td><%=prop.getTipo() %></td>
-						<td><button>Vender</button><button>Arrendar</button></td>
 					</tr>
 					<%
 					contador++;

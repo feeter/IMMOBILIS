@@ -20,9 +20,15 @@
 <jsp:include page="header.jsp" />
 
  <h1>Publicar Propiedad</h1><br>
-  
+  <%
+	Autentificacion aut = new Autentificacion();
+
+	Propiedad propiedad = new Propiedad();
+	
+
+  %>
   <form class="form-inline" method="post" action="PublicarPropiedad.jsp" name="frmPP">
-  </form>
+  
   <br>
   <center>
   <h2><b>Ingresa datos para publicar tu propiedad</b></h2>
@@ -44,7 +50,7 @@
   		<td><input type="text" name="txtPrecioArriendo" class="form-control" placeholder="Precio Arriendo"></td>
 	</tr>
 	    <tr class="info">
-    	<td><b>Calle</b></td>
+    	<td><b>Tipo</b></td>
   		<td><select class="form-control" name="selectTipo">
 			<option value="">-- Seleccione tipo--</option>
 		    <option value="CASA">Casa</option>
@@ -53,8 +59,8 @@
 		    <option value="BODE">Bodega</option>
 		    <option value="OFIC">Oficinas</option>
 		  </select></td>
-	</tr>
-	    <tr class="info">
+	</tr><center>
+	<tr class="info">
     	<td><b>Cantidad Dormitorios</b></td>
   		<td><input type="text" name="txtCantDormitorios" class="form-control" placeholder="Cantidad de Dormitorios"></td>
 	</tr> <tr class="info">
@@ -63,10 +69,39 @@
 	</tr>
 	<tr>
 	<td></td>
-	<td><button type="submit" class="btn btn-primary" name="btnPublicar">Publicar</button></td>
+	<td><button type="submit" class="btn btn-primary" name="btnPublicar" href="Index.jsp">Publicar</button></td>
+	
 	</tr>
 	</table>
+	<%
+	if (request.getParameter("btnPublicar") != null) {
+		try{
+			propiedad.setCalle(request.getParameter("txtCalle").trim());
+			propiedad.setNumero(Integer.parseInt(request.getParameter("txtNumero").trim()));
+			propiedad.setPrecioVenta(Integer.parseInt(request.getParameter("txtPrecioVenta").trim()));
+			propiedad.setPrecioArriendo(Integer.parseInt(request.getParameter("txtPrecioArriendo").trim()));
+			propiedad.setTipo(request.getParameter("selectTipo").trim());
+			propiedad.setCantBanos(Integer.parseInt(request.getParameter("txtCantBanos").trim()));
+			propiedad.setCantDormitorios(Integer.parseInt(request.getParameter("txtCantDormitorios").trim()));	
+
+			
+			
+			
+			if (aut.CrearPropiedad(propiedad) > 0){
+				%>
+				<div class="alert alert-success" role="alert"><%="Propiedad satisfactoriamente: " %></div>
+				<%
+			}
+			
+		}catch(Exception ex){
+			%>
+			<div class="alert alert-danger" role="alert"><%="Error al  ingresar" + " Propiedad: "%></div>
+			<%
+		}
+	}
+	%>
 </center>
+</form>
  <%@ include file="../../footer.jsp" %>
 </body>
 </html>
