@@ -50,7 +50,7 @@
 	<h1>Ingresar</h1>
 
 	<form action="LoginServlet" method="post" name="frmLogin" id="frmLogin">
-	  <input type="hidden" name="accion" value="logearse" id="accion">
+	  <input type="hidden" name="accion" value="logearce" id="accion">
 	  
 	  
 	  <div class="form-group">
@@ -74,7 +74,7 @@
 		frm.action = "LoginServlet"; 
 		
 		var accion = document.getElementById("accion");
-		accion.value = "CrearUser"
+		accion.value = "logearce"
 		
 		frm.submit();
 	}
